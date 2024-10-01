@@ -1,5 +1,9 @@
 package tp1.logic;
 
+import tp1.logic.gameobjects.Lemming;
+import tp1.logic.gameobjects.WalkerRole;
+import tp1.logic.gameobjects.Wall;
+
 public class Game {
 
 	public static final int DIM_X = 10;
@@ -55,6 +59,12 @@ public class Game {
 	public String help() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public void update(){
+		_game_object_container.add(new Lemming(new Position(4,3), true, Direction.RIGHT,0, new WalkerRole(),this));
+		_game_object_container.add(new Wall(new Position(4,4)));
+		_game_object_container.add(new Wall(new Position(5,4)));
+
 	}
 
 }

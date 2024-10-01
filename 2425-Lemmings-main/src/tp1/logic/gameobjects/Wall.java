@@ -5,12 +5,15 @@ import tp1.view.Messages;
 
 public class Wall {
     private Position _pos;
-    Wall(Position _pos){
+    public Wall(Position _pos){
         this._pos=_pos;
     }
 
     public String toString(){
 
         return Messages.WALL;
+    }
+    public boolean isInPos(Position p){
+        return p.equals(_pos);
     }
 }

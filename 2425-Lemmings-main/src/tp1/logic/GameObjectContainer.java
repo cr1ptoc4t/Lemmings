@@ -38,7 +38,24 @@ public class GameObjectContainer {
     }
 
     public String someoneInPos(Position pos){
-        //buscar a ver si hay un objeto en tal posicion con el equals
+        int i=0;
+        while(i<_nlemmings && !_lemmings[i].isInPos(pos))
+            i++;
+
+        if(i!=_nlemmings)
+            return _lemmings[i].toString();
+        else{
+            i=0;
+            while(i<_nwalls && !_walls[i].isInPos(pos))
+                i++;
+
+            if(i!=_nwalls)
+                return _walls[i].toString();
+
+        }
+
+
         return "";
+
     }
 }

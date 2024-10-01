@@ -43,25 +43,22 @@ public class Position {
 		return b;
 	}
 
-	public boolean esPosicionValida() {
-		return Game.DIM_X>col && col>=0
-				&& row>=0 && row<=Game.DIM_Y;
-	}
 
 	public void actualiza(Direction d) {
-		col = col + d.getX();
-		row = row + d.getY();
+		//revisar el tema de las paredes!!
+
+		this.col+=d.getX();
+		this.row+=d.getY();
+
+		if(this.col>=Game.DIM_X) this.col=Game.DIM_X-1;
+		else if (this.row>=Game.DIM_Y) this.row=Game.DIM_Y-1;
+		else if (this.col<0) this.col=0;
+		else if (this.row<0) this.row=0;
+
 	}
 
-	public boolean isInBorderLeft(){
-		return col==0;
-	}
-	public boolean isInBorderRight(){
-		return col== Game.DIM_X-1;
-	}
-
-	public boolean isInBorderDown(){
-		return row == Game.DIM_Y-1;
+	private boolean valid_position(int x, int y) {
+		return x>0 && x<Game.DIM_X && y>0 && y<Game.DIM_Y;
 	}
 
 }

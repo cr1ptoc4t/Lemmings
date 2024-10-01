@@ -14,7 +14,7 @@ public class Lemming {
 	private Game _game;
 
 	//TODO fill your code
-	Lemming(Position _pos, boolean _alive, Direction _dir, int _fall, WalkerRole _walker_role, Game _game) {
+    public Lemming(Position _pos, boolean _alive, Direction _dir, int _fall, WalkerRole _walker_role, Game _game) {
 		this._pos = _pos;
 		this._alive = _alive;
 	}
@@ -24,22 +24,23 @@ public class Lemming {
 	 */
 	public void update() {
 		if(_alive){
-
+			_walker_role.play();
 
 		/*
 		Comprobar que están vivos
 		Delegar en el WalkerRole que llamará al método correspondiente de
 		caminar del lemming, el cual realizará las siguientes tareas:
-			Si están cayendo gestionar la caída. En particular, morir si alcanzan el suelo tras una caída demasiado grande.
-			Si no están cayendo pero están en el aire tendrán que caer.
-			Si no se dan ninguna de las situaciones anterirores dar un paso normal. El paso consistirá en avanzar o cambiar de dirección.
+
 		 */
 		}
 
 	}
-	public String toString(){
 
+	public String toString(){
 		return Messages.LEMMING_RIGHT;
 	}
 
+	public boolean isInPos(Position p){
+		return p.equals(_pos);
+	}
 }
