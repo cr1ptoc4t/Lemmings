@@ -16,4 +16,7 @@ public class Wall {
     public boolean isInPos(Position p){
         return p.equals(_pos);
     }
+    public boolean isInPos(Wall p){
+        return p._pos.equals(_pos);
+    }
 }

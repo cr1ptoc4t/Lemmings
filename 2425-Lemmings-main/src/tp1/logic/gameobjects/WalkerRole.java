@@ -5,7 +5,9 @@ import tp1.view.Messages;
 
 public class WalkerRole {
     private Game _game;
-    public WalkerRole(Game game){
+    private Lemming _lemming;
+    public WalkerRole(Game game, Lemming lemming){
+        this._lemming=lemming;
         this._game=game;
     }
     public void play( ) {

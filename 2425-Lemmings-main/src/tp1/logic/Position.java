@@ -50,13 +50,13 @@ public class Position {
 		int x= this.col+d.getX();;
 		int y = this.row+d.getY();
 
-		if(valid_position(x,y)){
+		//if(valid_position(x,y)){
 			this.col= x;
 			this.row=y;
-		} else if (!valid_x(x)){
+		//} else if (!valid_x(x)){
 			//mirar tema paredes!!!
 
-		}
+		//}
 
 	}
 
@@ -72,5 +72,16 @@ public class Position {
 		return col==0|| col== Game.DIM_Y-1;
 	}
 
-
+	public boolean isOver(Position p) {
+		return col==p.col && row-1==p.row;
+	}
+	public static Position over(Position p) {
+		return new Position(p.col, p.row+1);
+	}
+	public static Position left(Position p) {
+		return new Position(p.col-1, p.row);
+	}
+	public static Position right(Position p) {
+		return new Position(p.col+1, p.row);
+	}
 }

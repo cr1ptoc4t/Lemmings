@@ -9,46 +9,65 @@ public class Game {
 
 	public static final int DIM_X = 10;
 	public static final int DIM_Y = 10;
+	public static final int MAX_FALL = 3;
 	int cycle=0;
 
 	private GameObjectContainer _game_object_container;
 	public Game(int nLevel) {
 		_game_object_container = new GameObjectContainer();
-		default_game();
+		default_game_2();
 
 	}
 
 	private void default_game() {
-		_game_object_container.add(new Lemming(new Position(4,3), Direction.RIGHT,this));
-		_game_object_container.add(new Lemming(new Position(5,3), Direction.RIGHT,this));
+		_game_object_container.add(new Lemming(new Position(4,3), Direction.LEFT,this));
+		//_game_object_container.add(new Lemming(new Position(5,3), Direction.RIGHT,this));
 		_game_object_container.add(new Wall(new Position(4,4)));
 		_game_object_container.add(new Wall(new Position(5,4)));
+		_game_object_container.add(new Wall(new Position(2,7)));
+		_game_object_container.add(new Wall(new Position(1,7)));
 		_game_object_container.add(new Wall(new Position(6,4)));
+		_game_object_container.add(new Wall(new Position(0,6)));
 		_game_object_container.add(new Wall(new Position(7,4)));
 		_game_object_container.add(new Wall(new Position(8,2)));
 		_game_object_container.add(new Wall(new Position(3,5)));
 		_game_object_container.add(new Wall(new Position(1,9)));
+
+
 		_game_object_container.add(new ExitDoor(new Position(8,8)));
 	}
 
+	private void default_game_2(){
+		_game_object_container.add(new Lemming(new Position(4,0), Direction.LEFT,this));
+
+		_game_object_container.add(new Wall(new Position(0, 2)));
+		_game_object_container.add(new Wall(new Position(1, 4)));
+		_game_object_container.add(new Wall(new Position(2, 5)));
+		_game_object_container.add(new Wall(new Position(3, 6)));
+		_game_object_container.add(new Wall(new Position(4, 1)));
+		_game_object_container.add(new Wall(new Position(4, 9)));
+		_game_object_container.add(new Wall(new Position(5, 7)));
+		_game_object_container.add(new Wall(new Position(6, 2)));
+		_game_object_container.add(new Wall(new Position(7, 7)));
+		_game_object_container.add(new Wall(new Position(9, 5)));
+		_game_object_container.add(new ExitDoor(new Position(8,8)));
+
+	}
+
 	public int getCycle() {
-		// TODO Auto-generated method stub
 		return cycle;
 	}
 
 	public int numLemmingsInBoard() {
-		// TODO Auto-generated method stub
-		return 0;
+		return _game_object_container.get_nlemmings();
 	}
 
 	public int numLemmingsDead() {
-		// TODO Auto-generated method stub
-		return 0;
+		return _game_object_container.get_ndead_lemmings();
 	}
 
 	public int numLemmingsExit() {
-		// TODO Auto-generated method stub
-		return 0;
+		return _game_object_container.get_nexit_lemmings();
 	}
 
 	public int numLemmingsToWin() {
@@ -77,6 +96,7 @@ public class Game {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	public void update(){
 		_game_object_container.update();
 		cycle++;
@@ -85,5 +105,9 @@ public class Game {
 	public void reset() {
 		_game_object_container=new GameObjectContainer();
 		default_game();
+	}
+
+	public boolean wall_in_pos(Wall p) {
+		return _game_object_container.isWallInPos(p);
 	}
 }

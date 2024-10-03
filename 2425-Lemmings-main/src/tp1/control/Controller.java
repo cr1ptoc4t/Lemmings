@@ -21,8 +21,7 @@ public class Controller {
         this.view = view;
     }
 
-
-
+    
 
     /**
      * Runs the game logic, coordinate Model(game) and View(view)
