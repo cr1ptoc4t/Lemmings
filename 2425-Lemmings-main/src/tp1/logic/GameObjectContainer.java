@@ -16,11 +16,7 @@ public class GameObjectContainer {
     private ExitDoor _exit_door;
 
     GameObjectContainer(){
-        _nlemmings=0;
-        _lemmings= new Lemming[2000];
-        //_exit_door= new ExitDoor();
-        _nwalls=0;
-        _walls = new Wall[2000];
+        initContainer();
     }
 
     public void add(Lemming lemming) {
@@ -52,10 +48,24 @@ public class GameObjectContainer {
             if(i!=_nwalls)
                 return _walls[i].toString();
 
+            else if (_exit_door.isInPos(pos))
+                return _exit_door.toString();
         }
 
 
         return "";
 
+    }
+    private void initContainer(){
+        _nlemmings=0;
+        _lemmings= new Lemming[2000];
+        _nwalls=0;
+        _walls = new Wall[2000];
+    }
+
+    public void update() {
+        for(int i=0; i<_nlemmings; i++){
+            _lemmings[i].update();
+        }
     }
 }

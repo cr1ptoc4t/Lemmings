@@ -25,6 +25,16 @@ public enum Direction {
 
 
 	//TODO fill your code
-	
+	public Direction opposite(){
+		Direction p;
+		switch (this){
+			case UP -> p=DOWN;
+			case DOWN -> p=UP;
+			case LEFT -> p=RIGHT;
+			case RIGHT -> p=LEFT;
+			default -> p=NONE;
+		}
+		return p;
+	}
 	
 }

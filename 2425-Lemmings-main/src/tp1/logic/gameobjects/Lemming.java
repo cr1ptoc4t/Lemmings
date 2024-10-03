@@ -12,11 +12,17 @@ public class Lemming {
 	private int _fall;
 	private WalkerRole _walker_role;
 	private Game _game;
+	private boolean _change_dir;
 
 	//TODO fill your code
-    public Lemming(Position _pos, boolean _alive, Direction _dir, int _fall, WalkerRole _walker_role, Game _game) {
+    public Lemming(Position _pos, Direction _dir, Game _game) {
+		this._game=_game;
 		this._pos = _pos;
-		this._alive = _alive;
+		this._alive = true;
+		this._dir=_dir;
+		_walker_role=new WalkerRole(_game);
+		_fall=0;
+		_change_dir=false;
 	}
 
 	/**
@@ -25,7 +31,26 @@ public class Lemming {
 	public void update() {
 		if(_alive){
 			_walker_role.play();
+			if(_pos.vertical_border()&&_change_dir){
+				_dir=_dir.opposite();
+				_change_dir=false;
+			}else if (_pos.vertical_border()){
+				_change_dir =true;
+			}
+			_pos.actualiza(_dir);
+			/*
+			if(_change_dir){
+				_pos.actualiza(_dir);
+				if(_pos.vertical_border()/*o toca pared){
+					_change_dir=false;
+				}
+			}else{
 
+				_pos.actualiza(_dir);
+
+				_change_dir=true;
+			}
+			*/
 		/*
 		Comprobar que están vivos
 		Delegar en el WalkerRole que llamará al método correspondiente de

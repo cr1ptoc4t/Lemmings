@@ -47,18 +47,30 @@ public class Position {
 	public void actualiza(Direction d) {
 		//revisar el tema de las paredes!!
 
-		this.col+=d.getX();
-		this.row+=d.getY();
+		int x= this.col+d.getX();;
+		int y = this.row+d.getY();
 
-		if(this.col>=Game.DIM_X) this.col=Game.DIM_X-1;
-		else if (this.row>=Game.DIM_Y) this.row=Game.DIM_Y-1;
-		else if (this.col<0) this.col=0;
-		else if (this.row<0) this.row=0;
+		if(valid_position(x,y)){
+			this.col= x;
+			this.row=y;
+		} else if (!valid_x(x)){
+			//mirar tema paredes!!!
+
+		}
 
 	}
 
 	private boolean valid_position(int x, int y) {
 		return x>0 && x<Game.DIM_X && y>0 && y<Game.DIM_Y;
 	}
+
+	private boolean valid_x(int x) {
+		return x>0 && x<Game.DIM_X;
+	}
+
+	public boolean vertical_border(){
+		return col==0|| col== Game.DIM_Y-1;
+	}
+
 
 }

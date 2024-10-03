@@ -22,49 +22,52 @@ public class Controller {
     }
 
 
+
+
     /**
      * Runs the game logic, coordinate Model(game) and View(view)
      */
     public void run() {
         view.showWelcome();
         //view.showGame();
-        String[] cd;
+        String cd;
         do {
             view.showGame();
-            cd = view.getPrompt();
+            cd = view.getPrompt()[0].toLowerCase();
             userCommand(cd);
-        } while (game.playerWins() || game.playerLooses() || !exit_command(cd));
-       // view.showGame();
+        } while (!game.playerWins() && !game.playerLooses() && !exit_command(cd));
+        // view.showGame();
 
 
         view.showEndMessage();
     }
 
-    private void userCommand(String[] cd) {
-        if (move_command(cd)) {
-            game.update();
-        } else if (none_command(cd)) {
-            game.update();
-        } else if (help_command(cd)) {
+    private void userCommand(String cd) {
+        if (help_command(cd)) {
             view.showMessage(Arrays.toString(Messages.HELP_LINES));
+        } else {
+            if (reset_command(cd)) {
+                game.reset();
+            } else
+                game.update();
+
         }
 
 
     }
 
-    private boolean exit_command(String[] comando) {
-        return comando[0].toLowerCase().equals("exit") || comando[0].toLowerCase().equals("e");
+    private boolean exit_command(String comando) {
+        return comando.equals("exit") || comando.equals("e");
     }
 
-    private boolean move_command(String[] comando) {
-        return comando[0].toLowerCase().equals("move") || comando[0].toLowerCase().equals("m");
+    private boolean none_command(String comando) {
+        return comando.equals("none") || comando.equals("n");
     }
 
-    private boolean none_command(String[] comando) {
-        return comando[0].toLowerCase().equals("none") || comando[0].toLowerCase().equals("n");
+    private boolean help_command(String comando) {
+        return comando.equals("help") || comando.equals("h");
     }
-
-    private boolean help_command(String[] comando) {
-        return comando[0].toLowerCase().equals("help") || comando[0].toLowerCase().equals("h");
+    private boolean reset_command(String comando) {
+        return comando.equals("reset") || comando.equals("r");
     }
 }
