@@ -1,27 +1,26 @@
 package tp1.logic.gameobjects;
 
+import tp1.logic.Direction;
 import tp1.logic.Game;
+import tp1.logic.Position;
 import tp1.view.Messages;
 
 public class WalkerRole {
+
     private Game _game;
-    private Lemming _lemming;
-    public WalkerRole(Game game, Lemming lemming){
-        this._lemming=lemming;
-        this._game=game;
+
+    public WalkerRole(Game game) {
+        this._game = game;
     }
-    public void play( ) {
-/*
-        Si están cayendo gestionar la caída. En particular, morir si alcanzan el suelo tras una caída demasiado grande.
-                Si no están cayendo pero están en el aire tendrán que caer.
-                Si no se dan ninguna de las situaciones anterirores dar un paso normal. El paso consistirá en avanzar o cambiar de dirección.
 
-         */
-
-
+    public void play(Lemming l) {
+        l.move();
     }
-    @Override
-    public String toString( ) {
+
+        @Override
+    public String toString() {
         return Messages.LEMMING_RIGHT;
     }
+
+
 }

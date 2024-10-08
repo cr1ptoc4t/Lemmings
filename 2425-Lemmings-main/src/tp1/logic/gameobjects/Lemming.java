@@ -16,29 +16,32 @@ public class Lemming {
     private Direction _anterior_dir;
     private boolean _falling;
 
-    //TODO fill your code
     public Lemming(Position _pos, Direction _dir, Game _game) {
         this._game = _game;
         this._pos = _pos;
         this._alive = true;
         this._dir = _dir;
-        _walker_role = new WalkerRole(_game, this);
+        _walker_role = new WalkerRole(_game);
         _fall = 0;
         _changed_dir = false;
     }
 
     private boolean should_change_dir() {
         return _pos.vertical_border() ||
-                _game.wall_in_pos(new Wall(Position.left(_pos))) && _dir == Direction.LEFT ||
-                _game.wall_in_pos(new Wall(Position.right(_pos))) && _dir == Direction.RIGHT;
+                _game.wall_in_left(_pos) && _dir == Direction.LEFT ||
+                _game.wall_in_right(_pos) && _dir == Direction.RIGHT;
     }
 
     /**
      * Implements the automatic update
      */
+
+    /*
     public void update() {
         if (_alive) {
-            if (_game.wall_in_pos(new Wall(Position.over(_pos)))) {
+            if (_game.exit_door_in_pos(new ExitDoor(Position.over(_pos)))) {
+                //¿¿
+            } else if (_game.wall_in_pos(new Wall(Position.over(_pos)))) {
 
                 _walker_role.play();
                 if (_fall >= Game.MAX_FALL)
@@ -67,12 +70,12 @@ public class Lemming {
 				_change_dir=true;
 			}
 			*/
-		/*
+    /*
 		Comprobar que están vivos
 		Delegar en el WalkerRole que llamará al método correspondiente de
 		caminar del lemming, el cual realizará las siguientes tareas:
 
-		 */
+
             } else if (!_falling){
                 //calcular caida
                 _falling = true;_fall=0;
@@ -83,13 +86,29 @@ public class Lemming {
             }
         }
     }
+    */
+    public void update() {
+        if (_alive) {
+            _walker_role.play(this);
+        }
+    }
+
+    // manejo de movimiento
+
 
     public String toString() {
-        if(_alive)
-            if(_dir==Direction.RIGHT)
-               return Messages.LEMMING_RIGHT;
-             else return Messages.LEMMING_LEFT;
-        else return Messages.LEMMING_DEAD;
+        String icon;
+        if (_alive) {
+            if (_dir == Direction.DOWN) {
+                if (_anterior_dir == Direction.RIGHT)
+                     icon = Messages.LEMMING_RIGHT;
+                else icon = Messages.LEMMING_LEFT;
+            } else if (_dir == Direction.RIGHT)
+                 icon = Messages.LEMMING_RIGHT;
+            else icon = Messages.LEMMING_LEFT;
+        }  else  icon = Messages.LEMMING_DEAD;
+
+        return icon;
     }
 
     public boolean isInPos(Position p) {
@@ -98,5 +117,70 @@ public class Lemming {
 
     public boolean isAlive() {
         return _alive;
+    }
+
+    public Position get_pos() {
+        return _pos;
+    }
+
+    public Direction get_dir() {
+        return _dir;
+    }
+
+    public int get_fall() {
+        return _fall;
+    }
+
+
+    public boolean is_falling() {
+        return false;
+    }
+
+    public Direction get_anterior_dir() {
+        return _anterior_dir;
+    }
+
+    public void move() {
+        if(!_pos.valid_position())
+            _alive=false;
+        else if (_falling) {
+            handle_fall();
+            _fall++;
+        } else if (!_game.wall_under(_pos)) {
+            _falling = true;
+            _anterior_dir = _dir;
+            _dir = Direction.DOWN;
+            _fall++;
+            _pos.actualiza(_dir);
+        } else
+            normal_step();
+
+
+    }
+
+    private void normal_step() {
+        if (should_change_dir() && !_changed_dir) {
+            _dir = _dir.opposite();
+            _changed_dir = true;
+        } else if (should_change_dir() && _changed_dir) {
+            _changed_dir = false;
+        }
+        _pos.actualiza(_dir);
+    }
+
+
+    private void handle_fall() {
+        if (_game.wall_under(_pos)) {
+            if (_fall >= Game.MAX_FALL)
+                _alive = false;
+            else {
+                _fall = 0;
+                _falling = false;
+                _dir = _anterior_dir;
+                _pos.actualiza(_dir);
+
+            }
+        } else
+            _pos.actualiza(_dir);
     }
 }

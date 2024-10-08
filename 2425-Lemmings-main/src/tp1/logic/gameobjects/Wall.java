@@ -10,7 +10,6 @@ public class Wall {
     }
 
     public String toString(){
-
         return Messages.WALL;
     }
     public boolean isInPos(Position p){

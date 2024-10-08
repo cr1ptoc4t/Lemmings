@@ -15,4 +15,7 @@ public class ExitDoor {
     public boolean isInPos(Position p){
         return p.equals(_pos);
     }
+    public boolean isInPos(ExitDoor p){
+        return p._pos.equals(_pos);
+    }
 }
