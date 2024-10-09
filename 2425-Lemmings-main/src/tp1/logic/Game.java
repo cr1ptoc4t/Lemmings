@@ -164,6 +164,7 @@ public class Game {
 
 	public void update(){
 		_game_object_container.procesaMuertos();
+		_game_object_container.procesaExit();
 		_game_object_container.update();
 		cycle++;
 	}

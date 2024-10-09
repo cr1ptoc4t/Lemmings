@@ -126,4 +126,18 @@ public class GameObjectContainer {
     public boolean isExitDoorInPos(Position p) {
         return _exit_door.isInPos(p);
     }
+
+    public void procesaExit() {
+        int i=0;
+        while(i<_nlemmings){
+            if(_exit_door.isInPos(_lemmings[i].get_pos())){
+                for(int j=i; j<i+_nlemmings-1;j++){
+                    _lemmings[j]= _lemmings[j+1];
+                }
+                _nlemmings--;
+                _nexit_lemmings++;
+            }else
+                i++;
+        }
+    }
 }

@@ -119,27 +119,6 @@ public class Lemming {
         return _alive;
     }
 
-    public Position get_pos() {
-        return _pos;
-    }
-
-    public Direction get_dir() {
-        return _dir;
-    }
-
-    public int get_fall() {
-        return _fall;
-    }
-
-
-    public boolean is_falling() {
-        return false;
-    }
-
-    public Direction get_anterior_dir() {
-        return _anterior_dir;
-    }
-
     public void move() {
         if(!_pos.valid_position())
             _alive=false;
@@ -182,5 +161,9 @@ public class Lemming {
             }
         } else
             _pos.actualiza(_dir);
+    }
+
+    public Position get_pos() {
+        return _pos;
     }
 }
