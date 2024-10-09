@@ -15,7 +15,7 @@ public class Controller {
 
     private Game game;
     private GameView view;
-    private boolean _advance = true;
+    private boolean _exit = false;
 
     public Controller(Game game, GameView view) {
         this.game = game;
@@ -33,30 +33,36 @@ public class Controller {
         do {
             view.showGame();
             do {
-                _advance=true;
                 cd = view.getPrompt()[0].toLowerCase();
-                userCommand(cd);
-            } while (!_advance);
-        } while (!game.playerWins() && !game.playerLooses() && !exit_command(cd));
-        // view.showGame();
-
+            } while (userCommand(cd));
+        } while (game.numLemmingsInBoard()>0 && !_exit);
 
         view.showEndMessage();
     }
 
-    
-    private void userCommand(String cd) {
+    //devuelve false cuando se debe parar el ciclo de juego
+    private boolean userCommand(String cd) {
+        boolean advance = true;
         if (help_command(cd)) {
-            view.showMessage(Arrays.toString(Messages.HELP_LINES));
-            _advance=false;
-        } else if (reset_command(cd))
+            for(int i = 0; i < Messages.HELP_LINES.length; i++)
+                view.showMessage(Messages.HELP_LINES[i]);
+            //v//iew.showMessage(Arrays.toString(Messages.HELP_LINES));
+            advance = false;
+        } else if (reset_command(cd)) {
             game.reset();
-        else if (none_command(cd)) {
+
+        } else if (none_command(cd)) {
             game.update();
-        } else {
-            view.showMessage(Messages.INVALID_COMMAND);
-            _advance=false;
+
+        } else if(exit_command(cd)){
+            advance = false;
+            _exit=true;
         }
+        else{
+            view.showMessage(Messages.INVALID_COMMAND);
+            advance = false;
+        }
+        return !advance && !_exit;
     }
 
     private boolean exit_command(String comando) {

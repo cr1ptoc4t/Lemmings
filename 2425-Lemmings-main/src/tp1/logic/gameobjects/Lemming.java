@@ -150,7 +150,7 @@ public class Lemming {
 
     private void handle_fall() {
         if (_game.wall_under(_pos)) {
-            if (_fall >= Game.MAX_FALL)
+            if (_fall > Game.MAX_FALL)
                 _alive = false;
             else {
                 _fall = 0;
