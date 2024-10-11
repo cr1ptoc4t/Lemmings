@@ -27,9 +27,9 @@ public class Lemming {
     }
 
     private boolean should_change_dir() {
-        return _pos.vertical_border() ||
-                _game.wall_in_left(_pos) && _dir == Direction.LEFT ||
-                _game.wall_in_right(_pos) && _dir == Direction.RIGHT;
+        Position next_pos = new Position(_pos);
+        next_pos.actualiza(_dir);
+        return !next_pos.valid_position()|| _game.wall_in_pos(next_pos);
     }
 
     /**
@@ -93,22 +93,9 @@ public class Lemming {
         }
     }
 
-    // manejo de movimiento
-
 
     public String toString() {
-        String icon;
-        if (_alive) {
-            if (_dir == Direction.DOWN) {
-                if (_anterior_dir == Direction.RIGHT)
-                     icon = Messages.LEMMING_RIGHT;
-                else icon = Messages.LEMMING_LEFT;
-            } else if (_dir == Direction.RIGHT)
-                 icon = Messages.LEMMING_RIGHT;
-            else icon = Messages.LEMMING_LEFT;
-        }  else  icon = Messages.LEMMING_DEAD;
-
-        return icon;
+        return _walker_role.getIcon(this);
     }
 
     public boolean isInPos(Position p) {
@@ -120,8 +107,8 @@ public class Lemming {
     }
 
     public void move() {
-        if(!_pos.valid_position())
-            _alive=false;
+        if (!_pos.valid_position())
+            _alive = false;
         else if (_falling) {
             handle_fall();
             _fall++;
@@ -138,11 +125,13 @@ public class Lemming {
     }
 
     private void normal_step() {
-        if (should_change_dir() && !_changed_dir) {
-            _dir = _dir.opposite();
-            _changed_dir = true;
-        } else if (should_change_dir() && _changed_dir) {
-            _changed_dir = false;
+        if(should_change_dir()){
+            if (_changed_dir) {
+                _changed_dir = false;
+            } else {
+                _dir = _dir.opposite();
+                _changed_dir = true;
+            }
         }
         _pos.actualiza(_dir);
     }
@@ -157,13 +146,26 @@ public class Lemming {
                 _falling = false;
                 _dir = _anterior_dir;
                 _pos.actualiza(_dir);
-
             }
         } else
             _pos.actualiza(_dir);
     }
 
+    private Position siguiente_pos(){
+        Position siguiente_pos = new Position(_pos);
+        siguiente_pos.actualiza(_dir);
+        return siguiente_pos;
+    }
+
     public Position get_pos() {
         return _pos;
+    }
+
+    public Direction get_dir() {
+        return this._dir;
+    }
+
+    public Direction get_dir_anterior() {
+        return this._anterior_dir;
     }
 }

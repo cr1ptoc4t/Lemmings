@@ -28,7 +28,6 @@ public class Controller {
      */
     public void run() {
         view.showWelcome();
-        //view.showGame();
         String cd;
         do {
             view.showGame();

@@ -1,0 +1,6 @@
+Eliminar la x -> controlador
+mapas
+    - mapa 1
+    - mapa 2
+
+cambiar a constante el numero necesario d lemmings

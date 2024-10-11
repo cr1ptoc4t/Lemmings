@@ -2,7 +2,6 @@ package tp1.logic.gameobjects;
 
 import tp1.logic.Direction;
 import tp1.logic.Game;
-import tp1.logic.Position;
 import tp1.view.Messages;
 
 public class WalkerRole {
@@ -17,9 +16,20 @@ public class WalkerRole {
         l.move();
     }
 
-        @Override
-    public String toString() {
-        return Messages.LEMMING_RIGHT;
+    public String getIcon(Lemming l) {
+        String icon="";
+
+        Direction d = l.get_dir();
+        if(d==Direction.DOWN)
+            d=l.get_dir_anterior();
+
+        if (d == Direction.RIGHT)
+            icon = Messages.LEMMING_RIGHT;
+        else if(d == Direction.LEFT)
+            icon = Messages.LEMMING_LEFT;
+
+
+        return icon;
     }
 
 

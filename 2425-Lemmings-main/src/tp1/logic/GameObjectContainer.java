@@ -4,7 +4,6 @@ import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
 
-import java.util.ArrayList;
 
 public class GameObjectContainer {
     //Array de walls
@@ -41,28 +40,29 @@ public class GameObjectContainer {
         this._exit_door = exitDoor;
     }
 
+
     public String someoneInPos(Position pos) {
+        String str = "";
         if (_exit_door.isInPos(pos))
-            return _exit_door.toString();
-        else {
-            int i = 0;
-            while (i < _nlemmings && !_lemmings[i].isInPos(pos))
-                i++;
+            str += _exit_door.toString();
 
-            if (i != _nlemmings)
-                return _lemmings[i].toString();
-            else {
-                i = 0;
-                while (i < _nwalls && !_walls[i].isInPos(pos))
-                    i++;
 
-                if (i != _nwalls)
-                    return _walls[i].toString();
+        int i = 0;
+        while (i < _nlemmings && !_lemmings[i].isInPos(pos))
+            i++;
 
-            }
-        }
+        if (i != _nlemmings)
+            str += _lemmings[i].toString();
 
-        return "";
+        i = 0;
+        while (i < _nwalls && !_walls[i].isInPos(pos))
+            i++;
+
+        if (i != _nwalls)
+            str += _walls[i].toString();
+
+
+        return str;
 
     }
 
@@ -70,9 +70,6 @@ public class GameObjectContainer {
         return _nlemmings;
     }
 
-    public int get_nwalls() {
-        return _nwalls;
-    }
 
     public int get_ndead_lemmings() {
         return _ndead_lemmings;
@@ -108,36 +105,37 @@ public class GameObjectContainer {
         return i != _nwalls;
     }
 
-    public void procesaMuertos() {
-        int i=0;
-        while(i<_nlemmings){
-            if(!_lemmings[i].isAlive()){
-                for(int j=i; j<i+_nlemmings-1;j++){
-                    _lemmings[j]= _lemmings[j+1];
-                }
-                _nlemmings--;
-                _ndead_lemmings++;
 
-            }else
-               i++;
+    public void procesaMuertos() {
+        int i = 0;
+        while (i < _nlemmings) {
+            if (!_lemmings[i].isAlive()) {
+                eliminaLemming(i);
+                _ndead_lemmings++;
+            } else
+                i++;
         }
     }
+
 
     public boolean isExitDoorInPos(Position p) {
         return _exit_door.isInPos(p);
     }
 
     public void procesaExit() {
-        int i=0;
-        while(i<_nlemmings){
-            if(_exit_door.isInPos(_lemmings[i].get_pos())){
-                for(int j=i; j<i+_nlemmings-1;j++){
-                    _lemmings[j]= _lemmings[j+1];
-                }
-                _nlemmings--;
+        int i = 0;
+        while (i < _nlemmings) {
+            if (_exit_door.isInPos(_lemmings[i].get_pos())) {
+                eliminaLemming(i);
                 _nexit_lemmings++;
-            }else
+            } else
                 i++;
         }
+    }
+    private void eliminaLemming(int i){
+        for (int j = i; j < i + _nlemmings - 1; j++) {
+            _lemmings[j] = _lemmings[j + 1];
+        }
+        _nlemmings--;
     }
 }

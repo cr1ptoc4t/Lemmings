@@ -13,7 +13,7 @@ public class Game {
 	private int cycle;
 	private int _level;
 
-	private int _lemmings_min;
+	private static int _LEMMINGS_MIN;
 
 	private GameObjectContainer _game_object_container;
 	public Game(int nLevel) {
@@ -37,7 +37,7 @@ public class Game {
 	}
 
 	private void initGame1() {
-		_lemmings_min=2;
+		_LEMMINGS_MIN=2;
 		_game_object_container.add(new Lemming(new Position(3,3), Direction.RIGHT,this));
 		_game_object_container.add(new Lemming(new Position(2,3), Direction.RIGHT,this));
 		_game_object_container.add(new Lemming(new Position(0,8), Direction.RIGHT,this));
@@ -62,7 +62,8 @@ public class Game {
 	}
 
 	private void initGame0() {
-		_lemmings_min=2;
+		 _LEMMINGS_MIN = 2;
+		//usar constanate
 		_game_object_container.add(new Lemming(new Position(3,3), Direction.RIGHT,this));
 		_game_object_container.add(new Lemming(new Position(9,0), Direction.RIGHT,this));
 		_game_object_container.add(new Lemming(new Position(0,8), Direction.RIGHT,this));
@@ -143,30 +144,28 @@ public class Game {
 	}
 
 	public int numLemmingsToWin() {
-		return _lemmings_min;
+		return _LEMMINGS_MIN;
 	}
 	public String positionToString(int col, int row) {
 		return _game_object_container.someoneInPos(new Position(col,row));
 	}
 
 	public boolean playerWins() {
-		return numLemmingsExit()>=_lemmings_min;
+		return numLemmingsExit()>=_LEMMINGS_MIN;
 	}
 
 	public boolean playerLooses() {
-		return numLemmingsExit()<_lemmings_min
+		return numLemmingsExit()<_LEMMINGS_MIN
 				&& numLemmingsInBoard()==0;
 	}
 
-	public String help() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void update(){
-		_game_object_container.procesaMuertos();
+
 		_game_object_container.procesaExit();
 		_game_object_container.update();
+		_game_object_container.procesaMuertos();
+
 		cycle++;
 	}
 
@@ -180,17 +179,7 @@ public class Game {
 		return _game_object_container.isWallInPos(p);
 	}
 
-	public boolean exit_door_in_pos(Position p) {
-		return _game_object_container.isExitDoorInPos(p);
-	}
 	public boolean wall_under(Position p){
 		return _game_object_container.isWallInPos(Position.over(p));
-	}
-
-	public boolean wall_in_left(Position pos) {
-		return _game_object_container.isWallInPos(Position.left(pos));
-	}
-	public boolean wall_in_right(Position pos) {
-		return _game_object_container.isWallInPos(Position.right(pos));
 	}
 }
