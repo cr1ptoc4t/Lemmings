@@ -4,7 +4,7 @@ import tp1.logic.Position;
 import tp1.view.Messages;
 
 public class Wall {
-    private Position _pos;
+    private final Position _pos;
     public Wall(Position _pos){
         this._pos=_pos;
     }

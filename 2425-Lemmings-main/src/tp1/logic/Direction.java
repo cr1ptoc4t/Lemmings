@@ -24,7 +24,6 @@ public enum Direction {
 	}
 
 
-	//TODO fill your code
 	public Direction opposite(){
 		Direction p;
 		switch (this){

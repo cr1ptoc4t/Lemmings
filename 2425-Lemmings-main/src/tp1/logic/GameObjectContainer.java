@@ -43,18 +43,19 @@ public class GameObjectContainer {
 
     public String someoneInPos(Position pos) {
         String str = "";
+
         if (_exit_door.isInPos(pos))
             str += _exit_door.toString();
 
+        for(int i=0; i<_nlemmings; i++){
+            if(_lemmings[i].isInPos(pos)){
+                str += _lemmings[i].toString();
+            }
+        }
 
+        //  en walls hay un while puesto que como es un elemento rigido,
+        //  solo puede haber uno en cada posicion
         int i = 0;
-        while (i < _nlemmings && !_lemmings[i].isInPos(pos))
-            i++;
-
-        if (i != _nlemmings)
-            str += _lemmings[i].toString();
-
-        i = 0;
         while (i < _nwalls && !_walls[i].isInPos(pos))
             i++;
 
@@ -117,11 +118,6 @@ public class GameObjectContainer {
         }
     }
 
-
-    public boolean isExitDoorInPos(Position p) {
-        return _exit_door.isInPos(p);
-    }
-
     public void procesaExit() {
         int i = 0;
         while (i < _nlemmings) {
@@ -132,8 +128,8 @@ public class GameObjectContainer {
                 i++;
         }
     }
-    private void eliminaLemming(int i){
-        for (int j = i; j < i + _nlemmings - 1; j++) {
+    private void eliminaLemming(int indice){
+        for (int j = indice; j < indice + _nlemmings - 1; j++) {
             _lemmings[j] = _lemmings[j + 1];
         }
         _nlemmings--;

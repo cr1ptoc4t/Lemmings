@@ -3,15 +3,14 @@ package tp1.logic.gameobjects;
 import tp1.logic.Direction;
 import tp1.logic.Game;
 import tp1.logic.Position;
-import tp1.view.Messages;
 
 public class Lemming {
-    private Position _pos;
+    private final Position _pos;
     private boolean _alive;
     private Direction _dir;
     private int _fall;
-    private WalkerRole _walker_role;
-    private Game _game;
+    private final WalkerRole _walker_role;
+    private final Game _game;
     private boolean _changed_dir;
     private Direction _anterior_dir;
     private boolean _falling;
@@ -29,64 +28,14 @@ public class Lemming {
     private boolean should_change_dir() {
         Position next_pos = new Position(_pos);
         next_pos.actualiza(_dir);
-        return !next_pos.valid_position()|| _game.wall_in_pos(next_pos);
+            // está fuera del mapa         o        hay una pared
+        return !next_pos.valid_position() || _game.wall_in_pos(next_pos);
     }
 
     /**
      * Implements the automatic update
      */
 
-    /*
-    public void update() {
-        if (_alive) {
-            if (_game.exit_door_in_pos(new ExitDoor(Position.over(_pos)))) {
-                //¿¿
-            } else if (_game.wall_in_pos(new Wall(Position.over(_pos)))) {
-
-                _walker_role.play();
-                if (_fall >= Game.MAX_FALL)
-                    _alive = false;
-                else {
-                    if (should_change_dir() && !_changed_dir) {
-                        _dir = _dir.opposite();
-                        _changed_dir = true;
-                    } else if (should_change_dir() && _changed_dir) {
-                        _changed_dir = false;
-                    }
-                    _pos.actualiza(_dir);
-                }
-                _fall = 0;
-                _falling=false;
-			/*
-			if(_change_dir){
-				_pos.actualiza(_dir);
-				if(_pos.vertical_border()/*o toca pared){
-					_change_dir=false;
-				}
-			}else{
-
-				_pos.actualiza(_dir);
-
-				_change_dir=true;
-			}
-			*/
-    /*
-		Comprobar que están vivos
-		Delegar en el WalkerRole que llamará al método correspondiente de
-		caminar del lemming, el cual realizará las siguientes tareas:
-
-
-            } else if (!_falling){
-                //calcular caida
-                _falling = true;_fall=0;
-                _pos.actualiza(Direction.DOWN);
-            } else if (_falling) {
-                _fall++;
-                _pos.actualiza(Direction.DOWN);
-            }
-        }
-    }
-    */
     public void update() {
         if (_alive) {
             _walker_role.play(this);
@@ -151,11 +100,6 @@ public class Lemming {
             _pos.actualiza(_dir);
     }
 
-    private Position siguiente_pos(){
-        Position siguiente_pos = new Position(_pos);
-        siguiente_pos.actualiza(_dir);
-        return siguiente_pos;
-    }
 
     public Position get_pos() {
         return _pos;

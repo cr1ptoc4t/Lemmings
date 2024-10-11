@@ -1,20 +1,17 @@
 package tp1.control;
 
 import tp1.logic.Game;
-import tp1.logic.gameobjects.Lemming;
 import tp1.view.GameView;
 import tp1.view.Messages;
 
-import javax.swing.text.View;
-import java.util.Arrays;
 
 /**
  * Accepts user input and coordinates the game execution logic
  */
 public class Controller {
 
-    private Game game;
-    private GameView view;
+    private final Game game;
+    private final GameView view;
     private boolean _exit = false;
 
     public Controller(Game game, GameView view) {
@@ -45,7 +42,7 @@ public class Controller {
         if (help_command(cd)) {
             for(int i = 0; i < Messages.HELP_LINES.length; i++)
                 view.showMessage(Messages.HELP_LINES[i]);
-            //v//iew.showMessage(Arrays.toString(Messages.HELP_LINES));
+
             advance = false;
         } else if (reset_command(cd)) {
             game.reset();

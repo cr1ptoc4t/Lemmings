@@ -93,6 +93,5 @@ public class Messages {
 	public static final String EXIT_DOOR = "🚪";
 	public static final String LEMMING_RIGHT = "B";
 	public static final String LEMMING_LEFT = "ᗺ";
-	public static final String LEMMING_DEAD = "X";
 
 }

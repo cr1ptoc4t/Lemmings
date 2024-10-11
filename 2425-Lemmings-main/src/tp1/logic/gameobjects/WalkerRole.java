@@ -6,7 +6,7 @@ import tp1.view.Messages;
 
 public class WalkerRole {
 
-    private Game _game;
+    private final Game _game;
 
     public WalkerRole(Game game) {
         this._game = game;
@@ -19,6 +19,7 @@ public class WalkerRole {
     public String getIcon(Lemming l) {
         String icon="";
 
+        //si la direccion es down, miramos la direccion anterior
         Direction d = l.get_dir();
         if(d==Direction.DOWN)
             d=l.get_dir_anterior();
