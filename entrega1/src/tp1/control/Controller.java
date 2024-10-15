@@ -25,11 +25,11 @@ public class Controller {
      */
     public void run() {
         view.showWelcome();
-        String cd;
+        String[] cd;
         do {
             view.showGame();
             do {
-                cd = view.getPrompt()[0].toLowerCase();
+                cd = view.getPrompt();
             } while (userCommand(cd));
         } while (game.numLemmingsInBoard()>0 && !_exit);
 
@@ -37,27 +37,33 @@ public class Controller {
     }
 
     //devuelve false cuando se debe parar el ciclo de juego
-    private boolean userCommand(String cd) {
-        boolean advance = true;
-        if (help_command(cd)) {
-            for(int i = 0; i < Messages.HELP_LINES.length; i++)
-                view.showMessage(Messages.HELP_LINES[i]);
+    private boolean userCommand(String[] str) {
+        boolean advance = false;
 
-            advance = false;
-        } else if (reset_command(cd)) {
-            game.reset();
+    	if(str.length>1) {
+    		view.showError(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
+            
+    	}else {
+    		String cd = str[0].toString().toLowerCase();
+	        if (help_command(cd)) {
+                view.showMessage(Messages.HELP_LINES[0]);
+	            for(int i = 1; i < Messages.HELP_LINES.length; i++)
+	                view.showMessage("\t"+Messages.HELP_LINES[i]);
+	            
+	        } else if (reset_command(cd)) {
+	            game.reset();
+	            advance = true;
+	        } else if (none_command(cd)) {
+	            game.update();
+	            advance = true;
 
-        } else if (none_command(cd)) {
-            game.update();
-
-        } else if(exit_command(cd)){
-            advance = false;
-            _exit=true;
-        }
-        else{
-            view.showMessage(Messages.INVALID_COMMAND);
-            advance = false;
-        }
+	        } else if(exit_command(cd)){
+	            _exit=true;
+	        }
+	        else{
+	            view.showError(Messages.UNKNOWN_COMMAND);
+	        }
+    	}
         return !advance && !_exit;
     }
 

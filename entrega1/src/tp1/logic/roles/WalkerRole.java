@@ -1,7 +1,8 @@
-package tp1.logic.gameobjects;
+package tp1.logic.roles;
 
 import tp1.logic.Direction;
 import tp1.logic.Game;
+import tp1.logic.gameobjects.Lemming;
 import tp1.view.Messages;
 
 public class WalkerRole {

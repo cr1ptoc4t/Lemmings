@@ -35,9 +35,17 @@ public class Position {
             b = false;
         else {
             Position other = (Position) obj;         //conversion explicita
-            b = col == other.col && row == other.row;
+            b = col == other.get_col() && row == other.get_row();
         }
         return b;
+    }
+
+    private int get_col() {
+        return this.col;
+    }
+
+    private int get_row() {
+        return this.row;
     }
 
 

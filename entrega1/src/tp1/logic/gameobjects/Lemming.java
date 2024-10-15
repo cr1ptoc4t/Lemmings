@@ -3,6 +3,7 @@ package tp1.logic.gameobjects;
 import tp1.logic.Direction;
 import tp1.logic.Game;
 import tp1.logic.Position;
+import tp1.logic.roles.WalkerRole;
 
 public class Lemming {
     private final Position _pos;
@@ -81,8 +82,8 @@ public class Lemming {
                 _dir = _dir.opposite();
                 _changed_dir = true;
             }
-        }
-        _pos.actualiza(_dir);
+        }else
+        	_pos.actualiza(_dir);
     }
 
 

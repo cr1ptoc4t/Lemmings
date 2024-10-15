@@ -47,6 +47,7 @@ public class Game {
 		_game_object_container.add(new Lemming(new Position(3,3), Direction.RIGHT,this));
 		_game_object_container.add(new Lemming(new Position(0,8), Direction.RIGHT,this));
 		_game_object_container.add(new Lemming(new Position(9,0), Direction.RIGHT,this));
+		
 		_game_object_container.add(new ExitDoor(new Position(4,5)));
 
 		_game_object_container.add(new Wall(new Position(0,9)));
@@ -75,6 +76,7 @@ public class Game {
 		_game_object_container.add(new Lemming(new Position(9,0), Direction.RIGHT,this));
 
 		_game_object_container.add(new ExitDoor(new Position(4,5)));
+		
 		_game_object_container.add(new Wall(new Position(0,9)));
 		_game_object_container.add(new Wall(new Position(1,9)));
 		_game_object_container.add(new Wall(new Position(2,4)));
