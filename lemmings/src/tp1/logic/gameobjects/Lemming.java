@@ -1,14 +1,18 @@
 package tp1.logic.gameobjects;
 
+import tp1.logic.Direction;
 import tp1.logic.Game;
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.WalkerRole;
+import tp1.view.Messages;
 
 public class Lemming extends GameObject {
 
 	//TODO fill your code
 	WalkerRole role;
-	
+	private Direction _dir;
+	private Direction _anterior_dir;
+
 	public Lemming(Game game, Position pos) {
 		super(game, pos);
 		this.role = WalkerRole();
@@ -41,5 +45,15 @@ public class Lemming extends GameObject {
 	
 	// TODO you should write a toString method to return the string that represents the object status
 	// @Override
-	// public String toString()
+	public String toString(){
+		return Messages.LEMMING_LEFT;
+	}
+
+	public Direction get_dir() {
+		return this._dir;
+	}
+	public Direction get_anterior_dir() {
+		return this.get_anterior_dir;
+	}
+
 }

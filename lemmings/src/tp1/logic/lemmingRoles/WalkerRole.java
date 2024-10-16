@@ -1,5 +1,6 @@
 package tp1.logic.lemmingRoles;
 
+import tp1.logic.Direction;
 import tp1.logic.gameobjects.Lemming;
 import tp1.view.Messages;
 
@@ -14,8 +15,23 @@ public class WalkerRole {
 	}
 
 	public String getIcon(Lemming lemming) {
-		// TODO Auto-generated method stub
-		return null;
+
+			String icon="";
+
+			//si la direccion es down, miramos la direccion anterior
+			Direction d = lemming.get_dir();
+			if(d==Direction.DOWN)
+				d=lemming.get_anterior_dir();
+
+			if (d == Direction.RIGHT)
+				icon = Messages.LEMMING_RIGHT;
+			else if(d == Direction.LEFT)
+				icon = Messages.LEMMING_LEFT;
+
+
+			return icon;
+
+
 	}
 
 	private String getName() {
