@@ -1,0 +1,13 @@
+- Clase Command y derivados
+- GAMEOBJECTS
+    - GameObject
+    - Lemming
+    - ExitDoor
+    - Wall
+- Interfaces
+    - GameModel
+    - GameStatus
+    - GameWorld
+
+GAME
+- reset

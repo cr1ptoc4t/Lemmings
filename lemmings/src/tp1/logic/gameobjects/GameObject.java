@@ -31,4 +31,5 @@ public abstract class GameObject {
 	
 	public abstract String getIcon();
 
+	public abstract void update() ;
 }

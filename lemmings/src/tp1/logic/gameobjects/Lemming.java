@@ -21,7 +21,7 @@ public class Lemming extends GameObject {
 	
 	private WalkerRole WalkerRole() {
 		// TODO Auto-generated method stub
-		return null;
+		return new WalkerRole();
 	}
 
 	// Not mandatory but recommended
@@ -39,7 +39,7 @@ public class Lemming extends GameObject {
 	@Override
 	public String getIcon() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.role.getIcon(this);
 	}
 
 	
@@ -53,7 +53,7 @@ public class Lemming extends GameObject {
 		return this._dir;
 	}
 	public Direction get_anterior_dir() {
-		return this.get_anterior_dir;
+		return this._anterior_dir;
 	}
 
 }

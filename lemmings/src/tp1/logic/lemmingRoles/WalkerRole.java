@@ -24,9 +24,9 @@ public class WalkerRole {
 				d=lemming.get_anterior_dir();
 
 			if (d == Direction.RIGHT)
-				icon = Messages.LEMMING_RIGHT;
+				icon = ICON_RIGHT;
 			else if(d == Direction.LEFT)
-				icon = Messages.LEMMING_LEFT;
+				icon = ICON_LEFT;
 
 
 			return icon;
@@ -36,7 +36,7 @@ public class WalkerRole {
 
 	private String getName() {
 		// TODO Auto-generated method stub
-		return null;
+		return NAME;
 	}
 
 	public String getHelp() {

@@ -37,6 +37,16 @@ public class GameObjectContainer {
 	public int get_nlemmings() {
 		return 0;
 	}
+
+	public void update() {
+		for(GameObject object: objects) {
+			object.update();
+		}
+	}
+
+	public void procesaMuertos(){
+        objects.removeIf(object -> !object.isAlive());
+	}
 	//TODO fill your code
 
 	// TODO you should write a toString method to return the string that represents the object status
