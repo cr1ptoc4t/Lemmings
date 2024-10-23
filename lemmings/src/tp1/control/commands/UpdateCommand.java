@@ -19,6 +19,7 @@ public class UpdateCommand extends NoParamsCommand{
     @Override
     public void execute(Game game, GameView view){
         game.update();
+        view.showGame();
     }
 
 }

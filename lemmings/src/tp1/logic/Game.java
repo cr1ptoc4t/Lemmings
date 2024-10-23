@@ -8,11 +8,17 @@ public class Game implements GameStatus{
 
 	public static final int DIM_X = 10;
 	public static final int DIM_Y = 10;
+	public static final int MAX_FALL = 3;
 	private static final int _LEMMINGS_MIN_GAME_0 = 2;
 	private static final int _LEMMINGS_MIN_GAME_1 = 2;
 	private static final int _LEMMINGS_MIN_GAME_2 = 2;
 	private static final int _LEMMINGS_MIN_GAME_3 = 2;
+	private static final int _LEMMINGS_GAME_1 = 4;
+	private static final int _LEMMINGS_GAME_2 = 3;
 	private int _lemmings_min;
+	private int _lemmings_alive;
+	private int _lemmings_dead;
+	private int _lemmings_exit;
 
 	private GameObjectContainer _game_object_container;
 	private int cycle;
@@ -46,21 +52,19 @@ public class Game implements GameStatus{
 	}
 
 	public int numLemmingsInBoard() {
-		return _game_object_container.get_nlemmings();
+		return _lemmings_alive;
 	}
 
 	public int numLemmingsDead() {
-		return _game_object_container.get_ndead_lemmings();
+		return _lemmings_dead;
 	}
 
 	public int numLemmingsExit() {
-		return _game_object_container.get_nexit_lemmings();
+		return _lemmings_exit;
 	}
-
 
 	@Override
 	public int numLemmingsToWin() {
-		// TODO Auto-generated method stub
 		return _lemmings_min;
 	}
 
@@ -71,13 +75,11 @@ public class Game implements GameStatus{
 
 	@Override
 	public boolean playerWins() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean playerLooses() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -105,8 +107,7 @@ public class Game implements GameStatus{
 // GameWorld methods (callbacks)
 	// @Override
 	public boolean isInAir(Position pos) {
-		// TODO Auto-generated method stub
-        return false;
+        return !_game_object_container.solidInPos(Position.debajo(pos));
     }
 
 	// @Override
@@ -128,7 +129,7 @@ public class Game implements GameStatus{
 	//-- mapas
 	private void initGame0() {
 		_lemmings_min=_LEMMINGS_MIN_GAME_0;
-
+		_lemmings_alive=_LEMMINGS_GAME_2;
 		_game_object_container.add(new Lemming(this, new Position(3,3)));
 		_game_object_container.add(new Lemming(this, new Position(0,8)));
 		_game_object_container.add(new Lemming(this, new Position(9,0)));
@@ -154,31 +155,31 @@ public class Game implements GameStatus{
 
 	private void initGame1() {
 		_lemmings_min=_LEMMINGS_MIN_GAME_1;
-/*
-		_game_object_container.add(new Lemming(new Position(3,3), Direction.RIGHT,this));
-		_game_object_container.add(new Lemming(new Position(2,3), Direction.RIGHT,this));
-		_game_object_container.add(new Lemming(new Position(0,8), Direction.RIGHT,this));
-		_game_object_container.add(new Lemming(new Position(9,0), Direction.RIGHT,this));
+		_lemmings_alive =_LEMMINGS_GAME_1;
 
-		_game_object_container.add(new ExitDoor(new Position(4,5)));
+		_game_object_container.add(new Lemming(this, new Position(2,3)));
+		_game_object_container.add(new Lemming(this, new Position(0,8)));
+		_game_object_container.add(new Lemming(this, new Position(3,3)));
+		_game_object_container.add(new Lemming(this, new Position(9,0)));
 
-		_game_object_container.add(new Wall(new Position(0,9)));
-		_game_object_container.add(new Wall(new Position(1,9)));
-		_game_object_container.add(new Wall(new Position(2,4)));
-		_game_object_container.add(new Wall(new Position(3,4)));
-		_game_object_container.add(new Wall(new Position(4,4)));
-		_game_object_container.add(new Wall(new Position(4,6)));
-		_game_object_container.add(new Wall(new Position(5,6)));
-		_game_object_container.add(new Wall(new Position(6,6)));
-		_game_object_container.add(new Wall(new Position(7,6)));
-		_game_object_container.add(new Wall(new Position(7,5)));
-		_game_object_container.add(new Wall(new Position(8,8)));
-		_game_object_container.add(new Wall(new Position(8,1)));
-		_game_object_container.add(new Wall(new Position(8,9)));
-		_game_object_container.add(new Wall(new Position(9,1)));
-		_game_object_container.add(new Wall(new Position(9,9)));
+		_game_object_container.add(new ExitDoor(this, new Position(4,5)));
 
- */
+		_game_object_container.add(new Wall(this, new Position(0,9)));
+		_game_object_container.add(new Wall(this, new Position(1,9)));
+		_game_object_container.add(new Wall(this, new Position(2,4)));
+		_game_object_container.add(new Wall(this, new Position(3,4)));
+		_game_object_container.add(new Wall(this, new Position(4,4)));
+		_game_object_container.add(new Wall(this, new Position(4,6)));
+		_game_object_container.add(new Wall(this, new Position(5,6)));
+		_game_object_container.add(new Wall(this, new Position(6,6)));
+		_game_object_container.add(new Wall(this, new Position(7,6)));
+		_game_object_container.add(new Wall(this, new Position(7,5)));
+		_game_object_container.add(new Wall(this, new Position(8,8)));
+		_game_object_container.add(new Wall(this, new Position(8,1)));
+		_game_object_container.add(new Wall(this, new Position(8,9)));
+		_game_object_container.add(new Wall(this, new Position(9,1)));
+		_game_object_container.add(new Wall(this, new Position(9,9)));
+
 	}
 
 
@@ -228,5 +229,17 @@ public class Game implements GameStatus{
 		_game_object_container.add(new Wall(new Position(9, 5)));
 		_game_object_container.add(new ExitDoor(new Position(8,8)));
 */
+	}
+	private void notifyLemmingDead(){
+		_lemmings_dead++;
+		_lemmings_alive--;
+	}
+	private void notifyLemmingExit(){
+		_lemmings_alive--;
+		_lemmings_exit++;
+	}
+
+	public boolean isWallInPos(Position position) {
+		return _game_object_container.solidInPos(position);
 	}
 }

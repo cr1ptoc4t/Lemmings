@@ -35,8 +35,8 @@ public class Controller {
 			if (command != null)
 				command.execute(game, view);
 			else
-				//view.showError(Messages.UNKNOWN_COMMAND.formatted(words[0]));
-				view.showError(Messages.UNKNOWN_COMMAND);
+				view.showError(Messages.UNKNOWN_COMMAND.formatted(words[0]));
+				//view.showError(Messages.UNKNOWN_COMMAND);
 
 		}
 		view.showEndMessage();

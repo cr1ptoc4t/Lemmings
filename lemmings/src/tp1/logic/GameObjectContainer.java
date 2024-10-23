@@ -11,10 +11,11 @@ public class GameObjectContainer {
 	public GameObjectContainer() {
 		objects = new ArrayList<GameObject>();
 	}
-	
+	private int _lemmings, _dead_lemmings, _exit_lemmings;
 	// Only one add method (polymorphism)
 	public void add(GameObject object) {
-		objects.add(object);
+		if(object!= null)
+			objects.add(object);
 	}
 
 	public String someoneInPosition(Position p) {
@@ -27,15 +28,15 @@ public class GameObjectContainer {
 	}
 
 	public int get_nexit_lemmings() {
-		return 0;
+		return _exit_lemmings;
 	}
 
 	public int get_ndead_lemmings() {
-		return 0;
+		return _dead_lemmings;
 	}
 
 	public int get_nlemmings() {
-		return 0;
+		return _lemmings;
 	}
 
 	public void update() {
@@ -45,11 +46,40 @@ public class GameObjectContainer {
 	}
 
 	public void procesaMuertos(){
-        objects.removeIf(object -> !object.isAlive());
+
+		int i=0;
+		while(i<objects.size()){
+			if(!objects.get(i).isAlive()){
+				objects.remove(i);
+				notifyLemmingDead();
+				//_dead_lemmings++;
+				//_lemmings--;
+			}
+			else
+				i++;
+		}
+
+        //objects.removeIf(object -> !object.isAlive());
 	}
 	//TODO fill your code
 
 	// TODO you should write a toString method to return the string that represents the object status
 	// @Override
 	// public String toString()
+
+	public void notifyLemmingExit() {
+		_exit_lemmings++;
+		_lemmings--;
+	}
+
+	public void notifyLemmingDead() {
+		_dead_lemmings++;
+		_lemmings--;
+	}
+
+	public boolean solidInPos(Position pos) {
+		int i=0;
+		while (i< objects.size() && !(objects.get(i).isInPosition(pos) && objects.get(i).isSolid())) i++;
+		return i!=objects.size();
+	}
 }

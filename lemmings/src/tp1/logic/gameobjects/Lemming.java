@@ -8,43 +8,114 @@ import tp1.view.Messages;
 
 public class Lemming extends GameObject {
 
-	//TODO fill your code
 	WalkerRole role;
 	private Direction _dir;
 	private Direction _anterior_dir;
+	private boolean _alive;
+	private boolean _changed_dir;
+	private int _fall;
+	private boolean _falling;
 
 	public Lemming(Game game, Position pos) {
 		super(game, pos);
 		this.role = WalkerRole();
-		// TODO fill your code
+		_dir=Direction.RIGHT;
+		_alive=true;
+		_fall=0;
+		_falling=false;
 	}
-	
+
 	private WalkerRole WalkerRole() {
-		// TODO Auto-generated method stub
 		return new WalkerRole();
 	}
 
 	// Not mandatory but recommended
 	public void walkOrFall() {
-		// TODO Auto-generated method stub
+		/*
+		if(game.isInAir(pos)){
+			_anterior_dir=_dir;
+			_dir=Direction.DOWN;
+			pos.actualiza(_dir);
+		}else{
+			Position next_pos = new Position(pos);
+			next_pos.actualiza(_dir);
+			if(game.isWallInPos(next_pos)){
+				_dir = _dir.opposite();
+			}else{
+				//esto no se si tendria que ser un constructor de copia
+				pos=next_pos;
+			}
+
+		}
+
+		 */
+		move();
 	}
+
+	public void move() {
+		if (!pos.valid_position())
+			_alive = false;
+		else if (_falling) {
+			handle_fall();
+			_fall++;
+		} else if (game.isInAir(pos)) {
+			_falling = true;
+			_anterior_dir = _dir;
+			_dir = Direction.DOWN;
+			_fall++;
+			pos.actualiza(_dir);
+		} else
+			normal_step();
+
+
+	}
+
+	private void normal_step() {
+		if(should_change_dir()){
+			if (_changed_dir) {
+				_changed_dir = false;
+			} else {
+				_dir = _dir.opposite();
+				_changed_dir = true;
+			}
+		}else
+			pos.actualiza(_dir);
+	}
+
+	private boolean should_change_dir() {
+		Position next_pos = new Position(pos);
+		next_pos.actualiza(_dir);
+		// está fuera del mapa         o        hay una pared
+		return !next_pos.valid_position() || game.isWallInPos(next_pos);
+	}
+
+
+	private void handle_fall() {
+		if (!game.isInAir(pos)) {
+			if (_fall > Game.MAX_FALL)
+				_alive = false;
+			else {
+				_fall = 0;
+				_falling = false;
+				_dir = _anterior_dir;
+				pos.actualiza(_dir);
+			}
+		} else
+			pos.actualiza(_dir);
+	}
+
 	/**
-	 *  Implements the automatic update	
+	 *  Implements the automatic update
 	 */
 	public void update() {
-		if (isAlive()) 
+		if (isAlive())
 			role.play(this);
-		//TODO fill your code
 	}
 	@Override
 	public String getIcon() {
-		// TODO Auto-generated method stub
 		return this.role.getIcon(this);
 	}
 
-	
-	// TODO you should write a toString method to return the string that represents the object status
-	// @Override
 	public String toString(){
 		return Messages.LEMMING_LEFT;
 	}

@@ -10,7 +10,7 @@ public class WalkerRole {
 	private static final String ICON_RIGHT = Messages.LEMMING_RIGHT;
 	private static final String ICON_LEFT = Messages.LEMMING_LEFT;
 	
-	public void play(Lemming lemming) {;	
+	public void play(Lemming lemming) {
 		lemming.walkOrFall();
 	}
 

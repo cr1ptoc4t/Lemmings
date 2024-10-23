@@ -18,4 +18,9 @@ public class ExitDoor extends GameObject{
     public void update() {
 
     }
+
+    @Override
+    public boolean isExit() {
+        return true;
+    }
 }

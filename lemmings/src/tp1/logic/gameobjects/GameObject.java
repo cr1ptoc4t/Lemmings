@@ -24,9 +24,12 @@ public abstract class GameObject {
 		return isAlive;
 	}
 	
-	// TODO implement and decide, Which one is abstract?
-	// public boolean isSolid()
-	// public boolean isExit()
+	public boolean isSolid(){
+		return false;
+	}
+	public boolean isExit(){
+		return false;
+	}
 	// public void update()
 	
 	public abstract String getIcon();

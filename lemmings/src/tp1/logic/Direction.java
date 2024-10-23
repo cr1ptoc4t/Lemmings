@@ -25,6 +25,15 @@ public enum Direction {
 
 
 	//TODO fill your code
+
+	public Direction opposite(){
+		Direction dir;
+		if(this==Direction.LEFT) dir = Direction.RIGHT;
+		else if (this == Direction.RIGHT) dir=Direction.LEFT;
+		else dir = null;
+
+		return dir;
+	}
 	
 	
 }

@@ -19,4 +19,7 @@ public class Wall extends GameObject{
     public void update() {
 
     }
+    public boolean isSolid(){
+        return true;
+    }
 }
