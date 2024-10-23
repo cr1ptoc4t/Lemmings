@@ -1,0 +1,21 @@
+- Clase Command y derivados
+- GAMEOBJECTS                       - TODO
+    - GameObject                    - TODO
+    - Lemming                       - TODO
+    - ExitDoor                      - TODO
+    - Wall                          - TODO
+- Interfaces                        - TODO
+    - GameModel                     - TODO
+    - GameStatus                    - TODO
+    - GameWorld                     - TODO
+
+GAME                                - TODO
+   - reset                          - TODO
+
+ACCIONES                            - TODO
+    - MÉTODO IS IN AIR              - HECHO
+    - UPDATE LEMMING                - HECHO
+        - quitar el _falling        - TODO
+    - QUE AL METER "" HAGA UPDATE   - TODO
+    - PLAYER WINS                   - TODO
+    - PLAYER LOOSES                 - TODO
