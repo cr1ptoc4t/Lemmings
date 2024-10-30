@@ -19,3 +19,4 @@ ACCIONES                            - TODO
     - QUE AL METER "" HAGA UPDATE   - TODO
     - PLAYER WINS                   - TODO
     - PLAYER LOOSES                 - TODO
+    - ENTRAR EN PUERTA              - TODO

@@ -14,8 +14,9 @@ public class GameObjectContainer {
 	private int _lemmings, _dead_lemmings, _exit_lemmings;
 	// Only one add method (polymorphism)
 	public void add(GameObject object) {
-		if(object!= null)
+		if(object!= null) {
 			objects.add(object);
+		}
 	}
 
 	public String someoneInPosition(Position p) {
@@ -25,6 +26,10 @@ public class GameObjectContainer {
 				str += object.getIcon();
 		}
 		return str;
+	}
+
+	public void set_lemmings(int n){
+		_lemmings = n;
 	}
 
 	public int get_nexit_lemmings() {
@@ -45,21 +50,19 @@ public class GameObjectContainer {
 		}
 	}
 
-	public void procesaMuertos(){
+	public void procesaMuertosExit(){
 
 		int i=0;
 		while(i<objects.size()){
 			if(!objects.get(i).isAlive()){
 				objects.remove(i);
 				notifyLemmingDead();
-				//_dead_lemmings++;
-				//_lemmings--;
-			}
-			else
+			}else if(isInExit(objects.get(i))){
+				objects.remove(i);
+				notifyLemmingExit();
+			} else
 				i++;
 		}
-
-        //objects.removeIf(object -> !object.isAlive());
 	}
 	//TODO fill your code
 
@@ -81,5 +84,8 @@ public class GameObjectContainer {
 		int i=0;
 		while (i< objects.size() && !(objects.get(i).isInPosition(pos) && objects.get(i).isSolid())) i++;
 		return i!=objects.size();
+	}
+	private boolean isInExit(GameObject g){
+		return false;
 	}
 }
