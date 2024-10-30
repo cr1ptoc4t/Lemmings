@@ -11,7 +11,7 @@ public class WalkerRole {
 	private static final String ICON_LEFT = Messages.LEMMING_LEFT;
 	
 	public void play(Lemming lemming) {
-		lemming.walkOrFall();
+		lemming.move();
 	}
 
 	public String getIcon(Lemming lemming) {

@@ -36,8 +36,7 @@ public class Game implements GameStatus{
 	private static final int _LEMMINGS_GAME_2 = 3;
 	private int _lemmings_min;
 	private int _lemmings_alive;
-	private int _lemmings_dead;
-	private int _lemmings_exit;
+
 
 	private GameObjectContainer _game_object_container;
 	private int cycle;
@@ -67,6 +66,7 @@ public class Game implements GameStatus{
 			default:
 				initGame0();
 		}
+		_game_object_container.set_lemmings(_lemmings_alive);
 	}
 
 <<<<<<< HEAD
@@ -96,27 +96,29 @@ public class Game implements GameStatus{
 		_game_object_container.add(new Wall(new Position(9,9)));
 =======
 // GameStatus methods
+
 	@Override
 	public int getCycle() {
 		return cycle;
 	}
 
 	public int numLemmingsInBoard() {
-		return _lemmings_alive;
+		return _game_object_container.get_nlemmings();
 	}
 
 	public int numLemmingsDead() {
-		return _lemmings_dead;
+		return _game_object_container.get_ndead_lemmings();
 	}
 
 	public int numLemmingsExit() {
-		return _lemmings_exit;
+		return _game_object_container.get_nexit_lemmings();
 	}
 
 	@Override
 	public int numLemmingsToWin() {
 		return _lemmings_min;
 	}
+
 
 	@Override
 	public String positionToString(int col, int row) {
@@ -138,7 +140,7 @@ public class Game implements GameStatus{
 	public void update() {
 		//_game_object_container.procesaExit();
 		_game_object_container.update();
-		_game_object_container.procesaMuertos();
+		_game_object_container.procesaMuertosExit();
 
 		cycle++;
 	}
@@ -166,6 +168,9 @@ public class Game implements GameStatus{
 	}
 
 	public void reset() {
+		_game_object_container= new GameObjectContainer();
+		chooseLevel();
+		cycle=0;
 
 	}
 	// TODO Auto-generated method stub
@@ -378,14 +383,7 @@ public class Game implements GameStatus{
 =======
 */
 	}
-	private void notifyLemmingDead(){
-		_lemmings_dead++;
-		_lemmings_alive--;
-	}
-	private void notifyLemmingExit(){
-		_lemmings_alive--;
-		_lemmings_exit++;
-	}
+
 
 	public boolean isWallInPos(Position position) {
 		return _game_object_container.solidInPos(position);
