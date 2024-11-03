@@ -1,6 +1,7 @@
 package tp1.logic;
 
 import tp1.logic.gameobjects.ExitDoor;
+import tp1.logic.gameobjects.GameObject;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
 
@@ -77,12 +78,14 @@ public class Game implements GameStatus{
 
 	@Override
 	public boolean playerWins() {
-		return false;
+		return _game_object_container.get_nlemmings()==0
+				&&_game_object_container.get_nexit_lemmings() >= _lemmings_min;
 	}
 
 	@Override
 	public boolean playerLooses() {
-		return false;
+		return _game_object_container.get_nlemmings()==0
+				&& _game_object_container.get_nexit_lemmings() < _lemmings_min;
 	}
 
 // GameModel methods
@@ -101,7 +104,7 @@ public class Game implements GameStatus{
 	//@Override
 	public boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return _game_object_container.get_nlemmings() == 0;
 	}
 	
 	// TODO Auto-generated method stub
@@ -239,5 +242,9 @@ public class Game implements GameStatus{
 
 	public boolean isWallInPos(Position position) {
 		return _game_object_container.solidInPos(position);
+	}
+
+	public boolean isExitDoorInPos(GameObject g) {
+		return _game_object_container.isInExit(g);
 	}
 }

@@ -30,6 +30,8 @@ public class Lemming extends GameObject {
     public void move() {
         if (!pos.valid_position())
             isAlive = false;
+        else if(game.isExitDoorInPos(this))
+            isAlive=false;
         else if (_falling) {
             handle_fall();
             _fall++;
@@ -43,6 +45,7 @@ public class Lemming extends GameObject {
             normal_step();
         }
     }
+
 
     private void normal_step() {
         if (should_change_dir()) {
