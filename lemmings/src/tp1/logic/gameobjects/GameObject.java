@@ -19,6 +19,9 @@ public abstract class GameObject {
 		// TODO fill your code here, it should depends on the status of the object
 		return this.pos.equals(p);
 	}
+	public boolean equalPosition(GameObject g){
+		return this.pos.equals(g.get_pos());
+	}
  	
 	public boolean isAlive() {
 		return isAlive;
@@ -36,4 +39,7 @@ public abstract class GameObject {
 	public abstract String getIcon();
 
 	public abstract void update() ;
+	private Position get_pos() {
+		return pos;
+	}
 }

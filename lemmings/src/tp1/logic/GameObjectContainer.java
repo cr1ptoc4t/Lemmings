@@ -51,20 +51,21 @@ public class GameObjectContainer {
 	}
 
 	public void procesaMuertosExit(){
-
 		int i=0;
+		//recorremos array de objetos
 		while(i<objects.size()){
-			if(!objects.get(i).isAlive()){
+			GameObject g = objects.get(i);
+
+			//si el objeto no esta vivo y no es la salida
+			if(!g.isExit()&&!g.isAlive()){
+				//eliminamos y notificamos según salida o muerte
 				objects.remove(i);
-				notifyLemmingDead();
-			}else if(isInExit(objects.get(i))){
-				objects.remove(i);
-				notifyLemmingExit();
-			} else
-				i++;
+
+				if(isInExit(g)) { notifyLemmingExit();}
+				else 			{ notifyLemmingDead();}
+			} else{  i++; }
 		}
 	}
-	//TODO fill your code
 
 	// TODO you should write a toString method to return the string that represents the object status
 	// @Override
@@ -82,10 +83,21 @@ public class GameObjectContainer {
 
 	public boolean solidInPos(Position pos) {
 		int i=0;
-		while (i< objects.size() && !(objects.get(i).isInPosition(pos) && objects.get(i).isSolid())) i++;
+		while (i< objects.size() &&
+				!(objects.get(i).isInPosition(pos) && objects.get(i).isSolid()))
+			i++;
 		return i!=objects.size();
 	}
-	private boolean isInExit(GameObject g){
-		return false;
+
+	public boolean isInExit(GameObject g){
+
+		//buscamos la salida
+		int i=0;
+		while(i < objects.size()&& !objects.get(i).isExit()) {
+			i++;
+		}
+		if(i==objects.size()) return false;
+		else return objects.get(i).equalPosition(g);
 	}
+
 }

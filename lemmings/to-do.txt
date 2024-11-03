@@ -17,6 +17,7 @@ ACCIONES                            - TODO
     - UPDATE LEMMING                - HECHO
         - quitar el _falling        - TODO
     - QUE AL METER "" HAGA UPDATE   - TODO
-    - PLAYER WINS                   - TODO
-    - PLAYER LOOSES                 - TODO
-    - ENTRAR EN PUERTA              - TODO
+    - PLAYER WINS                   - HECHO
+    - PLAYER LOOSES                 - HECHO
+    - ENTRAR EN PUERTA              - HECHO
+        - Se queda en la puerta     - TODO
