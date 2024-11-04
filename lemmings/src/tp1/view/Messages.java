@@ -3,8 +3,8 @@ package tp1.view;
 import tp1.util.MyStringUtils;
 
 public class Messages {
-	
-	public static final String VERSION = "2.1";
+
+	public static final String VERSION = "2.2";
 
 	public static final String GAME_NAME = "Lemmings";
 
@@ -21,7 +21,7 @@ public class Messages {
 
 	public static final String DEBUG = "[DEBUG] Executing: %s%n";
 	public static final String ERROR = "[ERROR] Error: %s%n";
-	
+
 	// GAME STATUS
 	public static final String NUMBER_OF_CYCLES = "Number of cycles: %s";
 	public static final String NUM_LEMMINGS = "Lemmings in board: %s";
@@ -32,7 +32,7 @@ public class Messages {
 	public static final String GAME_OVER = "Game over";
 	public static final String PLAYER_QUITS = "Player leaves the game";
 	public static final String PLAYER_WINS = "Player wins!";
-	public static final String PLAYER_LOOSES = "Player looses...";
+	public static final String PLAYER_LOOSES = "Player loses...";
 
 	// Position format
 	public static final String POSITION = "(%s,%s)";
@@ -45,7 +45,7 @@ public class Messages {
 	public static final String LINE_TAB = TAB + LINE;
 	public static final String LINE_2TABS = TAB + LINE_TAB;
 
-//Commands
+	//Commands
 	// Errores de factorías:
 	public static final String UNKNOWN_COMMAND = "Unknown command: %s";
 	public static final String UNKNOWN_GAME_OBJECT = "Unknown game object: %s";
@@ -66,7 +66,7 @@ public class Messages {
 	public static final String ERROR_INVALID_INIT_CONF = "Unknown invalid init configuration";
 	public static final String ERROR_PARSING_GAME_OBJECT = "Not a correct game object because: %s";
 
-	
+
 	public static final String HELP_AVAILABLE_COMMANDS = "Available commands:";
 	public static final String COMMAND_HELP_TEXT = "%s: %s";
 
@@ -88,30 +88,29 @@ public class Messages {
 	public static final String COMMAND_UPDATE_DETAILS = "[n]one | \"\"";
 	public static final String COMMAND_UPDATE_HELP = "user does not perform any action";
 
-	// RESET (NONE)
-	public static final String COMMAND_RESET_NAME = "reset";
-	public static final String COMMAND_RESET_SHORTCUT = "r";
-	public static final String COMMAND_RESET_DETAILS = "[r]eset | \"\"";
-	public static final String COMMAND_RESET_HELP = "texto reset";
-
 	// EXIT
 	public static final String COMMAND_EXIT_NAME = "exit";
 	public static final String COMMAND_EXIT_SHORTCUT = "e";
 	public static final String COMMAND_EXIT_DETAILS = "[e]xit";
 	public static final String COMMAND_EXIT_HELP = "exits the game";
-	
+
+	public static final String COMMAND_RESET_NAME = "reset";
+	public static final String COMMAND_RESET_SHORTCUT = "r";
+	public static final String COMMAND_RESET_DETAILS = "[r]eset | \"\"";
+	public static final String COMMAND_RESET_HELP = "texto reset";
+
 	// HELP
 	public static final String COMMAND_HELP_NAME = "help";
 	public static final String COMMAND_HELP_SHORTCUT = "h";
 	public static final String COMMAND_HELP_DETAILS = "[h]elp";
 	public static final String COMMAND_HELP_HELP = "print this help message";
-	
-//Roles
+
+	//Roles
 	public static final String WALKER_ROL_SYMBOL = "W";
 	public static final String WALKER_ROL_NAME = "Walker";
 	public static final String WALKER_ROL_HELP = "[W]alker: Lemming that walks";
 
-//Symbols
+	//Symbols
 	public static final String EMPTY = "";
 	public static final String METALWALL = MyStringUtils.repeat("X",ConsoleView.CELL_SIZE);
 	public static final String WALL = MyStringUtils.repeat("▓",ConsoleView.CELL_SIZE);
@@ -120,4 +119,11 @@ public class Messages {
 	public static final String LEMMING_LEFT = "ᗺ";
 	public static final String LEMMING_PARACHUTE = "🪂";
 	public static final String LEMMING_DOWN_CAVER = "´･ω･`";
+	public static final String PARACHUTE_ROL_SYMBOL = "P";
+	public static final String PARACHUTE_ROL_HELP = "[P]arachuter: Lemming that uses a parachute";
+	public static final String PARACHUTE_ROL_NAME = "Parachuter";
+	public static final String COMMAND_ROLE_NAME = "Set role";
+	public static final String COMMAND_ROLE_SHORTCUT = "S";
+	public static final String COMMAND_ROLE_DETAILS = "[s]et[R]ole ROLE ROW COL";
+	public static final String COMMAND_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE\"%s\"";
 }

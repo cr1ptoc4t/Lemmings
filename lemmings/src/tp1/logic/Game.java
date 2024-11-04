@@ -247,4 +247,7 @@ public class Game implements GameStatus{
 	public boolean isExitDoorInPos(GameObject g) {
 		return _game_object_container.isInExit(g);
 	}
+
+	public void setRole() {
+	}
 }

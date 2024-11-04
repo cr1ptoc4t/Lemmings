@@ -3,12 +3,14 @@ package tp1.logic.gameobjects;
 import tp1.logic.Direction;
 import tp1.logic.Game;
 import tp1.logic.Position;
+import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.lemmingRoles.WalkerRole;
 import tp1.view.Messages;
 
+
 public class Lemming extends GameObject {
 
-    WalkerRole role;
+    private LemmingRole role;
     private Direction _dir;
     private Direction _anterior_dir;
     private boolean _changed_dir;

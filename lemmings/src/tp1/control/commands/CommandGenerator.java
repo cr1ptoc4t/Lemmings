@@ -9,7 +9,8 @@ public class CommandGenerator {
             new UpdateCommand(),
             new ResetCommand(),
             new HelpCommand(),
-            new ExitCommand()
+            new ExitCommand(),
+            new SetRoleCommand()
     );
 
     public static Command parse(String[] commandWords) {
