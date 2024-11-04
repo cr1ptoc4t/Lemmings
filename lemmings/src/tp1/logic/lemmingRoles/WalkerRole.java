@@ -4,7 +4,7 @@ import tp1.logic.Direction;
 import tp1.logic.gameobjects.Lemming;
 import tp1.view.Messages;
 
-public class WalkerRole {
+public class WalkerRole implements LemmingRole {
 	private static final String NAME = Messages.WALKER_ROL_NAME;
 	private static final String HELP = Messages.WALKER_ROL_HELP;
 	private static final String ICON_RIGHT = Messages.LEMMING_RIGHT;
