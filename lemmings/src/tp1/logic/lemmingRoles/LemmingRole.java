@@ -6,4 +6,8 @@ public interface LemmingRole {
     public void start( Lemming lemming );
     public void play( Lemming lemming );
     public String getIcon( Lemming lemming );
+
+    public String getName();
+
+    public String getShortcut();
 }

@@ -108,4 +108,13 @@ public class Lemming extends GameObject {
         return this._anterior_dir;
     }
 
+    public void disableRole(){
+        this.role = new WalkerRole();
+    }
+
+    @Override
+    public boolean setRole(LemmingRole role){
+        this.role = role;
+        return true;
+    }
 }

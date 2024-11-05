@@ -9,7 +9,14 @@ public class WalkerRole implements LemmingRole {
 	private static final String HELP = Messages.WALKER_ROL_HELP;
 	private static final String ICON_RIGHT = Messages.LEMMING_RIGHT;
 	private static final String ICON_LEFT = Messages.LEMMING_LEFT;
-	
+	private static final String SHORTCUT = Messages.WALKER_ROL_SHORTCUT;
+
+
+	@Override
+	public void start(Lemming lemming) {
+
+	}
+
 	public void play(Lemming lemming) {
 		lemming.move();
 	}
@@ -34,9 +41,15 @@ public class WalkerRole implements LemmingRole {
 
 	}
 
-	private String getName() {
-		// TODO Auto-generated method stub
+
+	@Override
+	public String getName() {
 		return NAME;
+	}
+
+	@Override
+	public String getShortcut() {
+		return SHORTCUT;
 	}
 
 	public String getHelp() {

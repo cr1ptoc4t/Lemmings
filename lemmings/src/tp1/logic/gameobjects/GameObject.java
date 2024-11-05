@@ -2,6 +2,7 @@ package tp1.logic.gameobjects;
 
 import tp1.logic.Game;
 import tp1.logic.Position;
+import tp1.logic.lemmingRoles.LemmingRole;
 
 public abstract class GameObject {
 
@@ -41,5 +42,9 @@ public abstract class GameObject {
 	public abstract void update() ;
 	private Position get_pos() {
 		return pos;
+	}
+
+	public boolean setRole(LemmingRole role){
+		return false;
 	}
 }
