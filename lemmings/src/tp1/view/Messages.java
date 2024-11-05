@@ -105,8 +105,14 @@ public class Messages {
 	public static final String COMMAND_HELP_DETAILS = "[h]elp";
 	public static final String COMMAND_HELP_HELP = "print this help message";
 
+	// SET ROLE
+	public static final String COMMAND_ROLE_NAME = "Set role";
+	public static final String COMMAND_ROLE_SHORTCUT = "S";
+	public static final String COMMAND_ROLE_DETAILS = "[s]et[R]ole ROLE ROW COL";
+	public static final String COMMAND_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE\"%s\"";
+
 	//Roles
-	public static final String WALKER_ROL_SYMBOL = "W";
+	public static final String WALKER_ROL_SHORTCUT = "W";
 	public static final String WALKER_ROL_NAME = "Walker";
 	public static final String WALKER_ROL_HELP = "[W]alker: Lemming that walks";
 
@@ -115,15 +121,15 @@ public class Messages {
 	public static final String METALWALL = MyStringUtils.repeat("X",ConsoleView.CELL_SIZE);
 	public static final String WALL = MyStringUtils.repeat("▓",ConsoleView.CELL_SIZE);
 	public static final String EXIT_DOOR = "🚪";
+
 	public static final String LEMMING_RIGHT = "B";
 	public static final String LEMMING_LEFT = "ᗺ";
 	public static final String LEMMING_PARACHUTE = "🪂";
-	public static final String LEMMING_DOWN_CAVER = "´･ω･`";
+
 	public static final String PARACHUTE_ROL_SYMBOL = "P";
 	public static final String PARACHUTE_ROL_HELP = "[P]arachuter: Lemming that uses a parachute";
 	public static final String PARACHUTE_ROL_NAME = "Parachuter";
-	public static final String COMMAND_ROLE_NAME = "Set role";
-	public static final String COMMAND_ROLE_SHORTCUT = "S";
-	public static final String COMMAND_ROLE_DETAILS = "[s]et[R]ole ROLE ROW COL";
-	public static final String COMMAND_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE\"%s\"";
-}
+
+	public static final String LEMMING_DOWN_CAVER = "´･ω･`";
+
+	}

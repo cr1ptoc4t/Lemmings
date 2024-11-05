@@ -20,4 +20,11 @@ ACCIONES                            - TODO
     - PLAYER WINS                   - HECHO
     - PLAYER LOOSES                 - HECHO
     - ENTRAR EN PUERTA              - HECHO
-        - Se queda en la puerta     - TODO
+        - Se queda en la puerta     - HECHO
+    - UPDATE ROLES                  - TODO
+        - Walker                    - TODO
+        - Parachuter                - TODO
+        - DownCaver                 - TODO
+    - SHORTCUTS TODOS               - TODO
+    - HELP                          - TODO
+        - añadir sr en el help      - TODO
