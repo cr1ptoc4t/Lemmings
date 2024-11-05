@@ -1,6 +1,7 @@
 package tp1.logic.lemmingRoles;
 
 import tp1.logic.gameobjects.Lemming;
+import tp1.view.Messages;
 
 public class DownCaverRole implements LemmingRole{
     @Override
@@ -21,6 +22,11 @@ public class DownCaverRole implements LemmingRole{
     @Override
     public String getName() {
         return "";
+    }
+
+    @Override
+    public String getHelp() {
+        return Messages.LEMMING_DOWN_CAVER_HELP;
     }
 
     @Override

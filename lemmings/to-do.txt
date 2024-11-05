@@ -10,21 +10,27 @@
     - GameWorld                     - TODO
 
 GAME                                - TODO
-   - reset                          - TODO
+   - reset                          - DONE
 
 ACCIONES                            - TODO
-    - MÉTODO IS IN AIR              - HECHO
-    - UPDATE LEMMING                - HECHO
+    - MÉTODO IS IN AIR              - DONE
+    - UPDATE LEMMING                - DONE
         - quitar el _falling        - TODO
     - QUE AL METER "" HAGA UPDATE   - TODO
-    - PLAYER WINS                   - HECHO
-    - PLAYER LOOSES                 - HECHO
-    - ENTRAR EN PUERTA              - HECHO
-        - Se queda en la puerta     - HECHO
+    - PLAYER WINS                   - DONE
+    - PLAYER LOOSES                 - DONE
+    - ENTRAR EN PUERTA              - DONE
+        - Se queda en la puerta     - DONE
     - UPDATE ROLES                  - TODO
-        - Walker                    - TODO
-        - Parachuter                - TODO
+        - Walker                    - DONE
+        - Parachuter                - DONE
         - DownCaver                 - TODO
     - SHORTCUTS TODOS               - TODO
-    - HELP                          - TODO
-        - añadir sr en el help      - TODO
+    - HELP                          - DONE
+        - añadir sr en el help      - DONE
+
+PREGUNTAS
+    - al meter un cambio de rol,
+        hay que hacer update ese ciclo?
+    - esta bien hacer
+        handle_no_damage_fall?

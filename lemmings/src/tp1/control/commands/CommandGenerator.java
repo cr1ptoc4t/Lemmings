@@ -1,5 +1,7 @@
 package tp1.control.commands;
 
+import tp1.view.Messages;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class CommandGenerator {
         StringBuilder commands = new StringBuilder();
 
         for (Command c : availableCommands) {
-            commands.append(c.helpText());
+            commands.append("\t").append(c.helpText()).append("\n");
         }
 
         return commands.toString();

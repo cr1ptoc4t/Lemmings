@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tp1.logic.gameobjects.GameObject;
+import tp1.logic.lemmingRoles.LemmingRole;
 
 public class GameObjectContainer {
 	private List<GameObject> objects;
@@ -100,4 +101,12 @@ public class GameObjectContainer {
 		else return objects.get(i).equalPosition(g);
 	}
 
+    public void setRole(LemmingRole role, Position pos) {
+		int i=0;
+		while(i< objects.size()&&!objects.get(i).isInPosition(pos))
+			i++;
+
+		if(i!=objects.size())
+			objects.get(i).setRole(role);
+    }
 }

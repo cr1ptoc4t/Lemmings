@@ -30,7 +30,7 @@ public class SetRoleCommand extends Command{
 
     @Override
     public void execute(Game game, GameView view) {
-        game.setRole();
+        game.setRole(_role, _pos);
         view.showGame();
     }
 
@@ -48,6 +48,6 @@ public class SetRoleCommand extends Command{
 
     @Override
     public String helpText() {
-        return "Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)";
+        return Messages.COMMAND_ROLE_DETAILS + " " + Messages.COMMAND_ROLE_HELP + "\n"+ LemmingRoleFactory.helpText();
     }
 }

@@ -22,4 +22,14 @@ public class LemmingRoleFactory {
         }
         return null;
     }
+
+    public static String helpText() {
+        StringBuilder roles = new StringBuilder();
+
+        for (LemmingRole role : availableRoles) {
+            roles.append("\t\t").append(role.getHelp()).append("\n");
+        }
+
+        return roles.toString();
+    }
 }

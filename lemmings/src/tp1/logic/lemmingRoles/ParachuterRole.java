@@ -1,12 +1,9 @@
 package tp1.logic.lemmingRoles;
-import  tp1.view.Messages;
+
+import tp1.view.Messages;
 import tp1.logic.gameobjects.Lemming;
 
 public class ParachuterRole implements LemmingRole {
-    private static final String NAME = Messages.PARACHUTE_ROL_NAME;
-    private static final String HELP = Messages.PARACHUTE_ROL_HELP;
-    private static final String ICON = Messages.LEMMING_PARACHUTE;
-    private static final String SHORTCUT = Messages.PARACHUTE_ROL_SYMBOL;
 
     @Override
     public void start(Lemming lemming) {
@@ -14,24 +11,31 @@ public class ParachuterRole implements LemmingRole {
     }
 
     public void play(Lemming lemming) {
+        if (!lemming.dies()) {
+            if (lemming.isFalling())
+                lemming.handle_no_damage_fall();
+            else if (lemming.isInAir())
+                lemming.fall();
 
+        }
     }
 
     public String getIcon(Lemming lemming) {
-        return ICON;
+        return Messages.LEMMING_PARACHUTE;
     }
 
     public String getName() {
-        return NAME;
+        return Messages.PARACHUTE_ROL_NAME;
     }
+
 
     @Override
     public String getShortcut() {
-        return SHORTCUT;
+        return Messages.PARACHUTE_ROL_SYMBOL;
     }
 
     public String getHelp() {
-        return HELP;
+        return Messages.PARACHUTE_ROL_HELP;
     }
 
     @Override
