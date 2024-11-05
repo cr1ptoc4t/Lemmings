@@ -97,7 +97,7 @@ public class Messages {
 	public static final String COMMAND_RESET_NAME = "reset";
 	public static final String COMMAND_RESET_SHORTCUT = "r";
 	public static final String COMMAND_RESET_DETAILS = "[r]eset | \"\"";
-	public static final String COMMAND_RESET_HELP = "texto reset";
+	public static final String COMMAND_RESET_HELP = "reset the game to initial configuration";
 
 	// HELP
 	public static final String COMMAND_HELP_NAME = "help";
@@ -109,7 +109,7 @@ public class Messages {
 	public static final String COMMAND_ROLE_NAME = "Set role";
 	public static final String COMMAND_ROLE_SHORTCUT = "S";
 	public static final String COMMAND_ROLE_DETAILS = "[s]et[R]ole ROLE ROW COL";
-	public static final String COMMAND_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE\"%s\"";
+	public static final String COMMAND_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE";
 
 	//Roles
 	public static final String WALKER_ROL_SHORTCUT = "W";
@@ -132,4 +132,5 @@ public class Messages {
 
 	public static final String LEMMING_DOWN_CAVER = "´･ω･`";
 
-	}
+	public static final String LEMMING_DOWN_CAVER_HELP = "[D]own[C]aver: Lemming caves downwards";
+}

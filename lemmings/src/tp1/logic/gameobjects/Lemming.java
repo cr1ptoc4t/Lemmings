@@ -29,27 +29,17 @@ public class Lemming extends GameObject {
         return new WalkerRole();
     }
 
-    public void move() {
-        if (!pos.valid_position())
-            isAlive = false;
-        else if(game.isExitDoorInPos(this))
-            isAlive=false;
-        else if (_falling) {
-            handle_fall();
-            _fall++;
-        } else if (game.isInAir(pos)) {
-            _falling = true;
-            _anterior_dir = _dir;
-            _dir = Direction.DOWN;
-            _fall++;
-            pos.actualiza(_dir);
-        } else {
-            normal_step();
-        }
+
+    public void fall() {
+        _falling = true;
+        _anterior_dir = _dir;
+        _dir = Direction.DOWN;
+        _fall++;
+        pos.actualiza(_dir);
     }
 
 
-    private void normal_step() {
+    public void normal_step() {
         if (should_change_dir()) {
             if (_changed_dir) {
                 _changed_dir = false;
@@ -69,7 +59,7 @@ public class Lemming extends GameObject {
     }
 
 
-    private void handle_fall() {
+    public void handle_fall() {
         if (!game.isInAir(pos)) {
             if (_fall > Game.MAX_FALL)
                 isAlive = false;
@@ -79,8 +69,10 @@ public class Lemming extends GameObject {
                 _dir = _anterior_dir;
                 pos.actualiza(_dir);
             }
-        } else
+        } else {
             pos.actualiza(_dir);
+            _fall++;
+        }
     }
 
     /**
@@ -108,13 +100,39 @@ public class Lemming extends GameObject {
         return this._anterior_dir;
     }
 
-    public void disableRole(){
+    public void disableRole() {
         this.role = new WalkerRole();
     }
 
     @Override
-    public boolean setRole(LemmingRole role){
+    public boolean setRole(LemmingRole role) {
         this.role = role;
         return true;
+    }
+
+    public boolean dies() {
+        if (!pos.valid_position() || game.isExitDoorInPos(this)) {
+            isAlive = false;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isInAir() {
+        return game.isInAir(pos);
+    }
+
+    public boolean isFalling() {
+        return _falling;
+    }
+
+    public void handle_no_damage_fall() {
+        if (!game.isInAir(pos)) {
+            _fall = 0;
+            _falling = false;
+            _dir = _anterior_dir;
+            disableRole();
+        }
+        pos.actualiza(_dir);
     }
 }

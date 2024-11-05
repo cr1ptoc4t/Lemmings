@@ -4,6 +4,7 @@ import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.GameObject;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
+import tp1.logic.lemmingRoles.LemmingRole;
 
 public class Game implements GameStatus{
 
@@ -248,6 +249,7 @@ public class Game implements GameStatus{
 		return _game_object_container.isInExit(g);
 	}
 
-	public void setRole() {
+	public void setRole(LemmingRole role, Position pos) {
+		_game_object_container.setRole(role, pos);
 	}
 }

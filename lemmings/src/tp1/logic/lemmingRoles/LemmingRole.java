@@ -8,6 +8,6 @@ public interface LemmingRole {
     public String getIcon( Lemming lemming );
 
     public String getName();
-
+    public String getHelp();
     public String getShortcut();
 }
