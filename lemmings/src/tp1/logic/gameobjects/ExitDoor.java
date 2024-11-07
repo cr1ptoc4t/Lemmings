@@ -22,7 +22,7 @@ import tp1.logic.Game;
 import tp1.logic.Position;
 import tp1.view.Messages;
 
-public class ExitDoor extends GameObject{
+public class ExitDoor extends GameObject {
     public ExitDoor(Game game, Position pos) {
         super(game, pos);
     }
@@ -35,6 +35,26 @@ public class ExitDoor extends GameObject{
     @Override
     public void update() {
 
+    }
+
+    @Override
+    public boolean receiveInteraction(GameItem other) {
+        return other.interactWith(this);
+    }
+
+    @Override
+    public boolean interactWith(Lemming lemming) {
+        return false;
+    }
+
+    @Override
+    public boolean interactWith(Wall wall) {
+        return false;
+    }
+
+    @Override
+    public boolean interactWith(ExitDoor door) {
+        return false;
     }
 
     @Override

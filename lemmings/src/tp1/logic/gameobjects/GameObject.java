@@ -4,7 +4,7 @@ import tp1.logic.Game;
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.LemmingRole;
 
-public abstract class GameObject {
+public abstract class GameObject implements GameItem{
 
 	protected Position pos;
 	protected boolean isAlive;

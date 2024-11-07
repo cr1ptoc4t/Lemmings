@@ -133,4 +133,5 @@ public class Messages {
 	public static final String LEMMING_DOWN_CAVER = "´･ω･`";
 
 	public static final String LEMMING_DOWN_CAVER_HELP = "[D]own[C]aver: Lemming caves downwards";
+	public static final String LEMMING_DOWN_CAVER_NAME = "DownCaver";
 }

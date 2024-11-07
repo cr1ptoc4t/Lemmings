@@ -8,8 +8,9 @@
     - GameModel                     - TODO
     - GameStatus                    - TODO
     - GameWorld                     - TODO
+    - LemmingRole                   - DONE
 
-GAME                                - TODO
+GAME                                - DONE
    - reset                          - DONE
 
 ACCIONES                            - TODO
