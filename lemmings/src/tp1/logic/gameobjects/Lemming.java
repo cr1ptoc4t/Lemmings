@@ -135,4 +135,24 @@ public class Lemming extends GameObject {
         }
         pos.actualiza(_dir);
     }
+
+    @Override
+    public boolean receiveInteraction(GameItem other) {
+        return other.interactWith(this);
+    }
+
+    @Override
+    public boolean interactWith(Lemming lemming) {
+        return false;
+    }
+
+    @Override
+    public boolean interactWith(Wall wall) {
+        return false;
+    }
+
+    @Override
+    public boolean interactWith(ExitDoor door) {
+        return false;
+    }
 }

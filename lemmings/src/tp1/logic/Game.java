@@ -1,10 +1,9 @@
 package tp1.logic;
 
-import tp1.logic.gameobjects.ExitDoor;
-import tp1.logic.gameobjects.GameObject;
-import tp1.logic.gameobjects.Lemming;
-import tp1.logic.gameobjects.Wall;
+import tp1.logic.gameobjects.*;
 import tp1.logic.lemmingRoles.LemmingRole;
+import tp1.logic.lemmingRoles.LemmingRoleFactory;
+import tp1.logic.lemmingRoles.ParachuterRole;
 
 public class Game implements GameStatus{
 
@@ -14,11 +13,10 @@ public class Game implements GameStatus{
 	private static final int _LEMMINGS_MIN_GAME_0 = 2;
 	private static final int _LEMMINGS_MIN_GAME_1 = 2;
 	private static final int _LEMMINGS_MIN_GAME_2 = 2;
-	private static final int _LEMMINGS_MIN_GAME_3 = 2;
 	private static final int _LEMMINGS_GAME_1 = 4;
-	private static final int _LEMMINGS_GAME_2 = 3;
+	private static final int _LEMMINGS_GAME_2 = 5;
 	private int _lemmings_min;
-	private int _lemmings_alive;
+	private int _initial_lemmings;
 
 
 	private GameObjectContainer _game_object_container;
@@ -41,10 +39,11 @@ public class Game implements GameStatus{
 				break;
 			case 2:
 				initGame2();
+				break;
 			default:
 				initGame0();
 		}
-		_game_object_container.set_lemmings(_lemmings_alive);
+		_game_object_container.set_lemmings(_initial_lemmings);
 	}
 
 // GameStatus methods
@@ -138,7 +137,7 @@ public class Game implements GameStatus{
 	//-- mapas
 	private void initGame0() {
 		_lemmings_min=_LEMMINGS_MIN_GAME_0;
-		_lemmings_alive=_LEMMINGS_GAME_2;
+		_initial_lemmings=_LEMMINGS_GAME_2;
 		_game_object_container.add(new Lemming(this, new Position(3,3)));
 		_game_object_container.add(new Lemming(this, new Position(0,8)));
 		_game_object_container.add(new Lemming(this, new Position(9,0)));
@@ -164,7 +163,7 @@ public class Game implements GameStatus{
 
 	private void initGame1() {
 		_lemmings_min=_LEMMINGS_MIN_GAME_1;
-		_lemmings_alive =_LEMMINGS_GAME_1;
+		_initial_lemmings =_LEMMINGS_GAME_1;
 
 		_game_object_container.add(new Lemming(this, new Position(2,3)));
 		_game_object_container.add(new Lemming(this, new Position(0,8)));
@@ -195,51 +194,40 @@ public class Game implements GameStatus{
 
 
 	private void initGame2() {
-		/*
+
 		_lemmings_min=_LEMMINGS_MIN_GAME_2;
-		_game_object_container.add(new ExitDoor(new Position(4, 5)));
-		_game_object_container.add(new Lemming(new Position(4,3), Direction.LEFT,this));
-		//_game_object_container.add(new Lemming(new Position(5,3), Direction.RIGHT,this));
-		_game_object_container.add(new Wall(new Position(4,4)));
-		_game_object_container.add(new Wall(new Position(5,4)));
-		_game_object_container.add(new Wall(new Position(2,7)));
-		_game_object_container.add(new Wall(new Position(1,7)));
-		_game_object_container.add(new Wall(new Position(6,4)));
-		_game_object_container.add(new Wall(new Position(0,6)));
-		_game_object_container.add(new Wall(new Position(7,4)));
-		_game_object_container.add(new Wall(new Position(8,2)));
-		_game_object_container.add(new Wall(new Position(3,5)));
-		_game_object_container.add(new Wall(new Position(1,9)));
+		_initial_lemmings =_LEMMINGS_GAME_2;
+		_game_object_container.add(new Lemming(this,new Position(2,3)));
+		_game_object_container.add(new Lemming(this,new Position(3,3)));
+		_game_object_container.add(new Lemming(this,new Position(0,8)));
+		_game_object_container.add(new Lemming(this,new Position(9,0)));
+		Lemming parachuter = new Lemming(this,new Position(6,0));
+		parachuter.setRole(LemmingRoleFactory.parse("Parachuter"));
+		_game_object_container.add(parachuter);
 
 
-		_game_object_container.add(new ExitDoor(new Position(8,8)));
+		_game_object_container.add(new ExitDoor(this, new Position(4,5)));
+		//walls
+		_game_object_container.add(new Wall(this, new Position(0,9)));
+		_game_object_container.add(new Wall(this, new Position(1,9)));
+		_game_object_container.add(new Wall(this, new Position(2,4)));
+		_game_object_container.add(new Wall(this, new Position(3,4)));
+		_game_object_container.add(new Wall(this, new Position(3,5)));
+		_game_object_container.add(new MetalWall(this, new Position(3,6)));
+		_game_object_container.add(new Wall(this, new Position(4,4)));
+		_game_object_container.add(new Wall(this, new Position(4,6)));
+		_game_object_container.add(new Wall(this, new Position(5,6)));
+		_game_object_container.add(new Wall(this, new Position(6,6)));
+		_game_object_container.add(new Wall(this, new Position(7,6)));
+		_game_object_container.add(new Wall(this, new Position(7,5)));
 
-		 */
+		_game_object_container.add(new Wall(this, new Position(8,1)));
+		_game_object_container.add(new Wall(this, new Position(9,1)));
+		_game_object_container.add(new Wall(this, new Position(8,8)));
+		_game_object_container.add(new Wall(this, new Position(8,9)));
+		_game_object_container.add(new Wall(this, new Position(9,9)));
+
 	}
-
-	private void init_game_3(){
-
-		/*
-		_lemmings_min=_LEMMINGS_MIN_GAME_3;
-		_game_object_container.add(new Lemming(new Position(4,0), Direction.LEFT,this));
-
-		_game_object_container.add(new Wall(new Position(0, 2)));
-		_game_object_container.add(new Wall(new Position(5, 4)));
-		_game_object_container.add(new Wall(new Position(1, 3)));
-		_game_object_container.add(new Wall(new Position(2, 3)));
-		_game_object_container.add(new Wall(new Position(3, 3)));
-		_game_object_container.add(new Wall(new Position(4, 3)));
-		_game_object_container.add(new Wall(new Position(3, 6)));
-		_game_object_container.add(new Wall(new Position(4, 1)));
-		_game_object_container.add(new Wall(new Position(4, 9)));
-		_game_object_container.add(new Wall(new Position(5, 7)));
-		_game_object_container.add(new Wall(new Position(6, 2)));
-		_game_object_container.add(new Wall(new Position(7, 7)));
-		_game_object_container.add(new Wall(new Position(9, 5)));
-		_game_object_container.add(new ExitDoor(new Position(8,8)));
-*/
-	}
-
 
 	public boolean isWallInPos(Position position) {
 		return _game_object_container.solidInPos(position);
