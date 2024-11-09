@@ -21,4 +21,7 @@ public class UpdateCommand extends NoParamsCommand{
         view.showGame();
     }
 
+    protected boolean matchCommandName(String name) {
+        return super.matchCommandName(name) || name.equalsIgnoreCase("");
+    }
 }

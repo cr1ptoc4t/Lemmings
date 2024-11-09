@@ -48,6 +48,6 @@ public class SetRoleCommand extends Command{
 
     @Override
     public String helpText() {
-        return Messages.COMMAND_ROLE_DETAILS + " " + Messages.COMMAND_ROLE_HELP + "\n"+ LemmingRoleFactory.helpText();
+        return Messages.COMMAND_ROLE_DETAILS + " " + Messages.COMMAND_ROLE_HELP + LemmingRoleFactory.helpText();
     }
 }

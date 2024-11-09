@@ -110,7 +110,9 @@ public class GameObjectContainer {
 		if(i!=objects.size())
 			objects.get(i).setRole(role);
     }
+
 	public boolean receiveInteractionsFrom(GameItem obj) {
 		return false;
 	}
+
 }

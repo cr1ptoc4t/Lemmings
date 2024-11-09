@@ -6,7 +6,7 @@ import tp1.logic.gameobjects.Wall;
 import tp1.view.Messages;
 import tp1.logic.gameobjects.Lemming;
 
-public class ParachuterRole extends AbstractRole implements LemmingRole {
+public class ParachuterRole extends AbstractRole {
 
     @Override
     public void start(Lemming lemming) {
@@ -20,6 +20,7 @@ public class ParachuterRole extends AbstractRole implements LemmingRole {
             else if (lemming.isInAir())
                 lemming.fall();
 
+            lemming.checkPosition();
         }
     }
 
