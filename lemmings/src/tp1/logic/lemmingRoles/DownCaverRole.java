@@ -6,7 +6,8 @@ import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
 import tp1.view.Messages;
 
-public class DownCaverRole extends AbstractRole implements LemmingRole{
+public class DownCaverRole extends AbstractRole{
+    private boolean hasCaved = false;
     @Override
     public void start(Lemming lemming) {
 

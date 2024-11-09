@@ -1,9 +1,10 @@
 - Clase Command y derivados
 - GAMEOBJECTS                       - TODO
-    - GameObject                    - TODO
-    - Lemming                       - TODO
-    - ExitDoor                      - TODO
-    - Wall                          - TODO
+    - GameObject                    - DONE
+    - Lemming                       - DONE
+    - ExitDoor                      - DONE
+    - Wall                          - DONE
+    - interactuar                   - TODO
 - Interfaces                        - TODO
     - GameModel                     - TODO
     - GameStatus                    - TODO
@@ -12,12 +13,13 @@
 
 GAME                                - DONE
    - reset                          - DONE
+   - exit                           - DONE
 
 ACCIONES                            - TODO
     - MÉTODO IS IN AIR              - DONE
     - UPDATE LEMMING                - DONE
         - quitar el _falling        - TODO
-    - QUE AL METER "" HAGA UPDATE   - TODO
+    - QUE AL METER "" HAGA UPDATE   - DONE
     - PLAYER WINS                   - DONE
     - PLAYER LOOSES                 - DONE
     - ENTRAR EN PUERTA              - DONE
@@ -29,9 +31,20 @@ ACCIONES                            - TODO
     - SHORTCUTS TODOS               - TODO
     - HELP                          - DONE
         - añadir sr en el help      - DONE
+    - En mapa 2 añadir lemm normal  - DONE
+    - Girar available commands      - DONE
 
+TESTS                               - TODO
+    - TEST0                         - DONE
+    - TEST1                         - DONE
+    - TEST2                         - TODO
+    - TEST3                         - TODO
+    - TEST4                         - TODO
+    - TEST5                         - TODO
 PREGUNTAS
     - al meter un cambio de rol,
         hay que hacer update ese ciclo?
     - esta bien hacer
         handle_no_damage_fall?
+    - cuando mueren lemminfs no pasa test
+    .

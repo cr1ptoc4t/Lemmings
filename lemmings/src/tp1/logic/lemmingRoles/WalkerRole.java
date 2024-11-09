@@ -7,7 +7,7 @@ import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
 import tp1.view.Messages;
 
-public class WalkerRole extends AbstractRole implements LemmingRole  {
+public class WalkerRole extends AbstractRole {
 
     @Override
     public void start(Lemming lemming) {
@@ -23,13 +23,13 @@ public class WalkerRole extends AbstractRole implements LemmingRole  {
             else
                 lemming.normal_step();
 
+            lemming.checkPosition();
         }
     }
 
     public String getIcon(Lemming lemming) {
 
         String icon = "";
-
         //si la direccion es down, miramos la direccion anterior
         Direction d = lemming.get_dir();
         if (d == Direction.DOWN)
@@ -57,20 +57,7 @@ public class WalkerRole extends AbstractRole implements LemmingRole  {
         return Messages.WALKER_ROL_SHORTCUT;
     }
 
-    @Override
-    public boolean receiveInteraction(GameItem other, Lemming lemming) {
-        return false;
-    }
 
-    @Override
-    public boolean interactWith(Lemming receiver, Lemming lemming) {
-        return false;
-    }
-
-    @Override
-    public boolean interactWith(Wall wall, Lemming lemming) {
-        return false;
-    }
 
     @Override
     public boolean interactWith(ExitDoor door, Lemming lemming) {

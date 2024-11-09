@@ -86,35 +86,35 @@ public class Messages {
 	public static final String COMMAND_UPDATE_NAME = "none";
 	public static final String COMMAND_UPDATE_SHORTCUT = "n";
 	public static final String COMMAND_UPDATE_DETAILS = "[n]one | \"\"";
-	public static final String COMMAND_UPDATE_HELP = "user does not perform any action";
+	public static final String COMMAND_UPDATE_HELP = "user does not perform any action\n";
 
 	// EXIT
 	public static final String COMMAND_EXIT_NAME = "exit";
 	public static final String COMMAND_EXIT_SHORTCUT = "e";
 	public static final String COMMAND_EXIT_DETAILS = "[e]xit";
-	public static final String COMMAND_EXIT_HELP = "exits the game";
+	public static final String COMMAND_EXIT_HELP = "exits the game\n";
 
 	public static final String COMMAND_RESET_NAME = "reset";
 	public static final String COMMAND_RESET_SHORTCUT = "r";
-	public static final String COMMAND_RESET_DETAILS = "[r]eset | \"\"";
-	public static final String COMMAND_RESET_HELP = "reset the game to initial configuration";
+	public static final String COMMAND_RESET_DETAILS = "[r]eset";
+	public static final String COMMAND_RESET_HELP = "start a new game\n";
 
 	// HELP
 	public static final String COMMAND_HELP_NAME = "help";
 	public static final String COMMAND_HELP_SHORTCUT = "h";
 	public static final String COMMAND_HELP_DETAILS = "[h]elp";
-	public static final String COMMAND_HELP_HELP = "print this help message";
+	public static final String COMMAND_HELP_HELP = "print this help message\n";
 
 	// SET ROLE
 	public static final String COMMAND_ROLE_NAME = "Set role";
 	public static final String COMMAND_ROLE_SHORTCUT = "S";
-	public static final String COMMAND_ROLE_DETAILS = "[s]et[R]ole ROLE ROW COL";
-	public static final String COMMAND_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE";
+	public static final String COMMAND_ROLE_DETAILS = "[s]et[R]ole ROLE ROW COL:";
+	public static final String COMMAND_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROL\n";
 
 	//Roles
 	public static final String WALKER_ROL_SHORTCUT = "W";
 	public static final String WALKER_ROL_NAME = "Walker";
-	public static final String WALKER_ROL_HELP = "[W]alker: Lemming that walks";
+	public static final String WALKER_ROL_HELP = "[W]alker: Lemming that walks\n";
 
 	//Symbols
 	public static final String EMPTY = "";
@@ -127,11 +127,11 @@ public class Messages {
 	public static final String LEMMING_PARACHUTE = "🪂";
 
 	public static final String PARACHUTE_ROL_SYMBOL = "P";
-	public static final String PARACHUTE_ROL_HELP = "[P]arachuter: Lemming that uses a parachute";
+	public static final String PARACHUTE_ROL_HELP = "[P]arachuter: Lemming falls with a parachute\n";
 	public static final String PARACHUTE_ROL_NAME = "Parachuter";
 
 	public static final String LEMMING_DOWN_CAVER = "´･ω･`";
 
-	public static final String LEMMING_DOWN_CAVER_HELP = "[D]own[C]aver: Lemming caves downwards";
+	public static final String LEMMING_DOWN_CAVER_HELP = "[D]own [C]aver: Lemming caves downwards\n";
 	public static final String LEMMING_DOWN_CAVER_NAME = "DownCaver";
 }

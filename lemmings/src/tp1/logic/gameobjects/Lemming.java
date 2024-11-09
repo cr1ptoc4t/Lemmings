@@ -113,9 +113,8 @@ public class Lemming extends GameObject {
     public boolean dies() {
         if (!pos.valid_position() || game.isExitDoorInPos(this)) {
             isAlive = false;
-            return true;
         }
-        return false;
+        return !isAlive;
     }
 
     public boolean isInAir() {
@@ -133,7 +132,7 @@ public class Lemming extends GameObject {
             _dir = _anterior_dir;
             disableRole();
         }
-        pos.actualiza(_dir);
+        normal_step();
     }
 
     @Override
@@ -154,5 +153,11 @@ public class Lemming extends GameObject {
     @Override
     public boolean interactWith(ExitDoor door) {
         return false;
+    }
+
+    public void checkPosition() {
+        if (!pos.valid_position()) {
+            isAlive = false;
+        }
     }
 }

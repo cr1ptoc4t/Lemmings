@@ -1,6 +1,7 @@
 package tp1.logic.lemmingRoles;
 
 import tp1.control.commands.*;
+import tp1.view.Messages;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,9 +9,9 @@ import java.util.List;
 public class LemmingRoleFactory {
 
     private static final List<LemmingRole> availableRoles = Arrays.asList(
+            new DownCaverRole(),
             new ParachuterRole(),
-            new WalkerRole(),
-            new DownCaverRole()
+            new WalkerRole()
     );
 
     public static LemmingRole parse(String input){
@@ -27,7 +28,7 @@ public class LemmingRoleFactory {
         StringBuilder roles = new StringBuilder();
 
         for (LemmingRole role : availableRoles) {
-            roles.append("\t\t").append(role.getHelp()).append("\n");
+            roles.append(Messages.TAB).append(Messages.TAB).append(role.getHelp());
         }
 
         return roles.toString();
