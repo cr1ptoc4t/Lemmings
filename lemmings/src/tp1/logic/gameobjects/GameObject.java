@@ -20,8 +20,13 @@ public abstract class GameObject implements GameItem{
 		// TODO fill your code here, it should depends on the status of the object
 		return this.pos.equals(p);
 	}
+	/* TODO
 	public boolean equalPosition(GameObject g){
 		return this.pos.equals(g.get_pos());
+	}
+	*/
+	public boolean equalPosition(GameItem g){
+		return g.isInPosition(this.pos);
 	}
  	
 	public boolean isAlive() {
@@ -47,4 +52,17 @@ public abstract class GameObject implements GameItem{
 	public boolean setRole(LemmingRole role){
 		return false;
 	}
+
+	public boolean interactWith(Lemming lemming) {
+		return false;
+	}
+
+	public boolean interactWith(Wall wall) {
+		return false;
+	}
+
+	public boolean interactWith(ExitDoor door) {
+		return false;
+	}
+
 }

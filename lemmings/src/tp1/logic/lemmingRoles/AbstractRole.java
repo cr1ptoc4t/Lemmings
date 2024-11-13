@@ -6,9 +6,7 @@ import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
 
 public abstract class AbstractRole implements LemmingRole{
-    public void start( Lemming lemming ){
-
-    }
+    public void start( Lemming lemming ){}
     public void play( Lemming lemming ){ }
 
     public String getIcon(Lemming lemming) {

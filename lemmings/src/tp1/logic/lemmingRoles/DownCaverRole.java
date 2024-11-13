@@ -7,16 +7,35 @@ import tp1.logic.gameobjects.Wall;
 import tp1.view.Messages;
 
 public class DownCaverRole extends AbstractRole{
-    private boolean hasCaved = false;
+    private boolean hasCaved;
     @Override
     public void start(Lemming lemming) {
-
+        hasCaved = false;
     }
 
     @Override
     public void play(Lemming lemming) {
+        if (!lemming.exits()) {
+            if(hasCaved){
+                hasCaved =false;
+                lemming.disableRole();
+                lemming.normal_step();
+            }
+            else if (lemming.isFalling())
+                lemming.handle_fall();
+            else if (lemming.isInAir())
+                lemming.fall();
+            else if (lemming.can_cave()){ //si pared normal debajo
+                lemming.cave();
+                hasCaved = true;
+            }else                 //si pared metalica debajo
+                lemming.normal_step();
 
+            lemming.checkPosition();
+        }
     }
+
+
 
     @Override
     public String getIcon(Lemming lemming) {
@@ -35,12 +54,12 @@ public class DownCaverRole extends AbstractRole{
 
     @Override
     public String getShortcut() {
-        return "";
+        return Messages.LEMMING_DOWN_CAVER_SHORTCUT;
     }
 
     @Override
     public boolean receiveInteraction(GameItem other, Lemming lemming) {
-        return false;
+        return other.interactWith(lemming);
     }
 
     @Override
@@ -55,6 +74,7 @@ public class DownCaverRole extends AbstractRole{
 
     @Override
     public boolean interactWith(ExitDoor door, Lemming lemming) {
+        lemming.exits();
         return false;
     }
 

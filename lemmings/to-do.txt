@@ -1,14 +1,11 @@
-- Clase Command y derivados
+- Clase Command y derivados         - DONE
 - GAMEOBJECTS                       - TODO
     - GameObject                    - DONE
     - Lemming                       - DONE
     - ExitDoor                      - DONE
     - Wall                          - DONE
     - interactuar                   - TODO
-- Interfaces                        - TODO
-    - GameModel                     - TODO
-    - GameStatus                    - TODO
-    - GameWorld                     - TODO
+- Interfaces                        - DONE
     - LemmingRole                   - DONE
 
 GAME                                - DONE
@@ -18,7 +15,6 @@ GAME                                - DONE
 ACCIONES                            - TODO
     - MÉTODO IS IN AIR              - DONE
     - UPDATE LEMMING                - DONE
-        - quitar el _falling        - TODO
     - QUE AL METER "" HAGA UPDATE   - DONE
     - PLAYER WINS                   - DONE
     - PLAYER LOOSES                 - DONE
@@ -27,8 +23,8 @@ ACCIONES                            - TODO
     - UPDATE ROLES                  - TODO
         - Walker                    - DONE
         - Parachuter                - DONE
-        - DownCaver                 - TODO
-    - SHORTCUTS TODOS               - TODO
+        - DownCaver                 - DONE
+    - SHORTCUTS TODOS               - DONE
     - HELP                          - DONE
         - añadir sr en el help      - DONE
     - En mapa 2 añadir lemm normal  - DONE
@@ -37,14 +33,11 @@ ACCIONES                            - TODO
 TESTS                               - TODO
     - TEST0                         - DONE
     - TEST1                         - DONE
-    - TEST2                         - TODO
+    - TEST2                         - DONE
     - TEST3                         - TODO
     - TEST4                         - TODO
     - TEST5                         - TODO
 PREGUNTAS
-    - al meter un cambio de rol,
-        hay que hacer update ese ciclo?
     - esta bien hacer
         handle_no_damage_fall?
-    - cuando mueren lemminfs no pasa test
-    .
+    - en gameobject equals con gameitem

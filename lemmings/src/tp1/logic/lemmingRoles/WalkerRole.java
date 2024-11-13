@@ -2,9 +2,7 @@ package tp1.logic.lemmingRoles;
 
 import tp1.logic.Direction;
 import tp1.logic.gameobjects.ExitDoor;
-import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.Lemming;
-import tp1.logic.gameobjects.Wall;
 import tp1.view.Messages;
 
 public class WalkerRole extends AbstractRole {
@@ -15,7 +13,7 @@ public class WalkerRole extends AbstractRole {
     }
 
     public void play(Lemming lemming) {
-        if (!lemming.dies()) {
+        if (!lemming.exits()) {
             if (lemming.isFalling())
                 lemming.handle_fall();
             else if (lemming.isInAir())
