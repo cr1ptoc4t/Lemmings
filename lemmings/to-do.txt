@@ -34,7 +34,7 @@ TESTS                               - TODO
     - TEST0                         - DONE
     - TEST1                         - DONE
     - TEST2                         - DONE
-    - TEST3                         - TODO
+    - TEST3                         - DONE
     - TEST4                         - TODO
     - TEST5                         - TODO
 PREGUNTAS

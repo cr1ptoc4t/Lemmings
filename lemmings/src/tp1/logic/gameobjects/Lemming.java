@@ -32,9 +32,10 @@ public class Lemming extends GameObject {
 
     public void fall() {
         _falling = true;
-        if(_dir!=Direction.DOWN)
+        if(_dir!=Direction.DOWN) {
             _anterior_dir = _dir;
-        _dir = Direction.DOWN;
+            _dir = Direction.DOWN;
+        }
         _fall++;
         pos.actualiza(_dir);
     }
@@ -135,6 +136,7 @@ public class Lemming extends GameObject {
             _fall = 0;
             _falling = false;
             _dir = _anterior_dir;
+            disableRole();
         }
         normal_step();
     }
