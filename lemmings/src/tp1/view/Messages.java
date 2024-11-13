@@ -106,8 +106,8 @@ public class Messages {
 	public static final String COMMAND_HELP_HELP = "print this help message\n";
 
 	// SET ROLE
-	public static final String COMMAND_ROLE_NAME = "Set role";
-	public static final String COMMAND_ROLE_SHORTCUT = "S";
+	public static final String COMMAND_ROLE_NAME = "SetRole";
+	public static final String COMMAND_ROLE_SHORTCUT = "SR";
 	public static final String COMMAND_ROLE_DETAILS = "[s]et[R]ole ROLE ROW COL:";
 	public static final String COMMAND_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROL\n";
 
@@ -134,4 +134,5 @@ public class Messages {
 
 	public static final String LEMMING_DOWN_CAVER_HELP = "[D]own [C]aver: Lemming caves downwards\n";
 	public static final String LEMMING_DOWN_CAVER_NAME = "DownCaver";
+    public static final String LEMMING_DOWN_CAVER_SHORTCUT = "DC";
 }

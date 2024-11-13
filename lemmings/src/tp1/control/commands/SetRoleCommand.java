@@ -31,16 +31,24 @@ public class SetRoleCommand extends Command{
     @Override
     public void execute(Game game, GameView view) {
         game.setRole(_role, _pos);
+        game.update();
         view.showGame();
     }
 
     @Override
     public Command parse(String[] commandWords) {
-        if(commandWords.length==4 && this.matchCommandName(commandWords[0])){
-            Position p = new Position(Integer.valueOf(commandWords[2]), Integer.valueOf(commandWords[3]));
-            if(p.valid_position()){
+        if (commandWords.length == 4 && this.matchCommandName(commandWords[0])) {
+
+            int x = Integer.valueOf(commandWords[3])  - 1;
+            int y = Position.convert(commandWords[2].charAt(0));
+            Position p = new Position(x, y);
+            if (p.valid_position()) {
                 LemmingRole role = LemmingRoleFactory.parse(commandWords[1]);
-                if(role!=null) return new SetRoleCommand(role, p);
+                if (role != null) {
+                    return new SetRoleCommand(role, p);
+                }else{
+                    //TODO: ERROR ROL INCORRECTO
+                }
             }
         }
         return null;

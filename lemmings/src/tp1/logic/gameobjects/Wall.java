@@ -46,7 +46,8 @@ public class Wall extends GameObject{
 
     @Override
     public boolean interactWith(Lemming lemming) {
-        return false;
+        isAlive = false;
+        return true;
     }
 
     @Override

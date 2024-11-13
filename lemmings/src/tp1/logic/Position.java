@@ -113,14 +113,8 @@ public class Position {
 
 
 	public void actualiza(Direction d) {
-
-
-		int x = this.col + d.getX();
-		int y = this.row + d.getY();
-
-		this.col = x;
-		this.row = y;
-
+		this.col += d.getX();
+		this.row += d.getY();
 	}
 
 	public boolean valid_position() {
@@ -132,5 +126,12 @@ public class Position {
 	}
 >>>>>>> v2.0
 
+	public static int convert(char letter) {
+		if (letter >= 'A' && letter <= 'J') {
+			return letter - 'A';
+		} else {
+			throw new IllegalArgumentException("Letter must be between A and J");
+		}
+	}
 
 }

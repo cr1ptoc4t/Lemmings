@@ -14,12 +14,21 @@ public class ParachuterRole extends AbstractRole {
     }
 
     public void play(Lemming lemming) {
-        if (!lemming.dies()) {
+        if (!lemming.exits()) {
+
+            // caso en el que el lemming esta cayendo
             if (lemming.isFalling())
                 lemming.handle_no_damage_fall();
-            else if (lemming.isInAir())
-                lemming.fall();
-
+            else {
+                // caso va a caer
+                if (lemming.isInAir())
+                    lemming.fall();
+                //caso en el que el se asigna rol cuando esta en tierra
+                else{
+                    lemming.disableRole();
+                    lemming.normal_step();
+                }
+            }
             lemming.checkPosition();
         }
     }

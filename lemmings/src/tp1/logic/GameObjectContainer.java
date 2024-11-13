@@ -23,6 +23,7 @@ public class GameObjectContainer {
 
 	public String someoneInPosition(Position p) {
 		String str = "";
+
 		for(GameObject object: objects) {
 			if(object.isInPosition(p))
 				str += object.getIcon();
@@ -49,6 +50,7 @@ public class GameObjectContainer {
 	public void update() {
 		for(GameObject object: objects) {
 			object.update();
+			receiveInteractionsFrom(object);
 		}
 	}
 
@@ -63,8 +65,10 @@ public class GameObjectContainer {
 				//eliminamos y notificamos según salida o muerte
 				objects.remove(i);
 
-				if(isInExit(g)) { notifyLemmingExit();}
-				else 			{ notifyLemmingDead();}
+				if(!g.isSolid()){
+					if(isInExit(g)) { notifyLemmingExit();}
+					else 			{ notifyLemmingDead();}
+				}
 			} else{  i++; }
 		}
 	}
@@ -112,6 +116,11 @@ public class GameObjectContainer {
     }
 
 	public boolean receiveInteractionsFrom(GameItem obj) {
+		for(GameObject object: objects) {
+			if(object.equalPosition(obj)) {
+				return object.receiveInteraction(obj);
+			}
+		}
 		return false;
 	}
 

@@ -32,8 +32,10 @@ public class Lemming extends GameObject {
 
     public void fall() {
         _falling = true;
-        _anterior_dir = _dir;
-        _dir = Direction.DOWN;
+        if(_dir!=Direction.DOWN) {
+            _anterior_dir = _dir;
+            _dir = Direction.DOWN;
+        }
         _fall++;
         pos.actualiza(_dir);
     }
@@ -49,6 +51,7 @@ public class Lemming extends GameObject {
             }
         } else
             pos.actualiza(_dir);
+
     }
 
     private boolean should_change_dir() {
@@ -106,12 +109,15 @@ public class Lemming extends GameObject {
 
     @Override
     public boolean setRole(LemmingRole role) {
+        if(role.equals(this.role))
+            return false;
+
         this.role = role;
         return true;
     }
 
-    public boolean dies() {
-        if (!pos.valid_position() || game.isExitDoorInPos(this)) {
+    public boolean exits() {
+        if (game.isExitDoorInPos(this)) {
             isAlive = false;
         }
         return !isAlive;
@@ -140,24 +146,25 @@ public class Lemming extends GameObject {
         return other.interactWith(this);
     }
 
-    @Override
-    public boolean interactWith(Lemming lemming) {
-        return false;
-    }
 
-    @Override
-    public boolean interactWith(Wall wall) {
-        return false;
-    }
-
-    @Override
-    public boolean interactWith(ExitDoor door) {
-        return false;
-    }
 
     public void checkPosition() {
         if (!pos.valid_position()) {
             isAlive = false;
         }
     }
+
+    public void cave(){
+        if(_dir!=Direction.DOWN)
+            _anterior_dir = _dir;
+        _dir = Direction.DOWN;
+        pos.actualiza(_dir);
+    }
+
+    public boolean can_cave(){
+        Position next_pos = new Position(pos);
+        next_pos.actualiza(Direction.DOWN);
+        return next_pos.valid_position() && game.isWallInPos(next_pos);
+    }
+
 }

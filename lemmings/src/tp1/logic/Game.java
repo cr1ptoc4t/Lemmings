@@ -124,6 +124,7 @@ public class Game implements GameStatus{
         return !_game_object_container.solidInPos(Position.debajo(pos));
     }
 
+
 	// @Override
 	public void lemmingArrived() {
 
@@ -147,11 +148,12 @@ public class Game implements GameStatus{
 	private void initGame0() {
 		_lemmings_min=_LEMMINGS_MIN_GAME_0;
 		_initial_lemmings=_LEMMINGS_GAME_0;
+		_game_object_container.add(new ExitDoor(this, new Position(4,5)));
+
 		_game_object_container.add(new Lemming(this, new Position(2,3)));
 		_game_object_container.add(new Lemming(this, new Position(0,8)));
 		_game_object_container.add(new Lemming(this, new Position(9,0)));
 
-		_game_object_container.add(new ExitDoor(this, new Position(4,5)));
 
 		_game_object_container.add(new Wall(this, new Position(0,9)));
 		_game_object_container.add(new Wall(this, new Position(1,9)));
@@ -173,13 +175,13 @@ public class Game implements GameStatus{
 	private void initGame1() {
 		_lemmings_min=_LEMMINGS_MIN_GAME_1;
 		_initial_lemmings =_LEMMINGS_GAME_1;
+		_game_object_container.add(new ExitDoor(this, new Position(4,5)));
 
 		_game_object_container.add(new Lemming(this, new Position(2,3)));
 		_game_object_container.add(new Lemming(this, new Position(0,8)));
 		_game_object_container.add(new Lemming(this, new Position(3,3)));
 		_game_object_container.add(new Lemming(this, new Position(9,0)));
 
-		_game_object_container.add(new ExitDoor(this, new Position(4,5)));
 
 		_game_object_container.add(new Wall(this, new Position(0,9)));
 		_game_object_container.add(new Wall(this, new Position(1,9)));
