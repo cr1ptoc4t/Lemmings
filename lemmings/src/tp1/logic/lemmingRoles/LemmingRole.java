@@ -19,4 +19,8 @@ public interface LemmingRole  {
     public boolean interactWith(Lemming receiver, Lemming lemming);
     public boolean interactWith(Wall wall, Lemming lemming);
     public boolean interactWith(ExitDoor door, Lemming lemming);
+
+    public default boolean equals(LemmingRole role){
+        return this.getName().equals(role.getName());
+    }
 }

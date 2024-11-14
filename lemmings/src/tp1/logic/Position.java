@@ -66,7 +66,7 @@ public class Position {
 		if (letter >= 'A' && letter <= 'J') {
 			return letter - 'A';
 		} else {
-			throw new IllegalArgumentException("Letter must be between A and J");
+			return -1;
 		}
 	}
 

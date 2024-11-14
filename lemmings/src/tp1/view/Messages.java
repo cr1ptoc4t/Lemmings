@@ -135,4 +135,6 @@ public class Messages {
 	public static final String LEMMING_DOWN_CAVER_HELP = "[D]own [C]aver: Lemming caves downwards\n";
 	public static final String LEMMING_DOWN_CAVER_NAME = "DownCaver";
     public static final String LEMMING_DOWN_CAVER_SHORTCUT = "DC";
+    public static final String ERROR_INVALID_POSITION = "(Incorrect position or no object in that position admits that role)";
+	public static final String COMMAND_ROLE_ERROR = "SetRoleCommand error ";
 }

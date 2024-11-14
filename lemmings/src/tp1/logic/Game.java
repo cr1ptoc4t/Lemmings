@@ -18,7 +18,7 @@ public class Game implements GameStatus{
 	private static final int _LEMMINGS_MIN_GAME_3 = 1;
 	private static final int _LEMMINGS_GAME_0 = 3;
 	private static final int _LEMMINGS_GAME_1 = 4;
-	private static final int _LEMMINGS_GAME_2 = 5;
+	private static final int _LEMMINGS_GAME_2 = 6;
 	private static final int _LEMMINGS_GAME_3 = 2;
 
 	private int _lemmings_min;
@@ -278,11 +278,15 @@ public class Game implements GameStatus{
 		return _game_object_container.solidInPos(position);
 	}
 
+	public boolean isMetalInPos(Position position) {
+		return _game_object_container.metalInPos(position);
+	}
+
 	public boolean isExitDoorInPos(GameObject g) {
 		return _game_object_container.isInExit(g);
 	}
 
-	public void setRole(LemmingRole role, Position pos) {
-		_game_object_container.setRole(role, pos);
+	public boolean setRole(LemmingRole role, Position pos) {
+		return _game_object_container.setRole(role, pos);
 	}
 }

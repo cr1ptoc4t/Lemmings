@@ -43,4 +43,8 @@ public class MetalWall extends GameObject{
     public boolean isSolid(){
         return true;
     }
+
+    public boolean isMetal(){
+        return true;
+    }
 }
