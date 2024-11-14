@@ -7,9 +7,8 @@ import tp1.logic.lemmingRoles.LemmingRoleFactory;
 import tp1.view.GameView;
 import tp1.view.Messages;
 
-import javax.management.relation.Role;
 
-public class SetRoleCommand extends Command{
+public class SetRoleCommand extends Command {
 
     private static final String NAME = Messages.COMMAND_ROLE_NAME;
     private static final String SHORTCUT = Messages.COMMAND_ROLE_SHORTCUT;
@@ -20,8 +19,8 @@ public class SetRoleCommand extends Command{
 
     public SetRoleCommand(LemmingRole role, Position pos) {
         super(NAME, SHORTCUT, DETAILS, HELP);
-        this._role=role;
-        this._pos=pos;
+        this._role = role;
+        this._pos = pos;
     }
 
     public SetRoleCommand() {
@@ -30,24 +29,29 @@ public class SetRoleCommand extends Command{
 
     @Override
     public void execute(Game game, GameView view) {
-        game.setRole(_role, _pos);
-        game.update();
-        view.showGame();
+
+        if (game.setRole(_role, _pos)) {
+            game.update();
+            view.showGame();
+        } else {
+            view.showError(Messages.COMMAND_ROLE_ERROR + Messages.ERROR_INVALID_POSITION);
+        }
+
+
     }
 
     @Override
     public Command parse(String[] commandWords) {
-        if (commandWords.length == 4 && this.matchCommandName(commandWords[0])) {
-
-            int x = Integer.valueOf(commandWords[3])  - 1;
-            int y = Position.convert(commandWords[2].charAt(0));
-            Position p = new Position(x, y);
-            if (p.valid_position()) {
+        if (commandWords.length == 4) {
+            if (this.matchCommandName(commandWords[0])) {
                 LemmingRole role = LemmingRoleFactory.parse(commandWords[1]);
                 if (role != null) {
-                    return new SetRoleCommand(role, p);
-                }else{
-                    //TODO: ERROR ROL INCORRECTO
+                    int x = Integer.parseInt(commandWords[3]) - 1;
+                    int y = Position.convert(Character.toUpperCase(commandWords[2].charAt(0)));
+                    Position p = new Position(x, y);
+                    if (p.valid_position()) {
+                        return new SetRoleCommand(role, p);
+                    }
                 }
             }
         }

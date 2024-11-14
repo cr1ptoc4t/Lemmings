@@ -65,4 +65,7 @@ public abstract class GameObject implements GameItem{
 		return false;
 	}
 
+	public boolean isMetal() {
+		return false;
+	}
 }

@@ -21,6 +21,7 @@ public class Lemming extends GameObject {
         super(game, pos);
         this.role = WalkerRole();
         _dir = Direction.RIGHT;
+        _anterior_dir=_dir;
         _fall = 0;
         _falling = false;
     }
@@ -164,7 +165,8 @@ public class Lemming extends GameObject {
     public boolean can_cave(){
         Position next_pos = new Position(pos);
         next_pos.actualiza(Direction.DOWN);
-        return next_pos.valid_position() && game.isWallInPos(next_pos);
+        return next_pos.valid_position() && game.isWallInPos(next_pos)
+                && !game.isMetalInPos(next_pos);
     }
 
 }

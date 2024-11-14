@@ -1,10 +1,10 @@
 - Clase Command y derivados         - DONE
-- GAMEOBJECTS                       - TODO
+- GAMEOBJECTS                       - DONE
     - GameObject                    - DONE
     - Lemming                       - DONE
     - ExitDoor                      - DONE
     - Wall                          - DONE
-    - interactuar                   - TODO
+    - interactuar                   - DONE
 - Interfaces                        - DONE
     - LemmingRole                   - DONE
 
@@ -12,7 +12,7 @@ GAME                                - DONE
    - reset                          - DONE
    - exit                           - DONE
 
-ACCIONES                            - TODO
+ACCIONES                            - DONE
     - MÉTODO IS IN AIR              - DONE
     - UPDATE LEMMING                - DONE
     - QUE AL METER "" HAGA UPDATE   - DONE
@@ -20,7 +20,7 @@ ACCIONES                            - TODO
     - PLAYER LOOSES                 - DONE
     - ENTRAR EN PUERTA              - DONE
         - Se queda en la puerta     - DONE
-    - UPDATE ROLES                  - TODO
+    - UPDATE ROLES                  - DONE
         - Walker                    - DONE
         - Parachuter                - DONE
         - DownCaver                 - DONE
@@ -29,6 +29,11 @@ ACCIONES                            - TODO
         - añadir sr en el help      - DONE
     - En mapa 2 añadir lemm normal  - DONE
     - Girar available commands      - DONE
+    - Errores correspondientes      - TODO
+    - elimina puerta downcaver      - TODO
+ERRORES
+    - setRole Walker I 2 33 = unknown command
+    - setRole Patata I 2 = unknown command
 
 TESTS                               - TODO
     - TEST0                         - DONE
@@ -37,7 +42,10 @@ TESTS                               - TODO
     - TEST3                         - DONE
     - TEST4                         - TODO
     - TEST5                         - TODO
+
 PREGUNTAS
     - esta bien hacer
         handle_no_damage_fall?
     - en gameobject equals con gameitem
+    - en abstract leming role equals ¿
+    - la clase abstracta

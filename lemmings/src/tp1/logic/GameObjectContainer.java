@@ -106,13 +106,13 @@ public class GameObjectContainer {
 		else return objects.get(i).equalPosition(g);
 	}
 
-    public void setRole(LemmingRole role, Position pos) {
-		int i=0;
-		while(i< objects.size()&&!objects.get(i).isInPosition(pos))
-			i++;
-
-		if(i!=objects.size())
-			objects.get(i).setRole(role);
+    public boolean setRole(LemmingRole role, Position pos) {
+		for(GameObject object: objects) {
+			if(object.isInPosition(pos) && object.setRole(role)) {
+				return true;
+			}
+		}
+		return false;
     }
 
 	public boolean receiveInteractionsFrom(GameItem obj) {
@@ -124,4 +124,12 @@ public class GameObjectContainer {
 		return false;
 	}
 
+	public boolean metalInPos(Position position) {
+		for(GameObject object: objects) {
+			if(object.isInPosition(position) && object.isMetal()) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

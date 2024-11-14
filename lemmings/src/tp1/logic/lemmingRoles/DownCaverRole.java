@@ -6,8 +6,9 @@ import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
 import tp1.view.Messages;
 
-public class DownCaverRole extends AbstractRole{
+public class DownCaverRole extends AbstractRole {
     private boolean hasCaved;
+
     @Override
     public void start(Lemming lemming) {
         hasCaved = false;
@@ -16,25 +17,26 @@ public class DownCaverRole extends AbstractRole{
     @Override
     public void play(Lemming lemming) {
         if (!lemming.exits()) {
-            if(hasCaved){
-                hasCaved =false;
-                lemming.disableRole();
-                lemming.normal_step();
-            }
-            else if (lemming.isFalling())
+            if (lemming.isFalling())
                 lemming.handle_fall();
-            else if (lemming.isInAir())
+            else if (lemming.isInAir()) {
+                if (hasCaved) {
+                    hasCaved = false;
+                    lemming.disableRole();
+                }
                 lemming.fall();
-            else if (lemming.can_cave()){ //si pared normal debajo
+            } else if (lemming.can_cave()) { //si pared normal debajo
                 lemming.cave();
                 hasCaved = true;
-            }else                 //si pared metalica debajo
+            } else {                //si pared metalica debajo
+                lemming.disableRole();
                 lemming.normal_step();
+                //lemming.die();
+            }
 
             lemming.checkPosition();
         }
     }
-
 
 
     @Override
