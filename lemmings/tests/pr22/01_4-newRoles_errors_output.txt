@@ -42,7 +42,7 @@ Command > [DEBUG] Executing: setRole Parachuter A 1
 
 Command > [DEBUG] Executing: setRole Parachuter A 100
 
-[ERROR] Error: Unknown command: setRole
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: setRole Parachu A 10
 
@@ -267,7 +267,7 @@ Lemmings exit door: 2 ┃2
   F┃                     🚪            ▓▓▓▓▓          ┃F
   G┃                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          ┃G
   H┃                                                  ┃H
-  I┃                                        ▓▓▓▓▓  ᗺ  ┃I
+  I┃                                        ▓▓▓▓▓  B  ┃I
   J┃▓▓▓▓▓▓▓▓▓▓                              ▓▓▓▓▓▓▓▓▓▓┃J
    └——————————————————————————————————————————————————┘
       1    2    3    4    5    6    7    8    9   10  

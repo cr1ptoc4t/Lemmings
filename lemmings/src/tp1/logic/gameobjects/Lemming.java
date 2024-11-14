@@ -44,15 +44,11 @@ public class Lemming extends GameObject {
 
     public void normal_step() {
         if (should_change_dir()) {
-            if (_changed_dir) {
-                _changed_dir = false;
-            } else {
-                _dir = _dir.opposite();
-                _changed_dir = true;
-            }
+            _changed_dir = !_changed_dir;
+            _anterior_dir = _dir;
+            _dir = _dir.opposite();
         } else
             pos.actualiza(_dir);
-
     }
 
     private boolean should_change_dir() {
@@ -147,8 +143,6 @@ public class Lemming extends GameObject {
         return other.interactWith(this);
     }
 
-
-
     public void checkPosition() {
         if (!pos.valid_position()) {
             isAlive = false;
@@ -168,5 +162,4 @@ public class Lemming extends GameObject {
         return next_pos.valid_position() && game.isWallInPos(next_pos)
                 && !game.isMetalInPos(next_pos);
     }
-
 }

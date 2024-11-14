@@ -16,8 +16,8 @@ public class Position {
 
 	//duplicador de posicion
 	public Position(Position posicion2) {
-		this.col = posicion2.col;
-		this.row = posicion2.row;
+		this.col = posicion2.get_col();
+		this.row = posicion2.get_row();
 	}
 
 

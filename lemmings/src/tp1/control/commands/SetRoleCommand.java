@@ -29,15 +29,14 @@ public class SetRoleCommand extends Command {
 
     @Override
     public void execute(Game game, GameView view) {
-
-        if (game.setRole(_role, _pos)) {
-            game.update();
-            view.showGame();
-        } else {
+        if (_pos.valid_position()) {
+            if (game.setRole(_role, _pos)) {
+                game.update();
+                view.showGame();
+            } else
+                view.showError(Messages.COMMAND_ROLE_ERROR + Messages.ERROR_INVALID_POSITION);
+        } else
             view.showError(Messages.COMMAND_ROLE_ERROR + Messages.ERROR_INVALID_POSITION);
-        }
-
-
     }
 
     @Override
@@ -48,10 +47,7 @@ public class SetRoleCommand extends Command {
                 if (role != null) {
                     int x = Integer.parseInt(commandWords[3]) - 1;
                     int y = Position.convert(Character.toUpperCase(commandWords[2].charAt(0)));
-                    Position p = new Position(x, y);
-                    if (p.valid_position()) {
-                        return new SetRoleCommand(role, p);
-                    }
+                    return new SetRoleCommand(role, new Position(x, y));
                 }
             }
         }

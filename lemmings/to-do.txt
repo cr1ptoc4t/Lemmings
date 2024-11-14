@@ -12,7 +12,7 @@ GAME                                - DONE
    - reset                          - DONE
    - exit                           - DONE
 
-ACCIONES                            - DONE
+ACCIONES                            - TODO
     - MÉTODO IS IN AIR              - DONE
     - UPDATE LEMMING                - DONE
     - QUE AL METER "" HAGA UPDATE   - DONE
@@ -29,19 +29,21 @@ ACCIONES                            - DONE
         - añadir sr en el help      - DONE
     - En mapa 2 añadir lemm normal  - DONE
     - Girar available commands      - DONE
-    - Errores correspondientes      - TODO
+    - Errores correspondientes      - DONE
     - elimina puerta downcaver      - TODO
+    - cambiar handle_no_damage      - TODO
+
 ERRORES
     - setRole Walker I 2 33 = unknown command
     - setRole Patata I 2 = unknown command
 
-TESTS                               - TODO
+TESTS                               - DONE
     - TEST0                         - DONE
     - TEST1                         - DONE
     - TEST2                         - DONE
     - TEST3                         - DONE
-    - TEST4                         - TODO
-    - TEST5                         - TODO
+    - TEST4                         - DONE
+    - TEST5                         - DONE
 
 PREGUNTAS
     - esta bien hacer

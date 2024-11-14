@@ -17,9 +17,9 @@ public class DownCaverRole extends AbstractRole {
     @Override
     public void play(Lemming lemming) {
         if (!lemming.exits()) {
-            if (lemming.isFalling())
+            if (lemming.isFalling())    //si esta cayendo
                 lemming.handle_fall();
-            else if (lemming.isInAir()) {
+            else if (lemming.isInAir()) {//si va a caer
                 if (hasCaved) {
                     hasCaved = false;
                     lemming.disableRole();
@@ -29,8 +29,8 @@ public class DownCaverRole extends AbstractRole {
                 lemming.cave();
                 hasCaved = true;
             } else {                //si pared metalica debajo
-                lemming.disableRole();
-                lemming.normal_step();
+                lemming.handle_no_damage_fall();
+
                 //lemming.die();
             }
 
