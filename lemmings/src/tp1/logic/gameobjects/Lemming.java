@@ -67,7 +67,8 @@ public class Lemming extends GameObject {
                 _fall = 0;
                 _falling = false;
                 _dir = _anterior_dir;
-                pos.actualiza(_dir);
+                normal_step();
+                disableRole();
             }
         } else {
             pos.actualiza(_dir);
@@ -129,13 +130,8 @@ public class Lemming extends GameObject {
     }
 
     public void handle_no_damage_fall() {
-        if (!game.isInAir(pos)) {
-            _fall = 0;
-            _falling = false;
-            _dir = _anterior_dir;
-            disableRole();
-        }
-        normal_step();
+        _fall=0;
+        handle_fall();
     }
 
     @Override

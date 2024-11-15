@@ -15,7 +15,6 @@ public class ParachuterRole extends AbstractRole {
 
     public void play(Lemming lemming) {
         if (!lemming.exits()) {
-
             // caso en el que el lemming esta cayendo
             if (lemming.isFalling())
                 lemming.handle_no_damage_fall();
@@ -64,8 +63,9 @@ public class ParachuterRole extends AbstractRole {
 
     @Override
     public boolean interactWith(ExitDoor door, Lemming lemming) {
-        return false;
+        return lemming.exits();
     }
+
 
     public String getHelp() {
         return Messages.PARACHUTE_ROL_HELP;

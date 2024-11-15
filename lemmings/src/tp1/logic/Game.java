@@ -244,12 +244,12 @@ public class Game implements GameStatus{
 	private void initGame3() {
 
 		_lemmings_min=_LEMMINGS_MIN_GAME_3;
-		_initial_lemmings =_LEMMINGS_GAME_3;
-		_game_object_container.add(new Lemming(this,new Position(6,0)));
+		_initial_lemmings =_LEMMINGS_GAME_3 -1;
+		_game_object_container.add(new Lemming(this,new Position(2,3)));
 
-		Lemming parachuter = new Lemming(this,new Position(6,0));
-		parachuter.setRole(LemmingRoleFactory.parse("Parachuter"));
-		_game_object_container.add(parachuter);
+		//Lemming parachuter = new Lemming(this,new Position(6,0));
+		//parachuter.setRole(LemmingRoleFactory.parse("Parachuter"));
+		//_game_object_container.add(parachuter);
 
 
 		_game_object_container.add(new ExitDoor(this, new Position(4,5)));
@@ -261,7 +261,7 @@ public class Game implements GameStatus{
 		_game_object_container.add(new Wall(this, new Position(3,5)));
 		_game_object_container.add(new MetalWall(this, new Position(3,6)));
 		_game_object_container.add(new Wall(this, new Position(4,4)));
-		_game_object_container.add(new Wall(this, new Position(4,6)));
+		//_game_object_container.add(new Wall(this, new Position(4,6)));
 		_game_object_container.add(new Wall(this, new Position(5,6)));
 		_game_object_container.add(new Wall(this, new Position(6,6)));
 		_game_object_container.add(new Wall(this, new Position(7,6)));
@@ -274,6 +274,7 @@ public class Game implements GameStatus{
 		_game_object_container.add(new Wall(this, new Position(9,9)));
 
 	}
+
 	public boolean isWallInPos(Position position) {
 		return _game_object_container.solidInPos(position);
 	}

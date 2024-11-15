@@ -29,12 +29,9 @@ public class SetRoleCommand extends Command {
 
     @Override
     public void execute(Game game, GameView view) {
-        if (_pos.valid_position()) {
-            if (game.setRole(_role, _pos)) {
+        if (_pos.valid_position() && (game.setRole(_role, _pos)) ){
                 game.update();
                 view.showGame();
-            } else
-                view.showError(Messages.COMMAND_ROLE_ERROR + Messages.ERROR_INVALID_POSITION);
         } else
             view.showError(Messages.COMMAND_ROLE_ERROR + Messages.ERROR_INVALID_POSITION);
     }
@@ -45,9 +42,13 @@ public class SetRoleCommand extends Command {
             if (this.matchCommandName(commandWords[0])) {
                 LemmingRole role = LemmingRoleFactory.parse(commandWords[1]);
                 if (role != null) {
-                    int x = Integer.parseInt(commandWords[3]) - 1;
-                    int y = Position.convert(Character.toUpperCase(commandWords[2].charAt(0)));
-                    return new SetRoleCommand(role, new Position(x, y));
+                    String x_str = commandWords[3];
+                    String y_str = commandWords[2];
+                    if(Character.isDigit(x_str.charAt(0)) && !Character.isDigit(y_str.charAt(0))) {
+                            int x = Integer.parseInt(x_str) - 1;
+                            int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
+                            return new SetRoleCommand(role, new Position(x, y));
+                    }
                 }
             }
         }
