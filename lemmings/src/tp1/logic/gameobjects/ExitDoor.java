@@ -62,4 +62,8 @@ public class ExitDoor extends GameObject {
         return true;
 >>>>>>> v2.0
     }
+
+    public void die() {
+        isAlive = false;
+    }
 }

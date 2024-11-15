@@ -14,13 +14,17 @@ public class WalkerRole extends AbstractRole {
 
     public void play(Lemming lemming) {
         if (!lemming.exits()) {
+            // caso en el que el lemming esta cayendo
             if (lemming.isFalling())
                 lemming.handle_fall();
-            else if (lemming.isInAir())
-                lemming.fall();
-            else
-                lemming.normal_step();
-
+            else {
+                // caso va a caer
+                if (lemming.isInAir())
+                    lemming.fall();
+                // esta en el suelo
+                else
+                    lemming.normal_step();
+            }
             lemming.checkPosition();
         }
     }
@@ -61,7 +65,7 @@ public class WalkerRole extends AbstractRole {
     public boolean interactWith(ExitDoor door, Lemming lemming) {
         return false;
     }
-
+    
     public String getHelp() {
         return Messages.WALKER_ROL_HELP;
     }

@@ -31,7 +31,7 @@ ACCIONES                            - TODO
     - Girar available commands      - DONE
     - Errores correspondientes      - DONE
     - elimina puerta downcaver      - TODO
-    - cambiar handle_no_damage      - TODO
+    - cambiar handle_no_damage      - DONE
 
 ERRORES
     - setRole Walker I 2 33 = unknown command
@@ -46,8 +46,3 @@ TESTS                               - DONE
     - TEST5                         - DONE
 
 PREGUNTAS
-    - esta bien hacer
-        handle_no_damage_fall?
-    - en gameobject equals con gameitem
-    - en abstract leming role equals ¿
-    - la clase abstracta

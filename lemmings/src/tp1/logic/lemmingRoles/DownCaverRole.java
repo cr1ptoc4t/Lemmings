@@ -16,7 +16,7 @@ public class DownCaverRole extends AbstractRole {
 
     @Override
     public void play(Lemming lemming) {
-        if (!lemming.exits()) {
+        //if (!lemming.exits()) {
             if (lemming.isFalling())    //si esta cayendo
                 lemming.handle_fall();
             else if (lemming.isInAir()) {//si va a caer
@@ -29,13 +29,10 @@ public class DownCaverRole extends AbstractRole {
                 lemming.cave();
                 hasCaved = true;
             } else {                //si pared metalica debajo
-                lemming.handle_no_damage_fall();
-
-                //lemming.die();
+                lemming.handle_fall();
             }
-
             lemming.checkPosition();
-        }
+        //}
     }
 
 
@@ -76,8 +73,8 @@ public class DownCaverRole extends AbstractRole {
 
     @Override
     public boolean interactWith(ExitDoor door, Lemming lemming) {
-        lemming.exits();
-        return false;
+        door.die();
+        return true;
     }
 
 }
