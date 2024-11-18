@@ -23,4 +23,6 @@ public interface LemmingRole  {
     public default boolean equals(LemmingRole role){
         return this.getName().equals(role.getName());
     }
+
+    public LemmingRole copia();
 }

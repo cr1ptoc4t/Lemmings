@@ -44,9 +44,11 @@ public class SetRoleCommand extends Command {
                 if (role != null) {
                     String x_str = commandWords[3];
                     String y_str = commandWords[2];
+                    // check primer caracter es un numero y segundo no
                     if(Character.isDigit(x_str.charAt(0)) && !Character.isDigit(y_str.charAt(0))) {
                             int x = Integer.parseInt(x_str) - 1;
                             int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
+                            // no hace falta mirar si la posicion es correcta porque ya lo hace el execute
                             return new SetRoleCommand(role, new Position(x, y));
                     }
                 }

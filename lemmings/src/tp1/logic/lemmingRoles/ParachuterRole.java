@@ -66,6 +66,11 @@ public class ParachuterRole extends AbstractRole {
         return lemming.exits();
     }
 
+    @Override
+    public LemmingRole copia() {
+        return new ParachuterRole();
+    }
+
 
     public String getHelp() {
         return Messages.PARACHUTE_ROL_HELP;
