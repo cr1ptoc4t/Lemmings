@@ -116,8 +116,7 @@ public class Game implements GameStatus{
 		return _game_object_container.get_nlemmings() == 0 || exit;
 	}
 	
-	// TODO Auto-generated method stub
-	
+
 // GameWorld methods (callbacks)
 	// @Override
 	public boolean isInAir(Position pos) {
@@ -134,14 +133,7 @@ public class Game implements GameStatus{
 		_game_object_container= new GameObjectContainer();
 		chooseLevel();
 		cycle=0;
-
 	}
-	// TODO Auto-generated method stub
-	
-// Other methods
-	// TODO you should write a toString method to return the string that represents the object status
-	// @Override
-	// public String toString()
 
 
 	//-- mapas
@@ -244,12 +236,12 @@ public class Game implements GameStatus{
 	private void initGame3() {
 
 		_lemmings_min=_LEMMINGS_MIN_GAME_3;
-		_initial_lemmings =_LEMMINGS_GAME_3 -1;
+		_initial_lemmings =_LEMMINGS_GAME_3;
 		_game_object_container.add(new Lemming(this,new Position(2,3)));
 
-		//Lemming parachuter = new Lemming(this,new Position(6,0));
-		//parachuter.setRole(LemmingRoleFactory.parse("Parachuter"));
-		//_game_object_container.add(parachuter);
+		Lemming parachuter = new Lemming(this,new Position(6,0));
+		parachuter.setRole(LemmingRoleFactory.parse("Parachuter"));
+		_game_object_container.add(parachuter);
 
 
 		_game_object_container.add(new ExitDoor(this, new Position(4,5)));
@@ -261,7 +253,7 @@ public class Game implements GameStatus{
 		_game_object_container.add(new Wall(this, new Position(3,5)));
 		_game_object_container.add(new MetalWall(this, new Position(3,6)));
 		_game_object_container.add(new Wall(this, new Position(4,4)));
-		//_game_object_container.add(new Wall(this, new Position(4,6)));
+		_game_object_container.add(new Wall(this, new Position(4,6)));
 		_game_object_container.add(new Wall(this, new Position(5,6)));
 		_game_object_container.add(new Wall(this, new Position(6,6)));
 		_game_object_container.add(new Wall(this, new Position(7,6)));

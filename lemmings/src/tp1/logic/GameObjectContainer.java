@@ -60,8 +60,8 @@ public class GameObjectContainer {
 		while(i<objects.size()){
 			GameObject g = objects.get(i);
 
-			//si el objeto no esta vivo y no es la salida
-			if(!g.isExit()&&!g.isAlive()){
+			//si el objeto no esta vivo
+			if(!g.isAlive()){
 				//eliminamos y notificamos según salida o muerte
 				objects.remove(i);
 
@@ -73,7 +73,6 @@ public class GameObjectContainer {
 		}
 	}
 
-	// TODO you should write a toString method to return the string that represents the object status
 	// @Override
 	// public String toString()
 
@@ -117,8 +116,8 @@ public class GameObjectContainer {
 
 	public boolean receiveInteractionsFrom(GameItem obj) {
 		for(GameObject object: objects) {
-			if(object.equalPosition(obj)) {
-				return object.receiveInteraction(obj);
+			if(object.equalPosition(obj) && object.receiveInteraction(obj)){
+					return true;
 			}
 		}
 		return false;

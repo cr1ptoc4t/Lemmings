@@ -21,7 +21,7 @@ public class Lemming extends GameObject {
         super(game, pos);
         this.role = WalkerRole();
         _dir = Direction.RIGHT;
-        _anterior_dir=_dir;
+        _anterior_dir = _dir;
         _fall = 0;
         _falling = false;
     }
@@ -33,7 +33,7 @@ public class Lemming extends GameObject {
 
     public void fall() {
         _falling = true;
-        if(_dir!=Direction.DOWN) {
+        if (_dir != Direction.DOWN) {
             _anterior_dir = _dir;
             _dir = Direction.DOWN;
         }
@@ -107,7 +107,7 @@ public class Lemming extends GameObject {
 
     @Override
     public boolean setRole(LemmingRole role) {
-        if(role.equals(this.role))
+        if (role.equals(this.role))
             return false;
 
         this.role = role;
@@ -130,13 +130,13 @@ public class Lemming extends GameObject {
     }
 
     public void handle_no_damage_fall() {
-        _fall=0;
+        _fall = 0;
         handle_fall();
     }
 
     @Override
     public boolean receiveInteraction(GameItem other) {
-        return other.interactWith(this);
+        return role.receiveInteraction(other, this);
     }
 
     public void checkPosition() {
@@ -145,17 +145,32 @@ public class Lemming extends GameObject {
         }
     }
 
-    public void cave(){
-        if(_dir!=Direction.DOWN)
+    public void cave() {
+        if (_dir != Direction.DOWN)
             _anterior_dir = _dir;
         _dir = Direction.DOWN;
         pos.actualiza(_dir);
     }
 
-    public boolean can_cave(){
+    public boolean can_cave() {
         Position next_pos = new Position(pos);
         next_pos.actualiza(Direction.DOWN);
         return next_pos.valid_position() && game.isWallInPos(next_pos)
                 && !game.isMetalInPos(next_pos);
+    }
+
+    @Override
+    public boolean interactWith(Lemming lemming) {
+        return false;
+    }
+
+    @Override
+    public boolean interactWith(Wall wall) {
+        return true;
+    }
+
+    @Override
+    public boolean interactWith(ExitDoor door) {
+        return role.interactWith(door, this);
     }
 }

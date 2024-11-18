@@ -17,14 +17,9 @@ public abstract class GameObject implements GameItem{
 	}
 	
 	public boolean isInPosition(Position p) {
-		// TODO fill your code here, it should depends on the status of the object
 		return this.pos.equals(p);
 	}
-	/* TODO
-	public boolean equalPosition(GameObject g){
-		return this.pos.equals(g.get_pos());
-	}
-	*/
+
 	public boolean equalPosition(GameItem g){
 		return g.isInPosition(this.pos);
 	}
@@ -67,5 +62,8 @@ public abstract class GameObject implements GameItem{
 
 	public boolean isMetal() {
 		return false;
+	}
+	public void dies() {
+		isAlive = false;
 	}
 }

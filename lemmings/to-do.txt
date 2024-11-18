@@ -12,7 +12,7 @@ GAME                                - DONE
    - reset                          - DONE
    - exit                           - DONE
 
-ACCIONES                            - TODO
+ACCIONES                            - DONE
     - MÉTODO IS IN AIR              - DONE
     - UPDATE LEMMING                - DONE
     - QUE AL METER "" HAGA UPDATE   - DONE
@@ -30,7 +30,7 @@ ACCIONES                            - TODO
     - En mapa 2 añadir lemm normal  - DONE
     - Girar available commands      - DONE
     - Errores correspondientes      - DONE
-    - elimina puerta downcaver      - TODO
+    - elimina puerta downcaver      - DONE
     - cambiar handle_no_damage      - DONE
 
 ERRORES

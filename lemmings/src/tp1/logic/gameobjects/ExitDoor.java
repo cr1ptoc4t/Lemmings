@@ -21,12 +21,15 @@ public class ExitDoor extends GameObject {
 
     @Override
     public boolean receiveInteraction(GameItem other) {
-        return other.interactWith(this);
+        if(other.interactWith(this)){
+            isAlive=false;
+            return true;
+        } return false;
     }
 
     @Override
     public boolean interactWith(Lemming lemming) {
-        return false;
+        return true;
     }
 
     @Override
@@ -44,7 +47,4 @@ public class ExitDoor extends GameObject {
         return true;
     }
 
-    public void die() {
-        isAlive = false;
-    }
 }

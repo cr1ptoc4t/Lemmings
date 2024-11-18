@@ -178,7 +178,7 @@ Por simplicidad, vamos a usar un `ArrayList` con elementos de tipo `GameObject`:
 ```java
 public class GameObjectContainer {
 
-	private List<GameObject> gameObjects;
+	private final List<GameObject> gameObjects;
 
 	public GameObjectContainer() {
 		gameObjects = new ArrayList<>();
@@ -213,11 +213,9 @@ Por ejemplo:
 ```java
 public interface GameModel {
 
-	public boolean isFinished();
+	boolean isFinished();
 	public void update();
-	public void reset();
-	// ...
-}
+	public void rese
 ```
 
 Una vez definidos los interfaces, haremos que `Game` los implemente:
