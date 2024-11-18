@@ -63,7 +63,5 @@ public abstract class GameObject implements GameItem{
 	public boolean isMetal() {
 		return false;
 	}
-	public void dies() {
-		isAlive = false;
-	}
+
 }

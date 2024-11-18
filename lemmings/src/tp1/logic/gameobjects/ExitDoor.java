@@ -42,7 +42,8 @@ public class ExitDoor extends GameObject {
         if(other.interactWith(this)){
             isAlive=false;
             return true;
-        } return false;
+        }
+        return false;
     }
 
     @Override

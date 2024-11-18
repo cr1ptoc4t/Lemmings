@@ -31,6 +31,7 @@ public class Lemming extends GameObject {
     }
 
 
+    // caer
     public void fall() {
         _falling = true;
         if (_dir != Direction.DOWN) {
@@ -42,6 +43,7 @@ public class Lemming extends GameObject {
     }
 
 
+    // paso normal (mirando si puede cambiar de lado)
     public void normal_step() {
         if (should_change_dir()) {
             _changed_dir = !_changed_dir;
@@ -59,6 +61,7 @@ public class Lemming extends GameObject {
     }
 
 
+    // cayendo
     public void handle_fall() {
         if (!game.isInAir(pos)) {
             if (_fall > Game.MAX_FALL)
@@ -114,6 +117,7 @@ public class Lemming extends GameObject {
         return true;
     }
 
+    //devuelve true si el lemming ha llegado a la puerta de salida
     public boolean exits() {
         if (game.isExitDoorInPos(this)) {
             isAlive = false;
@@ -129,6 +133,7 @@ public class Lemming extends GameObject {
         return _falling;
     }
 
+    //caida sin daño
     public void handle_no_damage_fall() {
         _fall = 0;
         handle_fall();
@@ -139,12 +144,14 @@ public class Lemming extends GameObject {
         return role.receiveInteraction(other, this);
     }
 
+    //en caso de estar fuera del mapa -> muere
     public void checkPosition() {
         if (!pos.valid_position()) {
             isAlive = false;
         }
     }
 
+    //cavar (aqui no rompe el muro, pero la interaccion si)
     public void cave() {
         if (_dir != Direction.DOWN)
             _anterior_dir = _dir;
@@ -152,6 +159,7 @@ public class Lemming extends GameObject {
         pos.actualiza(_dir);
     }
 
+    //comprueba si puede cavar
     public boolean can_cave() {
         Position next_pos = new Position(pos);
         next_pos.actualiza(Direction.DOWN);

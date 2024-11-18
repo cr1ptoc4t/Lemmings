@@ -78,9 +78,9 @@ public class Position {
 	}
 
 	//duplicador de posicion
-	public Position(Position posicion2) {
-		this.col = posicion2.get_col();
-		this.row = posicion2.get_row();
+	public Position(Position pos) {
+		this.col = pos.get_col();
+		this.row = pos.get_row();
 	}
 
 
@@ -122,16 +122,13 @@ public class Position {
 	}
 
 	public static Position debajo(Position p) {
-		return new Position(p.col, p.row + 1);
+		return new Position(p.get_col(), p.get_row() + 1);
 	}
 >>>>>>> v2.0
 
+
 	public static int convert(char letter) {
-		if (letter >= 'A' && letter <= 'J') {
-			return letter - 'A';
-		} else {
-			return -1;
-		}
+		return letter - 'A';
 	}
 
 }

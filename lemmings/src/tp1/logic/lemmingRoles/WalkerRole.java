@@ -42,10 +42,7 @@ public class WalkerRole extends AbstractRole {
         else if (d == Direction.LEFT)
             icon = Messages.LEMMING_LEFT;
 
-
         return icon;
-
-
     }
 
 
@@ -65,7 +62,12 @@ public class WalkerRole extends AbstractRole {
     public boolean interactWith(ExitDoor door, Lemming lemming) {
         return false;
     }
-    
+
+    @Override
+    public LemmingRole copia() {
+        return new WalkerRole();
+    }
+
     public String getHelp() {
         return Messages.WALKER_ROL_HELP;
     }

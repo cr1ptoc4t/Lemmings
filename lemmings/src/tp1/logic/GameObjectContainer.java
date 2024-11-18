@@ -95,7 +95,6 @@ public class GameObjectContainer {
 	}
 
 	public boolean isInExit(GameObject g){
-
 		//buscamos la salida
 		int i=0;
 		while(i < objects.size()&& !objects.get(i).isExit()) {
@@ -125,8 +124,9 @@ public class GameObjectContainer {
 
 	public boolean metalInPos(Position position) {
 		for(GameObject object: objects) {
-			if(object.isInPosition(position) && object.isMetal()) {
-				return true;
+			if(object.isInPosition(position)) {
+				//como es solido, solo puede haber una pared de metal en la posicion
+				return object.isMetal();
 			}
 		}
 		return false;

@@ -123,12 +123,6 @@ public class Game implements GameStatus{
         return !_game_object_container.solidInPos(Position.debajo(pos));
     }
 
-
-	// @Override
-	public void lemmingArrived() {
-
-	}
-
 	public void reset() {
 		_game_object_container= new GameObjectContainer();
 		chooseLevel();

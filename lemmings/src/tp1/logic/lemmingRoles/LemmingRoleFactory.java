@@ -17,8 +17,8 @@ public class LemmingRoleFactory {
     public static LemmingRole parse(String input){
         for (LemmingRole role : availableRoles) {
             if (input.equalsIgnoreCase(role.getName()) ||
-                    input.equalsIgnoreCase(role.getShortcut())) {
-                return role;
+                input.equalsIgnoreCase(role.getShortcut())) {
+                return role.copia();
             }
         }
         return null;
@@ -26,11 +26,9 @@ public class LemmingRoleFactory {
 
     public static String helpText() {
         StringBuilder roles = new StringBuilder();
-
         for (LemmingRole role : availableRoles) {
             roles.append(Messages.TAB).append(Messages.TAB).append(role.getHelp());
         }
-
         return roles.toString();
     }
 }

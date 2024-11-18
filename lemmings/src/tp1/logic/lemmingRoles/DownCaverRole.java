@@ -61,6 +61,7 @@ public class DownCaverRole extends AbstractRole {
         return other.interactWith(lemming);
     }
 
+    // devuelven true si existe interaccion
     @Override
     public boolean interactWith(Lemming receiver, Lemming lemming) {
         return false;
@@ -74,6 +75,11 @@ public class DownCaverRole extends AbstractRole {
     @Override
     public boolean interactWith(ExitDoor door, Lemming lemming) {
         return true;
+    }
+
+    @Override
+    public LemmingRole copia() {
+        return new DownCaverRole();
     }
 
 }
