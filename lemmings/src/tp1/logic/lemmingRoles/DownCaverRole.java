@@ -68,12 +68,11 @@ public class DownCaverRole extends AbstractRole {
 
     @Override
     public boolean interactWith(Wall wall, Lemming lemming) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean interactWith(ExitDoor door, Lemming lemming) {
-        door.die();
         return true;
     }
 

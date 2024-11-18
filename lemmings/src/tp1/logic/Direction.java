@@ -7,8 +7,8 @@ package tp1.logic;
 public enum Direction {
 	LEFT(-1,0), RIGHT(1,0), DOWN(0,1), UP(0,-1), NONE(0,0);
 	
-	private int x;
-	private int y;
+	private final int x;
+	private final int y;
 	
 	private Direction(int x, int y) {
 		this.x=x;
@@ -24,7 +24,6 @@ public enum Direction {
 	}
 
 
-	//TODO fill your code
 
 	public Direction opposite(){
 		Direction dir;

@@ -41,12 +41,14 @@ public class Wall extends GameObject{
 
     @Override
     public boolean receiveInteraction(GameItem other) {
-        return other.interactWith(this);
+        if(other.interactWith(this)){
+            isAlive=false;
+            return true;
+        } return false;
     }
 
     @Override
     public boolean interactWith(Lemming lemming) {
-        isAlive = false;
         return true;
     }
 
@@ -64,4 +66,5 @@ public class Wall extends GameObject{
         return true;
 >>>>>>> v2.0
     }
+
 }
