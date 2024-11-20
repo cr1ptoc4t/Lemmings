@@ -1,5 +1,6 @@
 package tp1.control.commands;
 
+import tp1.exceptions.*;
 import tp1.logic.Game;
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.LemmingRole;
@@ -28,33 +29,41 @@ public class SetRoleCommand extends Command {
     }
 
     @Override
-    public void execute(Game game, GameView view) {
-        if (_pos.valid_position() && (game.setRole(_role, _pos)) ){
+    public void execute(Game game, GameView view) throws CommandExecuteException {
+        try {
+            if (game.setRole(_role, _pos)) {
                 game.update();
                 view.showGame();
-        } else
-            view.showError(Messages.COMMAND_ROLE_ERROR + Messages.ERROR_INVALID_POSITION);
+            }
+        } catch (OffBoardException e) {
+            view.showError(e.getMessage());
+            throw new CommandExecuteException(Messages.COMMAND_ROLE_ERROR);
+        }
     }
 
     @Override
-    public Command parse(String[] commandWords) {
+    public Command parse(String[] commandWords) throws GameParseException {
         if (commandWords.length == 4) {
             if (this.matchCommandName(commandWords[0])) {
-                LemmingRole role = LemmingRoleFactory.parse(commandWords[1]);
-                if (role != null) {
-                    String x_str = commandWords[3];
-                    String y_str = commandWords[2];
-                    // check primer caracter es un numero y segundo no
-                    if(Character.isDigit(x_str.charAt(0)) && !Character.isDigit(y_str.charAt(0))) {
+                try {
+                    LemmingRole role = LemmingRoleFactory.parse(commandWords[1]);
+                    if (role != null) {
+                        String x_str = commandWords[3];
+                        String y_str = commandWords[2];
+                        // check primer caracter es un numero y segundo no
+                        if (Character.isDigit(x_str.charAt(0)) && !Character.isDigit(y_str.charAt(0))) {
                             int x = Integer.parseInt(x_str) - 1;
                             int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
                             // no hace falta mirar si la posicion es correcta porque ya lo hace el execute
                             return new SetRoleCommand(role, new Position(x, y));
+                        } else throw new GameParseException(Messages.EXC_INVALID_COMMAND_PARAM, null);
                     }
+                } catch (RoleParseException e) {
+                    throw new GameParseException(Messages.UNKNOWN_ROLE, e);
                 }
             }
-        }
-        return null;
+        }  throw new GameParseException(Messages.INVALID_COMMAND, null);
+
     }
 
     @Override

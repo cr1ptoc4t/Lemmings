@@ -1,5 +1,6 @@
 package tp1.logic;
 
+import tp1.exceptions.OffBoardException;
 import tp1.logic.gameobjects.*;
 import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.lemmingRoles.LemmingRoleFactory;
@@ -199,8 +200,12 @@ public class Game implements GameStatus{
 		_game_object_container.add(new Lemming(this,new Position(0,8)));
 		_game_object_container.add(new Lemming(this,new Position(9,0)));
 		_game_object_container.add(new Lemming(this,new Position(6,0)));
+
 		Lemming parachuter = new Lemming(this,new Position(6,0));
-		parachuter.setRole(LemmingRoleFactory.parse(Messages.PARACHUTE_ROL_NAME));
+		try {
+			parachuter.setRole(LemmingRoleFactory.parse(Messages.PARACHUTE_ROL_NAME));
+		} catch (Exception e) {
+		}
 		_game_object_container.add(parachuter);
 
 
@@ -234,7 +239,10 @@ public class Game implements GameStatus{
 		_game_object_container.add(new Lemming(this,new Position(2,3)));
 
 		Lemming parachuter = new Lemming(this,new Position(6,0));
-		parachuter.setRole(LemmingRoleFactory.parse("Parachuter"));
+		try {
+			parachuter.setRole(LemmingRoleFactory.parse("Parachuter"));
+		}catch (Exception e) {
+		}
 		_game_object_container.add(parachuter);
 
 
@@ -273,7 +281,9 @@ public class Game implements GameStatus{
 		return _game_object_container.isInExit(g);
 	}
 
-	public boolean setRole(LemmingRole role, Position pos) {
-		return _game_object_container.setRole(role, pos);
+	public boolean setRole(LemmingRole role, Position pos) throws OffBoardException {
+		if(!pos.valid_position())
+			throw new OffBoardException(Messages.INVALID_POSITION, null);
+		else return _game_object_container.setRole(role, pos);
 	}
 }

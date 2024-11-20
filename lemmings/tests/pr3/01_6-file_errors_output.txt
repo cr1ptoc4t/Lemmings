@@ -20,5 +20,46 @@ Lemmings exit door: 0 ┃2
    └——————————————————————————————————————————————————┘
       1    2    3    4    5    6    7    8    9   10  
 
-Command > [DEBUG] Executing: setRole Walker I 2 33
+Command > [DEBUG] Executing: load conf
 
+[ERROR] Error: null
+
+Command > [DEBUG] Executing: load conf_2
+
+[ERROR] Error: null
+
+Command > [DEBUG] Executing: load conf_3
+
+[ERROR] Error: null
+
+Command > [DEBUG] Executing: load conf_4
+
+[ERROR] Error: null
+
+Command > [DEBUG] Executing: load conf_5
+
+[ERROR] Error: null
+
+Command > [DEBUG] Executing: load conf_6
+
+[ERROR] Error: null
+
+Command > [DEBUG] Executing: load conf_7		
+
+[ERROR] Error: null
+
+Command > [DEBUG] Executing: load conf_8
+
+[ERROR] Error: null
+
+Command > [DEBUG] Executing: load conf_9
+
+[ERROR] Error: null
+
+Command > [DEBUG] Executing: load conf_0
+
+[ERROR] Error: null
+
+Command > [DEBUG] Executing: exit
+
+Player leaves the game

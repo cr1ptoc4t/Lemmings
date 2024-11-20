@@ -1,4 +1,4 @@
-Lemmings 2.2
+Lemmings 3.0
 
 Number of cycles: 0
 Lemmings in board: 4
@@ -46,7 +46,7 @@ Available commands:
 
 Command > [DEBUG] Executing: noExiste
 
-[ERROR] Error: Unknown command: noExiste
+[ERROR] Error: null
 
 Command > [DEBUG] Executing: none
 
@@ -138,7 +138,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: rEsEt 134
 
-[ERROR] Error: Unknown command: rEsEt
+[ERROR] Error: null
 
 Command > [DEBUG] Executing: none
 
@@ -164,7 +164,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: r 230
 
-[ERROR] Error: Unknown command: r
+[ERROR] Error: null
 
 Command > [DEBUG] Executing: 
 
