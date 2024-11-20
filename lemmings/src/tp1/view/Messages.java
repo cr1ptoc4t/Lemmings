@@ -4,7 +4,7 @@ import tp1.util.MyStringUtils;
 
 public class Messages {
 
-	public static final String VERSION = "2.2";
+	public static final String VERSION = "3.0";
 
 	public static final String GAME_NAME = "Lemmings";
 
@@ -97,7 +97,7 @@ public class Messages {
 	public static final String COMMAND_RESET_NAME = "reset";
 	public static final String COMMAND_RESET_SHORTCUT = "r";
 	public static final String COMMAND_RESET_DETAILS = "[r]eset";
-	public static final String COMMAND_RESET_HELP = "start a new game\n";
+	public static final String COMMAND_RESET_HELP = "reset the game to initial configuration\n";
 
 	// HELP
 	public static final String COMMAND_HELP_NAME = "help";
@@ -105,11 +105,17 @@ public class Messages {
 	public static final String COMMAND_HELP_DETAILS = "[h]elp";
 	public static final String COMMAND_HELP_HELP = "print this help message\n";
 
+	// LOAD
+	public static final String COMMAND_LOAD_NAME = "load";
+	public static final String COMMAND_LOAD_SHORTCUT = "l";
+	public static final String COMMAND_LOAD_DETAILS = "[l]oad <fileName>";
+	public static final String COMMAND_LOAD_HELP = "load the game configuration from text file <fileName>\n";
+
 	// SET ROLE
 	public static final String COMMAND_ROLE_NAME = "SetRole";
 	public static final String COMMAND_ROLE_SHORTCUT = "SR";
 	public static final String COMMAND_ROLE_DETAILS = "[s]et[R]ole ROLE ROW COL:";
-	public static final String COMMAND_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROL\n";
+	public static final String COMMAND_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE\n";
 
 	//Roles
 	public static final String WALKER_ROL_SHORTCUT = "W";
@@ -137,4 +143,14 @@ public class Messages {
 
 	public static final String ERROR_INVALID_POSITION = "(Incorrect position or no object in that position admits that role)";
 	public static final String COMMAND_ROLE_ERROR = "SetRoleCommand error ";
+
+	//exceptions
+	public static final String COMMAND_EXECUTE_EXCEPTION = "CommandExecuteException";
+	public static final String EXC_NO_LEMMING_IN_POS = "No lemming in position a admits role b";
+	public static final String EXC_INVALID_COMMAND_PARAM = "Invalid command parameters";
+	public static final String EXC_COMM_EXECUTE_PROBLEM = "Command execute problem";
+	public static final String EXC_OFF_BOARD = "Position (A,B) is off board";
+	public static final String COMMAND_PARSE_EXCEPTION = "CommandParseException";
+
+
 }
