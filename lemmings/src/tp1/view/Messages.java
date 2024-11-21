@@ -145,11 +145,11 @@ public class Messages {
 	public static final String COMMAND_ROLE_ERROR = "SetRoleCommand error ";
 
 	//exceptions
-	public static final String COMMAND_EXECUTE_EXCEPTION = "CommandExecuteException";
-	public static final String EXC_NO_LEMMING_IN_POS = "No lemming in position a admits role b";
+	public static final String COMMAND_EXECUTE_EXCEPTION = "Command execute problem";
+	public static final String EXC_NO_LEMMING_IN_POS = "No lemming in position %s admits role %s";
 	public static final String EXC_INVALID_COMMAND_PARAM = "Invalid command parameters";
 	public static final String EXC_COMM_EXECUTE_PROBLEM = "Command execute problem";
-	public static final String EXC_OFF_BOARD = "Position (A,B) is off board";
+	public static final String EXC_OFF_BOARD = "Position %s is off board";
 	public static final String COMMAND_PARSE_EXCEPTION = "CommandParseException";
 
 

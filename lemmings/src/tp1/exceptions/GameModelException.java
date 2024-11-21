@@ -8,4 +8,8 @@ public class GameModelException extends Exception {
     public GameModelException() {
         super();
     }
+
+    public GameModelException(String message) {
+        super(message);
+    }
 }
