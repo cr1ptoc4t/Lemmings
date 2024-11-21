@@ -36,34 +36,35 @@ public class SetRoleCommand extends Command {
                 view.showGame();
             }
         } catch (OffBoardException e) {
-            view.showError(e.getMessage());
-            throw new CommandExecuteException(Messages.COMMAND_ROLE_ERROR);
+            throw new CommandExecuteException(Messages.COMMAND_EXECUTE_EXCEPTION, e);
         }
     }
 
     @Override
     public Command parse(String[] commandWords) throws GameParseException {
         if (commandWords.length == 4) {
-            if (this.matchCommandName(commandWords[0])) {
-                try {
-                    LemmingRole role = LemmingRoleFactory.parse(commandWords[1]);
-                    if (role != null) {
-                        String x_str = commandWords[3];
-                        String y_str = commandWords[2];
-                        // check primer caracter es un numero y segundo no
-                        if (Character.isDigit(x_str.charAt(0)) && !Character.isDigit(y_str.charAt(0))) {
-                            int x = Integer.parseInt(x_str) - 1;
-                            int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
-                            // no hace falta mirar si la posicion es correcta porque ya lo hace el execute
-                            return new SetRoleCommand(role, new Position(x, y));
-                        } else throw new GameParseException(Messages.EXC_INVALID_COMMAND_PARAM, null);
-                    }
-                } catch (RoleParseException e) {
-                    throw new GameParseException(Messages.UNKNOWN_ROLE, e);
-                }
+            //if (this.matchCommandName(commandWords[0])) {
+            LemmingRole role;
+            try {
+                role = LemmingRoleFactory.parse(commandWords[1]);
+            } catch (RoleParseException e) {
+                throw new GameParseException(String.format(Messages.UNKNOWN_ROLE, commandWords[1]));
             }
-        }  throw new GameParseException(Messages.INVALID_COMMAND, null);
-
+            //  if (role != null) {
+            String x_str = commandWords[3];
+            String y_str = commandWords[2];
+            // check primer caracter es un numero y segundo no
+            if (Character.isDigit(x_str.charAt(0)) && !Character.isDigit(y_str.charAt(0))) {
+                int x = Integer.parseInt(x_str) - 1;
+                int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
+                // no hace falta mirar si la posicion es correcta porque ya lo hace el execute
+                return new SetRoleCommand(role, new Position(x, y));
+            } else throw new GameParseException(Messages.EXC_INVALID_COMMAND_PARAM, null);
+            //}
+            //}
+        } else
+            throw new GameParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
+        //throw new GameParseException(Messages.INVALID_COMMAND, null);
     }
 
     @Override

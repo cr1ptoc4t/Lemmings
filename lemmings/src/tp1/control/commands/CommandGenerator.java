@@ -23,10 +23,12 @@ public class CommandGenerator {
             for (Command c : availableCommands) {
                 if (c.matchCommandName(commandWords[0]))
                     return c.parse(commandWords);
-            } throw new CommandParseException("Invalid command parameters");
+            }
         } catch (GameParseException e) {
-            throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
+            throw new CommandParseException(Messages.EXC_INVALID_COMMAND_PARAM, e);
+            // throw new CommandParseException(e.getMessage());
         }
+        throw new CommandParseException(Messages.EXC_INVALID_COMMAND_PARAM);
     }
 
     public static String commandHelp() {

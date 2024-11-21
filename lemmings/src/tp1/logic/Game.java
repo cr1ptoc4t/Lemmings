@@ -283,7 +283,10 @@ public class Game implements GameStatus{
 
 	public boolean setRole(LemmingRole role, Position pos) throws OffBoardException {
 		if(!pos.valid_position())
-			throw new OffBoardException(Messages.INVALID_POSITION, null);
-		else return _game_object_container.setRole(role, pos);
+			throw new OffBoardException(String.format(Messages.EXC_OFF_BOARD, pos.toString()), null);
+		if(_game_object_container.setRole(role, pos))
+			return true;
+		else
+			throw new OffBoardException(String.format(Messages.EXC_NO_LEMMING_IN_POS,pos.toString(), role.getName()), null);
 	}
 }

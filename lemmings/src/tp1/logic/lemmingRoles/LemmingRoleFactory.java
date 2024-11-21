@@ -22,7 +22,7 @@ public class LemmingRoleFactory {
                 return role.copia();
             }
         }
-        throw new RoleParseException(Messages.EXC_INVALID_COMMAND_PARAM, null);
+        throw new RoleParseException(Messages.UNKNOWN_ROLE, null);
     }
 
     public static String helpText() {

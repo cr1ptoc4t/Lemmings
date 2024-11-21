@@ -66,5 +66,9 @@ public class Position {
 	public static int convert(char letter) {
 		return letter - 'A';
 	}
+	@Override
+	public  String toString(){
+		return "("+get_row()+","+get_col()+")";
+	}
 
 }
