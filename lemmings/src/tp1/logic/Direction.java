@@ -32,6 +32,12 @@ public enum Direction {
 
 		return dir;
 	}
-	
+
+	public static Direction parse(String str) {
+		for(Direction d : Direction.values())
+			if(d.name().equalsIgnoreCase(str))
+				return d;
+		return Direction.NONE;
+	}
 	
 }

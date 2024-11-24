@@ -22,43 +22,63 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: load conf
 
-[ERROR] Error: null
+[ERROR] Error: Error loading file
+
+[ERROR] Error: Error loading file
 
 Command > [DEBUG] Executing: load conf_2
 
-[ERROR] Error: null
+[ERROR] Error: Error loading file
+
+[ERROR] Error: Error loading file
 
 Command > [DEBUG] Executing: load conf_3
 
-[ERROR] Error: null
+[ERROR] Error: Error loading file
+
+[ERROR] Error: Error loading file
 
 Command > [DEBUG] Executing: load conf_4
 
-[ERROR] Error: null
+[ERROR] Error: Error loading file
+
+[ERROR] Error: Error loading file
 
 Command > [DEBUG] Executing: load conf_5
 
-[ERROR] Error: null
+[ERROR] Error: Error loading file
+
+[ERROR] Error: Error loading file
 
 Command > [DEBUG] Executing: load conf_6
 
-[ERROR] Error: null
+[ERROR] Error: Error loading file
+
+[ERROR] Error: Error loading file
 
 Command > [DEBUG] Executing: load conf_7		
 
-[ERROR] Error: null
+[ERROR] Error: Error loading file
+
+[ERROR] Error: Error loading file
 
 Command > [DEBUG] Executing: load conf_8
 
-[ERROR] Error: null
+[ERROR] Error: Error loading file
+
+[ERROR] Error: Error loading file
 
 Command > [DEBUG] Executing: load conf_9
 
-[ERROR] Error: null
+[ERROR] Error: Error loading file
+
+[ERROR] Error: Error loading file
 
 Command > [DEBUG] Executing: load conf_0
 
-[ERROR] Error: null
+[ERROR] Error: Error loading file
+
+[ERROR] Error: Error loading file
 
 Command > [DEBUG] Executing: exit
 

@@ -20,6 +20,11 @@ public class Position {
 		this.row = pos.get_row();
 	}
 
+	public Position(String pos) {
+		this.col = convert(pos.charAt(0));
+		this.row = Integer.parseInt(pos.substring(1)) - 1;
+	}
+
 
 	@Override
 	public int hashCode() {

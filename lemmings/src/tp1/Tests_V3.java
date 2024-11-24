@@ -27,10 +27,10 @@ public class Tests_V3 {
             , "01_1-command", "01_2-play"
             , "01_3-newRoles"
             , "01_4-newRoles_errors"
-            , "02_1-newRoles"
             , "01_5-newRoles_conf_0"
             , "01_6-file_errors"
             , "01_7-file_reset"
+            , "02_1-newRoles"
             , "02_2-reset_load_save"
     };
 

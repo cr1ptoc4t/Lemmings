@@ -26,7 +26,12 @@ public class LoadCommand extends Command {
 
     @Override
     public void execute(Game game, GameView view) throws CommandExecuteException {
-
+        try {
+            game.load(_file);
+            view.showGame();
+        } catch (Exception e) {
+            throw new CommandExecuteException(Messages.ERROR_LOADING_FILE, e);
+        }
     }
 
     @Override
@@ -35,6 +40,5 @@ public class LoadCommand extends Command {
         else return new LoadCommand(commandWords[1]);
 
     }
-
 
 }

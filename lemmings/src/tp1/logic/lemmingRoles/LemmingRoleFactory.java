@@ -1,6 +1,5 @@
 package tp1.logic.lemmingRoles;
 
-import tp1.control.commands.*;
 import tp1.exceptions.RoleParseException;
 import tp1.view.Messages;
 
@@ -22,7 +21,7 @@ public class LemmingRoleFactory {
                 return role.copia();
             }
         }
-        throw new RoleParseException(Messages.UNKNOWN_ROLE, null);
+        throw new RoleParseException(String.format(Messages.UNKNOWN_ROLE, input));
     }
 
     public static String helpText() {

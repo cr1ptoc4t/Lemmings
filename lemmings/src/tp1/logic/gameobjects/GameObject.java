@@ -1,6 +1,10 @@
 package tp1.logic.gameobjects;
 
+import tp1.exceptions.ObjectParseException;
+import tp1.exceptions.OffBoardException;
+import tp1.logic.Direction;
 import tp1.logic.Game;
+import tp1.logic.GameWorld;
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.LemmingRole;
 
@@ -8,12 +12,15 @@ public abstract class GameObject implements GameItem{
 
 	protected Position pos;
 	protected boolean isAlive;
-	protected Game game;
+	protected GameWorld game;
 	
-	public GameObject(Game game, Position pos) {
+	public GameObject(GameWorld game, Position pos) {
 		this.isAlive = true;
 		this.pos = pos;
 		this.game = game;
+	}
+	public GameObject(){
+
 	}
 	
 	public boolean isInPosition(Position p) {
@@ -64,4 +71,9 @@ public abstract class GameObject implements GameItem{
 		return false;
 	}
 
-}
+	public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException {
+		throw new ObjectParseException("Error: Invalid object");
+	}
+
+	public abstract String getName();
+	}

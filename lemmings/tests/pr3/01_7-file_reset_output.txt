@@ -22,7 +22,9 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: load conf_0
 
-[ERROR] Error: null
+[ERROR] Error: Error loading file
+
+[ERROR] Error: Error loading file
 
 Command > [DEBUG] Executing: none
 

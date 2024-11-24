@@ -2,8 +2,10 @@ package tp1.control.commands;
 
 import tp1.exceptions.CommandParseException;
 import tp1.exceptions.GameParseException;
+import tp1.exceptions.RoleParseException;
 import tp1.view.Messages;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,16 +21,16 @@ public class CommandGenerator {
     );
 
     public static Command parse(String[] commandWords) throws CommandParseException {
-        try {
+        //try {
             for (Command c : availableCommands) {
-                if (c.matchCommandName(commandWords[0]))
+                if (c.matchCommandName(commandWords[0])) {
                     return c.parse(commandWords);
+                }
             }
-        } catch (GameParseException e) {
-            throw new CommandParseException(Messages.EXC_INVALID_COMMAND_PARAM, e);
-            // throw new CommandParseException(e.getMessage());
-        }
-        throw new CommandParseException(Messages.EXC_INVALID_COMMAND_PARAM);
+        //} //catch (CommandParseException e) {
+          //  throw new CommandParseException(e.getMessage());
+        //}
+        throw new CommandParseException(String.format(Messages.UNKNOWN_COMMAND, commandWords[0]));
     }
 
     public static String commandHelp() {

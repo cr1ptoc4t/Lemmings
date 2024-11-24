@@ -153,4 +153,6 @@ public class Messages {
 	public static final String COMMAND_PARSE_EXCEPTION = "CommandParseException";
 
 
+	public static final String ERROR_LOADING_FILE = "Error loading file";
+    public static final String INCORRECT_GAME_STATUS = "Incorrect game status %s";
 }

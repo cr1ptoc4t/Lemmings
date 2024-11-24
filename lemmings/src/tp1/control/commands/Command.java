@@ -28,7 +28,7 @@ public abstract class Command {
 	protected String getHelp() { return help; }
 
 	public abstract void execute(Game game, GameView view) throws CommandExecuteException;
-	public abstract Command parse(String[] commandWords) throws CommandParseException, GameParseException;
+	public abstract Command parse(String[] commandWords) throws CommandParseException;
 
 	protected boolean matchCommandName(String name) {
 		return getShortcut().equalsIgnoreCase(name) || 

@@ -1,13 +1,20 @@
 package tp1.logic.gameobjects;
 
+import tp1.exceptions.ObjectParseException;
+import tp1.exceptions.OffBoardException;
 import tp1.logic.Game;
+import tp1.logic.GameWorld;
 import tp1.logic.Position;
 import tp1.view.Messages;
 
 public class Wall extends GameObject{
 
-    public Wall(Game game, Position pos) {
+    public Wall(GameWorld game, Position pos) {
         super(game, pos);
+    }
+
+    public Wall() {
+
     }
 
     @Override
@@ -47,4 +54,27 @@ public class Wall extends GameObject{
         return true;
     }
 
+
+    public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException {
+        String[] words = line.trim().split("\\s+");
+
+        if (!words[1].equalsIgnoreCase(toString()))
+            return null;
+
+        try {
+            Position p = new Position(words[0]);
+            if(!p.valid_position())
+                throw new OffBoardException(Messages.INVALID_POSITION);
+
+            return new Wall(game, p);
+        }catch (Exception e){
+            throw new ObjectParseException("Invalid Wall");
+        }
+
+    }
+
+    @Override
+    public String getName() {
+        return "Wall";
+    }
 }
