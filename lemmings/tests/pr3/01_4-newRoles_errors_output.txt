@@ -22,8 +22,6 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: setRole Walker I 2 33
 
-[ERROR] Error: Invalid command parameters
-
 [ERROR] Error: Incorrect parameter number
 
 Command > [DEBUG] Executing: setRole Patata I 2
@@ -34,19 +32,13 @@ Command > [DEBUG] Executing: setRole Patata I 2
 
 Command > [DEBUG] Executing: sEtROle Walker I 1
 
-[ERROR] Error: Command execute problem
-
 [ERROR] Error: No lemming in position (8,0) admits role Walker
 
 Command > [DEBUG] Executing: sEtROle w I 1
 
-[ERROR] Error: Command execute problem
-
 [ERROR] Error: No lemming in position (8,0) admits role Walker
 
 Command > [DEBUG] Executing: setRole Parachuter A 1
-
-[ERROR] Error: Command execute problem
 
 [ERROR] Error: No lemming in position (0,0) admits role Parachuter
 
@@ -107,8 +99,6 @@ Lemmings exit door: 0 ┃2
       1    2    3    4    5    6    7    8    9   10  
 
 Command > [DEBUG] Executing: setRole Parachuter C 10
-
-[ERROR] Error: Command execute problem
 
 [ERROR] Error: No lemming in position (2,9) admits role Parachuter
 

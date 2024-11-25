@@ -131,4 +131,11 @@ public class GameObjectContainer {
 		}
 		return false;
 	}
+
+	public void setNewGame(int lemmings, int dead_lemmings, int exit_lemmings){
+		objects.clear();
+		this._lemmings = lemmings;
+		this._dead_lemmings = dead_lemmings;
+		this._exit_lemmings = exit_lemmings;
+	}
 }

@@ -44,11 +44,11 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: setRole P B 7
 
-[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
+[ERROR] Error: No lemming in position (1,6) admits role Parachuter
 
 Command > [DEBUG] Executing: setRole w C 7
 
-[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
+[ERROR] Error: No lemming in position (2,6) admits role Walker
 
 Command > [DEBUG] Executing: setRole Dc D 4
 
@@ -74,7 +74,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: setRole DC E 4
 
-[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
+[ERROR] Error: No lemming in position (4,3) admits role DownCaver
 
 Command > [DEBUG] Executing: setRole waLker C 7
 
@@ -100,7 +100,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: setRole W C 7
 
-[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
+[ERROR] Error: No lemming in position (2,6) admits role Walker
 
 Command > [DEBUG] Executing: noNe
 

@@ -83,6 +83,12 @@ public class Position {
 		this.row = pos.get_row();
 	}
 
+	public Position(String pos) {
+		String[] parts = pos.substring(1, pos.length() - 1).split(",\\s*");
+		this.row = Integer.parseInt(parts[0]);
+		this.col = Integer.parseInt(parts[1]);
+	}
+
 
 	@Override
 	public int hashCode() {

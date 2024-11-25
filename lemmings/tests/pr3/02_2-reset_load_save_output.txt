@@ -66,7 +66,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: save patata
 
-[ERROR] Error: null
+[ERROR] Error: Unknown command: save
 
 Command > [DEBUG] Executing: n
 
@@ -114,7 +114,9 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: load patata
 
-[ERROR] Error: null
+[ERROR] Error: Invalid file "patata" configuration
+
+[ERROR] Error: File not found: "patata"
 
 Command > [DEBUG] Executing: none
 

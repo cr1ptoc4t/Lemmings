@@ -2,6 +2,7 @@ package tp1.control.commands;
 
 import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
+import tp1.exceptions.GameLoadException;
 import tp1.logic.Game;
 import tp1.view.GameView;
 import tp1.view.Messages;
@@ -26,7 +27,12 @@ public class LoadCommand extends Command {
 
     @Override
     public void execute(Game game, GameView view) throws CommandExecuteException {
-
+        try {
+            game.load(_file);
+            view.showGame();
+        } catch (GameLoadException e) {
+            throw new CommandExecuteException(String.format(Messages.INVALID_FILE_CONF, _file), e);
+        }
     }
 
     @Override
@@ -35,6 +41,5 @@ public class LoadCommand extends Command {
         else return new LoadCommand(commandWords[1]);
 
     }
-
 
 }

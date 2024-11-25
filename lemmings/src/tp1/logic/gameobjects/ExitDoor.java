@@ -1,30 +1,22 @@
 package tp1.logic.gameobjects;
 
-<<<<<<< HEAD
-import tp1.logic.Position;
-import tp1.view.Messages;
-
-public class ExitDoor {
-
-    private final Position _pos;
-
-    public ExitDoor(Position _pos){
-        this._pos=_pos;
-    }
-
-    public String toString(){
-        return Messages.EXIT_DOOR;
-    }
-    public boolean isInPos(Position p){
-        return p.equals(_pos);
-=======
+import tp1.exceptions.ObjectParseException;
+import tp1.exceptions.OffBoardException;
+import tp1.logic.Direction;
 import tp1.logic.Game;
+import tp1.logic.GameWorld;
 import tp1.logic.Position;
+import tp1.logic.lemmingRoles.LemmingRole;
+import tp1.logic.lemmingRoles.LemmingRoleFactory;
 import tp1.view.Messages;
 
 public class ExitDoor extends GameObject {
-    public ExitDoor(Game game, Position pos) {
+    public ExitDoor(GameWorld game, Position pos) {
         super(game, pos);
+    }
+
+    public ExitDoor() {
+
     }
 
     @Override
@@ -64,7 +56,29 @@ public class ExitDoor extends GameObject {
     @Override
     public boolean isExit() {
         return true;
->>>>>>> v2.0
     }
 
+
+    public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException {
+        String[] words = line.trim().split("\\s+");
+
+        if (!words[1].equalsIgnoreCase(getName()))
+            return null;
+
+        try {
+            Position p = new Position(words[0]);
+            if(!p.valid_position())
+                throw new OffBoardException(Messages.INVALID_POSITION);
+
+            return new ExitDoor(game, p);
+        }catch (Exception e){
+            throw new ObjectParseException("Invalid ExitDoor");
+        }
+
+    }
+
+    @Override
+    public String getName() {
+        return Messages.EXITDOOR_NAME;
+    }
 }

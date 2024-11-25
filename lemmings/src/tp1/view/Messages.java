@@ -48,7 +48,7 @@ public class Messages {
 	//Commands
 	// Errores de factorías:
 	public static final String UNKNOWN_COMMAND = "Unknown command: %s";
-	public static final String UNKNOWN_GAME_OBJECT = "Unknown game object: %s";
+	public static final String UNKNOWN_GAME_OBJECT = "Unknown game object: \"%s\"";
 	public static final String UNKNOWN_ROLE = "Unknown role: %s";
 	// Errores de commandos:
 	public static final String COMMAND_PARAMETERS_MISSING = "Missing parameters";
@@ -128,9 +128,17 @@ public class Messages {
 	public static final String WALL = MyStringUtils.repeat("▓",ConsoleView.CELL_SIZE);
 	public static final String EXIT_DOOR = "🚪";
 
+
 	public static final String LEMMING_RIGHT = "B";
 	public static final String LEMMING_LEFT = "ᗺ";
 	public static final String LEMMING_PARACHUTE = "🪂";
+
+	//NAMES
+	public static final String LEMMING_NAME = "Lemming";
+	public static final String WALL_NAME = "Wall";
+	public static final String METALWALL_NAME = "MetalWall";
+	public static final String EXITDOOR_NAME = "ExitDoor";
+
 
 	public static final String PARACHUTE_ROL_SYMBOL = "P";
 	public static final String PARACHUTE_ROL_HELP = "[P]arachuter: Lemming falls with a parachute\n";
@@ -153,4 +161,9 @@ public class Messages {
 	public static final String COMMAND_PARSE_EXCEPTION = "CommandParseException";
 
 
+	public static final String ERROR_LOADING_FILE = "Error loading file";
+    public static final String INCORRECT_GAME_STATUS = "Invalid game status \"%s\"";
+	public static final String INVALID_FILE_CONF = "Invalid file \"%s\" configuration";
+	public static final String OBJ_POS_OFF = "Object position is off board: \"%s\"";
+	public static final String UNKNOWN_DIRECTION = "Unknown object direction: \"%s\"";
 }

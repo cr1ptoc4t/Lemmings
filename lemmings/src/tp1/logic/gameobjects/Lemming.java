@@ -1,9 +1,14 @@
 package tp1.logic.gameobjects;
 
+import tp1.exceptions.ObjectParseException;
+import tp1.exceptions.OffBoardException;
+import tp1.exceptions.RoleParseException;
 import tp1.logic.Direction;
 import tp1.logic.Game;
+import tp1.logic.GameWorld;
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.LemmingRole;
+import tp1.logic.lemmingRoles.LemmingRoleFactory;
 import tp1.logic.lemmingRoles.WalkerRole;
 import tp1.view.Messages;
 
@@ -17,7 +22,7 @@ public class Lemming extends GameObject {
     private int _fall;
     private boolean _falling;
 
-    public Lemming(Game game, Position pos) {
+    public Lemming(GameWorld game, Position pos) {
         super(game, pos);
         this.role = WalkerRole();
         _dir = Direction.RIGHT;
@@ -26,10 +31,26 @@ public class Lemming extends GameObject {
         _falling = false;
     }
 
+    public Lemming() {
+        this.role = WalkerRole();
+    }
+
+    public Lemming(GameWorld game, Position pos, Direction dir, int fall, LemmingRole role) {
+        super(game, pos);
+        this.role = role;
+        _dir = dir;
+        _anterior_dir = _dir;
+        _fall = fall;
+        _falling = false;
+    }
+
     private WalkerRole WalkerRole() {
         return new WalkerRole();
     }
 
+    public String getName() {
+        return Messages.LEMMING_NAME;
+    }
 
     // caer
     public void fall() {
@@ -180,5 +201,28 @@ public class Lemming extends GameObject {
     @Override
     public boolean interactWith(ExitDoor door) {
         return role.interactWith(door, this);
+    }
+
+    public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException {
+        String[] words = line.trim().split("\\s+");
+
+        if (!words[1].equalsIgnoreCase("Lemming"))
+            return null;
+
+        try {
+            Position p = new Position(words[0]);
+            if (!p.valid_position())
+                throw new OffBoardException(Messages.INVALID_POSITION);
+            Direction d = Direction.parse(words[2]);
+            if(d==null)
+                throw new ObjectParseException(String.format(Messages.UNKNOWN_DIRECTION, line));
+
+            int fall = Integer.parseInt(words[3]);
+            LemmingRole role = LemmingRoleFactory.parse(words[4]);
+            return new Lemming(game, p, d, fall, role);
+        } catch (NumberFormatException | RoleParseException e) {
+            throw new ObjectParseException("Invalid Lemming");
+        }
+
     }
 }

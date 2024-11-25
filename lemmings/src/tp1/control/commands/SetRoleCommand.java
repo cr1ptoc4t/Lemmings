@@ -8,6 +8,8 @@ import tp1.logic.lemmingRoles.LemmingRoleFactory;
 import tp1.view.GameView;
 import tp1.view.Messages;
 
+import java.lang.NumberFormatException;
+
 
 public class SetRoleCommand extends Command {
 
@@ -30,41 +32,39 @@ public class SetRoleCommand extends Command {
 
     @Override
     public void execute(Game game, GameView view) throws CommandExecuteException {
+
         try {
-            if (game.setRole(_role, _pos)) {
-                game.update();
-                view.showGame();
+            if (!game.setRole(_role, _pos)) {
+                throw new CommandExecuteException(String.format(Messages.EXC_NO_LEMMING_IN_POS, _pos.toString(), _role.getName()), null);
             }
+            game.update();
+            view.showGame();
         } catch (OffBoardException e) {
             throw new CommandExecuteException(Messages.COMMAND_EXECUTE_EXCEPTION, e);
+            //throw new CommandExecuteException(e.getMessage());
         }
     }
 
     @Override
-    public Command parse(String[] commandWords) throws GameParseException {
+    public Command parse(String[] commandWords) throws CommandParseException {
         if (commandWords.length == 4) {
-            //if (this.matchCommandName(commandWords[0])) {
-            LemmingRole role;
             try {
-                role = LemmingRoleFactory.parse(commandWords[1]);
-            } catch (RoleParseException e) {
-                throw new GameParseException(String.format(Messages.UNKNOWN_ROLE, commandWords[1]));
-            }
-            //  if (role != null) {
-            String x_str = commandWords[3];
-            String y_str = commandWords[2];
-            // check primer caracter es un numero y segundo no
-            if (Character.isDigit(x_str.charAt(0)) && !Character.isDigit(y_str.charAt(0))) {
+                LemmingRole role = LemmingRoleFactory.parse(commandWords[1]);
+
+                String x_str = commandWords[3];
+                String y_str = commandWords[2];
                 int x = Integer.parseInt(x_str) - 1;
                 int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
-                // no hace falta mirar si la posicion es correcta porque ya lo hace el execute
+
                 return new SetRoleCommand(role, new Position(x, y));
-            } else throw new GameParseException(Messages.EXC_INVALID_COMMAND_PARAM, null);
-            //}
-            //}
-        } else
-            throw new GameParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
-        //throw new GameParseException(Messages.INVALID_COMMAND, null);
+            } catch (NumberFormatException e) {
+                throw new CommandParseException(String.format("invalid lemming role %s", commandWords), e);
+            } catch (RoleParseException e) {
+                throw new CommandParseException(e.getMessage());
+            }
+        }
+
+        throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
     }
 
     @Override

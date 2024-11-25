@@ -9,7 +9,6 @@ public abstract class NoParamsCommand extends Command {
 		super(name, shortcut, details, help);
 	}
 
-
 	public Command parse(String[] commandWords) throws CommandParseException {
 		if (commandWords.length < 1 || !matchCommandName(commandWords[0]))
 			return null;
@@ -19,5 +18,4 @@ public abstract class NoParamsCommand extends Command {
 
 		throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
 	}
-
 }
