@@ -303,10 +303,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
         try {
             readFromFile(filename);
         } catch (FileNotFoundException e) {
-            throw new GameLoadException(Messages.FILE_NOT_FOUND, e);
+            throw new GameLoadException(String.format(Messages.FILE_NOT_FOUND, filename), null);
         }
-
-        //throw new GameLoadException(Messages.ERROR_LOADING_FILE, null);
     }
 
     public void readFromFile(String filename) throws FileNotFoundException, GameLoadException {
@@ -317,37 +315,31 @@ public class Game implements GameModel, GameStatus, GameWorld {
         String[] words = line.trim().split("\\s+");
 
         if(words.length != 5)
-            throw new GameLoadException(Messages.INCORRECT_GAME_STATUS);
+            throw new GameLoadException(String.format(Messages.INCORRECT_GAME_STATUS, line));
+
         try {
 
-            //todo: pasarlo al contenedor
             cycle = Integer.parseInt(words[0]);
             int nlemmings = Integer.parseInt(words[1]);
             int nlemmingsdead = Integer.parseInt(words[2]);
             int nlemmingsout = Integer.parseInt(words[3]);
-            int nlemmingstowin = Integer.parseInt(words[4]);
+            _lemmings_min = Integer.parseInt(words[4]);
+            _game_object_container.setNewGame(nlemmings,nlemmingsdead, nlemmingsout);
         } catch (NumberFormatException e) {
-            throw new GameLoadException(Messages.INCORRECT_GAME_STATUS, e);
+            throw new GameLoadException(String.format(Messages.INCORRECT_GAME_STATUS, line), e);
         }
 
-		/*
-		1) ciclo
-		2) lemmings en tablero,
-		3) lemmings muertos,
-		4) lemmings que han salido,
-		5) lemmings que tienen que salir
-		 */
-
         //procesar resto lineas
-        _game_object_container = new GameObjectContainer();
         try {
             while (s.hasNextLine()) {
                  line = s.nextLine();
                  GameObject g = GameObjectFactory.parse(line, this);
                 _game_object_container.add(g);
             }
-        } catch (ObjectParseException | OffBoardException e) {
-            throw new FileNotFoundException();
+        } catch (OffBoardException e) {
+            throw new GameLoadException(String.format(Messages.OBJ_POS_OFF, line), e);
+        } catch (ObjectParseException e){
+            throw new GameLoadException(e.getMessage());
         }
         s.close();
     }

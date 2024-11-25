@@ -2,6 +2,7 @@ package tp1.control.commands;
 
 import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
+import tp1.exceptions.GameLoadException;
 import tp1.logic.Game;
 import tp1.view.GameView;
 import tp1.view.Messages;
@@ -29,8 +30,8 @@ public class LoadCommand extends Command {
         try {
             game.load(_file);
             view.showGame();
-        } catch (Exception e) {
-            throw new CommandExecuteException(Messages.ERROR_LOADING_FILE, e);
+        } catch (GameLoadException e) {
+            throw new CommandExecuteException(String.format(Messages.INVALID_FILE_CONF, _file), e);
         }
     }
 

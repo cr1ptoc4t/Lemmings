@@ -71,7 +71,8 @@ public abstract class GameObject implements GameItem{
 		return false;
 	}
 
-	public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException {
+	public GameObject parse(String line, GameWorld game)
+			throws ObjectParseException, OffBoardException {
 		throw new ObjectParseException("Error: Invalid object");
 	}
 

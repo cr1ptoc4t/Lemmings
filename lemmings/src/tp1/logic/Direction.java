@@ -37,7 +37,8 @@ public enum Direction {
 		for(Direction d : Direction.values())
 			if(d.name().equalsIgnoreCase(str))
 				return d;
-		return Direction.NONE;
+		//return Direction.NONE;
+		return null;
 	}
 	
 }

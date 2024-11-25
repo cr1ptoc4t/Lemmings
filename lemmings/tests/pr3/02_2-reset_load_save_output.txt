@@ -114,9 +114,9 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: load patata
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid file "patata" configuration
 
-[ERROR] Error: Error loading file
+[ERROR] Error: File not found: "patata"
 
 Command > [DEBUG] Executing: none
 

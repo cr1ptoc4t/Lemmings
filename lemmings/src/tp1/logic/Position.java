@@ -21,8 +21,9 @@ public class Position {
 	}
 
 	public Position(String pos) {
-		this.col = convert(pos.charAt(0));
-		this.row = Integer.parseInt(pos.substring(1)) - 1;
+		String[] parts = pos.substring(1, pos.length() - 1).split(",\\s*");
+		this.row = Integer.parseInt(parts[0]);
+		this.col = Integer.parseInt(parts[1]);
 	}
 
 

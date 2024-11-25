@@ -62,7 +62,7 @@ public class ExitDoor extends GameObject {
     public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException {
         String[] words = line.trim().split("\\s+");
 
-        if (!words[1].equalsIgnoreCase(toString()))
+        if (!words[1].equalsIgnoreCase(getName()))
             return null;
 
         try {
@@ -79,6 +79,6 @@ public class ExitDoor extends GameObject {
 
     @Override
     public String getName() {
-        return "ExitDoor";
+        return Messages.EXITDOOR_NAME;
     }
 }

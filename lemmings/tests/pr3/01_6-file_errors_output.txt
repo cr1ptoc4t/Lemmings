@@ -22,63 +22,95 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: load conf
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid file "conf" configuration
 
-[ERROR] Error: Error loading file
+[ERROR] Error: File not found: "conf"
 
 Command > [DEBUG] Executing: load conf_2
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid file "conf_2" configuration
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid game status "2 0 3 5"
 
 Command > [DEBUG] Executing: load conf_3
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid file "conf_3" configuration
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Unknown game object: "(3,2) Potato RIGHT 10 Walker"
 
 Command > [DEBUG] Executing: load conf_4
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid file "conf_4" configuration
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Object position is off board: "(3,18) Lemming RIGHT 10 Walker"
 
 Command > [DEBUG] Executing: load conf_5
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid file "conf_5" configuration
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Unknown object direction: "(3,2) Lemming NORTH 10 Walker"
 
 Command > [DEBUG] Executing: load conf_6
 
-[ERROR] Error: Error loading file
+Number of cycles: 2
+Lemmings in board: 1
+Dead lemmings: 0
+Lemmings exit door: 3 ┃5
 
-[ERROR] Error: Error loading file
+      1    2    3    4    5    6    7    8    9   10  
+   ┌——————————————————————————————————————————————————┐
+  A┃                                                  ┃A
+  B┃                                                  ┃B
+  C┃                                                  ┃C
+  D┃                                                  ┃D
+  E┃                                                  ┃E
+  F┃                                                  ┃F
+  G┃                                                  ┃G
+  H┃                                                  ┃H
+  I┃                                                  ┃I
+  J┃                                                  ┃J
+   └——————————————————————————————————————————————————┘
+      1    2    3    4    5    6    7    8    9   10  
 
 Command > [DEBUG] Executing: load conf_7		
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid file "conf_7" configuration
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid Lemming
 
 Command > [DEBUG] Executing: load conf_8
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid file "conf_8" configuration
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid Lemming
 
 Command > [DEBUG] Executing: load conf_9
 
-[ERROR] Error: Error loading file
+[ERROR] Error: Invalid file "conf_9" configuration
 
-[ERROR] Error: Error loading file
+[ERROR] Error: File not found: "conf_9"
 
 Command > [DEBUG] Executing: load conf_0
 
-[ERROR] Error: Error loading file
+Number of cycles: 0
+Lemmings in board: 4
+Dead lemmings: 0
+Lemmings exit door: 0 ┃4
 
-[ERROR] Error: Error loading file
+      1    2    3    4    5    6    7    8    9   10  
+   ┌——————————————————————————————————————————————————┐
+  A┃  B         B                                  B  ┃A
+  B┃▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓XXXXX▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓┃B
+  C┃▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓┃C
+  D┃            B                                     ┃D
+  E┃     ▓▓▓▓▓                                        ┃E
+  F┃                                                  ┃F
+  G┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓     XXXXX     ▓▓▓▓▓     ┃G
+  H┃                     🚪            ▓▓▓▓▓          ┃H
+  I┃                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓XXXXX▓▓▓▓▓     ┃I
+  J┃▓▓▓▓▓▓▓▓▓▓                              ▓▓▓▓▓▓▓▓▓▓┃J
+   └——————————————————————————————————————————————————┘
+      1    2    3    4    5    6    7    8    9   10  
 
 Command > [DEBUG] Executing: exit
 

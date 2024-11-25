@@ -29,15 +29,18 @@ public class GameObjectFactory {
 
         try {
             for (GameObject obj : availableObjects) {
-                if (obj.toString().equals(words[1])) {
+                if (obj.getName().equals(words[1])) {
                     return obj.parse(line, game);
                 }
             }
-        } catch (ObjectParseException e) {
-            throw new ObjectParseException(e.getMessage());
         } catch (OffBoardException e) {
             throw new OffBoardException(e.getMessage());
+        } catch (ObjectParseException e) {
+            throw new ObjectParseException(e.getMessage());
         }
+
+
+        throw new ObjectParseException(String.format(Messages.UNKNOWN_GAME_OBJECT, line));
         //lanza ObjectParserException si line no se corresponde con ninguno
         //de los objetos disponibles (todos han devuelto null)
         //o alguno de ellos ha generado una excepción
@@ -45,7 +48,6 @@ public class GameObjectFactory {
         //lanza OffBoardException si la posición en line está fuera del tablero
 
         //NUNCA devuelve null
-        return null;
     }
 
 }

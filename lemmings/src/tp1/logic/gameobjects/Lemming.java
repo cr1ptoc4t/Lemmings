@@ -49,7 +49,7 @@ public class Lemming extends GameObject {
     }
 
     public String getName() {
-        return Messages.LEMMING_LEFT;
+        return Messages.LEMMING_NAME;
     }
 
     // caer
@@ -214,6 +214,9 @@ public class Lemming extends GameObject {
             if (!p.valid_position())
                 throw new OffBoardException(Messages.INVALID_POSITION);
             Direction d = Direction.parse(words[2]);
+            if(d==null)
+                throw new ObjectParseException(String.format(Messages.UNKNOWN_DIRECTION, line));
+
             int fall = Integer.parseInt(words[3]);
             LemmingRole role = LemmingRoleFactory.parse(words[4]);
             return new Lemming(game, p, d, fall, role);

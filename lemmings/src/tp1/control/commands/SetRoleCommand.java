@@ -57,8 +57,10 @@ public class SetRoleCommand extends Command {
                 int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
 
                 return new SetRoleCommand(role, new Position(x, y));
-            } catch (NumberFormatException | RoleParseException e) {
-                throw new CommandParseException(String.format(Messages.EXC_INVALID_COMMAND_PARAM), e);
+            } catch (NumberFormatException e) {
+                throw new CommandParseException(String.format("invalid lemming role %s", commandWords), e);
+            } catch (RoleParseException e) {
+                throw new CommandParseException(e.getMessage());
             }
         }
 
