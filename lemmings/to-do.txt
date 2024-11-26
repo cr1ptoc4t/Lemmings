@@ -44,5 +44,21 @@ TESTS                               - DONE
     - TEST3                         - DONE
     - TEST4                         - DONE
     - TEST5                         - DONE
+TESTS PR3
+    - TEST0                         - DONE
+    - TEST1                         - TODO
+    - TEST2                         - DONE
+    - TEST3                         - DONE
+    - TEST4                         - TODO
+        - prob command parameters
+    - TEST5                         - TODO
+        - Problema direccion
+    - TEST6                         - DONE
+    - TEST7                         - DONE
+    - TEST8                         - TODO
+        - No tiene sentido el test
+    - TEST9                         - DONE
 
 PREGUNTAS
+    - saltos en errores
+    - primera linea esta mal test 2_1

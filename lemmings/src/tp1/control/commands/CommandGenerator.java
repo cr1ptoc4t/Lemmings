@@ -21,15 +21,15 @@ public class CommandGenerator {
     );
 
     public static Command parse(String[] commandWords) throws CommandParseException {
-        //try {
+        try {
             for (Command c : availableCommands) {
                 if (c.matchCommandName(commandWords[0])) {
                     return c.parse(commandWords);
                 }
             }
-        //} //catch (CommandParseException e) {
-          //  throw new CommandParseException(e.getMessage());
-        //}
+        } catch (CommandParseException e) {
+            throw new CommandParseException("Invalid command parameters", e);
+        }
         throw new CommandParseException(String.format(Messages.UNKNOWN_COMMAND, commandWords[0]));
     }
 

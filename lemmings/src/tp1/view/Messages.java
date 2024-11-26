@@ -19,8 +19,8 @@ public class Messages {
 
 	public static final String PROMPT = "Command > ";
 
-	public static final String DEBUG = "[DEBUG] Executing: %s%n";
-	public static final String ERROR = "[ERROR] Error: %s%n";
+	public static final String DEBUG = "[DEBUG] Executing: %s";
+	public static final String ERROR = "[ERROR] Error: %s";
 
 	// GAME STATUS
 	public static final String NUMBER_OF_CYCLES = "Number of cycles: %s";
@@ -59,7 +59,7 @@ public class Messages {
 	// Errores de parseo de otras cosas:
 	public static final String INVALID_POSITION = "Invalid position: %s";
 	public static final String INVALID_COMMAND = "Invalid command: %s";
-	public static final String INVALID_DIRECTION = "Invalid direction: %s";
+	public static final String INVALID_DIRECTION = "Invalid lemming direction: \"%s\"";
 	public static final String INVALID_HEIGHT = "Invalid height: %s";
 	public static final String INVALID_GAME_STATUS = "Invalid game status";
 	public static final String INVALID_INIT_CONF = "Invalid init configuration because %s";
@@ -166,4 +166,6 @@ public class Messages {
 	public static final String INVALID_FILE_CONF = "Invalid file \"%s\" configuration";
 	public static final String OBJ_POS_OFF = "Object position is off board: \"%s\"";
 	public static final String UNKNOWN_DIRECTION = "Unknown object direction: \"%s\"";
+	public static final String INVALID_ROLE = "Invalid lemming role: \"%s\"";
+	public static final String INVALID_OBJECT_POSITION = "Invalid object position: \"%s\"";
 }
