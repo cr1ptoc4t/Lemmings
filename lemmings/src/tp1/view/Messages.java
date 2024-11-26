@@ -168,4 +168,5 @@ public class Messages {
 	public static final String UNKNOWN_DIRECTION = "Unknown object direction: \"%s\"";
 	public static final String INVALID_ROLE = "Invalid lemming role: \"%s\"";
 	public static final String INVALID_OBJECT_POSITION = "Invalid object position: \"%s\"";
+	public static final String INVALID_OBJECT = "Invalid object";
 }

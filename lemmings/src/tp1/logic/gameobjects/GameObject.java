@@ -7,6 +7,7 @@ import tp1.logic.Game;
 import tp1.logic.GameWorld;
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.LemmingRole;
+import tp1.view.Messages;
 
 public abstract class GameObject implements GameItem{
 
@@ -46,9 +47,6 @@ public abstract class GameObject implements GameItem{
 	public abstract String getIcon();
 
 	public abstract void update() ;
-	private Position get_pos() {
-		return pos;
-	}
 
 	public boolean setRole(LemmingRole role){
 		return false;
@@ -72,7 +70,7 @@ public abstract class GameObject implements GameItem{
 
 	public GameObject parse(String line, GameWorld game)
 			throws ObjectParseException, OffBoardException {
-		throw new ObjectParseException("Error: Invalid object");
+		throw new ObjectParseException(Messages.INVALID_OBJECT);
 	}
 
 	public abstract String getName();
