@@ -47,24 +47,24 @@ public class SetRoleCommand extends Command {
 
     @Override
     public Command parse(String[] commandWords) throws CommandParseException {
-        if (commandWords.length == 4) {
-            try {
-                LemmingRole role = LemmingRoleFactory.parse(commandWords[1]);
+        if (commandWords.length != 4)
+            throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
 
-                String x_str = commandWords[3];
-                String y_str = commandWords[2];
-                int x = Integer.parseInt(x_str) - 1;
-                int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
+        try {
+            LemmingRole role = LemmingRoleFactory.parse(commandWords[1]);
 
-                return new SetRoleCommand(role, new Position(x, y));
-            } catch (NumberFormatException e) {
-                throw new CommandParseException(String.format("invalid lemming role %s", commandWords), e);
-            } catch (RoleParseException e) {
-                throw new CommandParseException(e.getMessage());
-            }
+            String x_str = commandWords[3];
+            String y_str = commandWords[2];
+            int x = Integer.parseInt(x_str) - 1;
+            int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
+
+            return new SetRoleCommand(role, new Position(x, y));
+        } catch (NumberFormatException e) {
+            throw new CommandParseException(String.format(Messages.INVALID_ROLE, commandWords), e);
+        } catch (RoleParseException e) {
+            throw new CommandParseException(e.getMessage());
         }
 
-        throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package tp1.logic;
 
+import tp1.exceptions.ObjectParseException;
+
 /**
  * Represents the allowed directions in the game
  *
@@ -37,8 +39,9 @@ public enum Direction {
 		for(Direction d : Direction.values())
 			if(d.name().equalsIgnoreCase(str))
 				return d;
-		//return Direction.NONE;
+
 		return null;
+
 	}
 	
 }

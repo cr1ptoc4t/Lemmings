@@ -140,6 +140,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: rEsEt 134
 
+[ERROR] Error: Invalid command parameters
 [ERROR] Error: Incorrect parameter number
 
 Command > [DEBUG] Executing: none
@@ -166,6 +167,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: r 230
 
+[ERROR] Error: Invalid command parameters
 [ERROR] Error: Incorrect parameter number
 
 Command > [DEBUG] Executing: 
@@ -227,6 +229,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: rEset 2
 
+[ERROR] Error: Invalid command parameters
 [ERROR] Error: Incorrect parameter number
 
 Command > [DEBUG] Executing: noNE
@@ -253,6 +256,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: reSet 1
 
+[ERROR] Error: Invalid command parameters
 [ERROR] Error: Incorrect parameter number
 
 Command > [DEBUG] Executing: noNe
@@ -279,6 +283,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: resEt 0
 
+[ERROR] Error: Invalid command parameters
 [ERROR] Error: Incorrect parameter number
 
 Command > [DEBUG] Executing: NoNe

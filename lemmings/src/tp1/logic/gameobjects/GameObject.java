@@ -34,7 +34,6 @@ public abstract class GameObject implements GameItem{
 	public boolean isAlive() {
 		return isAlive;
 	}
-	
 	public boolean isSolid(){
 		return false;
 	}

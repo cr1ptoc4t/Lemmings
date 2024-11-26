@@ -1,5 +1,7 @@
 package tp1.control.commands;
 
+import tp1.exceptions.CommandExecuteException;
+import tp1.exceptions.GameLoadException;
 import tp1.logic.Game;
 import tp1.view.GameView;
 import tp1.view.Messages;
@@ -16,9 +18,13 @@ public class ResetCommand extends NoParamsCommand {
     }
 
     @Override
-    public void execute(Game game, GameView view) {
-        game.reset();
-        view.showGame();
+    public void execute(Game game, GameView view) throws CommandExecuteException{
+        try {
+            game.reset();
+            view.showGame();
+        } catch (CommandExecuteException e){
+            throw new CommandExecuteException(e.getMessage());
+        }
     }
 
 }

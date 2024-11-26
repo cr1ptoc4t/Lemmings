@@ -1,9 +1,6 @@
 package tp1.logic;
 
-import tp1.exceptions.GameLoadException;
-import tp1.exceptions.GameModelException;
-import tp1.exceptions.ObjectParseException;
-import tp1.exceptions.OffBoardException;
+import tp1.exceptions.*;
 import tp1.logic.gameobjects.*;
 import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.lemmingRoles.LemmingRoleFactory;
@@ -41,6 +38,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
     private final int nLevel;
 
     private boolean exit = false;
+    private String config ;
 
     public Game(int nLevel) {
         this.nLevel = nLevel;
@@ -136,10 +134,18 @@ public class Game implements GameModel, GameStatus, GameWorld {
         return !_game_object_container.solidInPos(Position.debajo(pos));
     }
 
-    public void reset() {
-        _game_object_container = new GameObjectContainer();
-        chooseLevel();
-        cycle = 0;
+    public void reset() throws CommandExecuteException {
+        if(config == null) {
+            _game_object_container = new GameObjectContainer();
+            chooseLevel();
+            cycle = 0;
+        } else{
+            try {
+                load(config);
+            } catch (GameLoadException e) {
+                throw new CommandExecuteException(e.getMessage());
+            }
+        }
     }
 
 
@@ -302,6 +308,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
     public void load(String filename) throws GameLoadException {
         try {
             readFromFile(filename);
+            config = filename;
         } catch (FileNotFoundException e) {
             throw new GameLoadException(String.format(Messages.FILE_NOT_FOUND, filename), null);
         }

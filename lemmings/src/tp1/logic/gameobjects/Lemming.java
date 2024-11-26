@@ -214,14 +214,20 @@ public class Lemming extends GameObject {
             if (!p.valid_position())
                 throw new OffBoardException(Messages.INVALID_POSITION);
             Direction d = Direction.parse(words[2]);
+
             if(d==null)
                 throw new ObjectParseException(String.format(Messages.UNKNOWN_DIRECTION, line));
+            if(d==Direction.UP)
+                throw new ObjectParseException(String.format(Messages.INVALID_DIRECTION, line));
 
             int fall = Integer.parseInt(words[3]);
             LemmingRole role = LemmingRoleFactory.parse(words[4]);
             return new Lemming(game, p, d, fall, role);
-        } catch (NumberFormatException | RoleParseException e) {
-            throw new ObjectParseException("Invalid Lemming");
+        } catch (RoleParseException e){
+            throw new ObjectParseException(String.format(Messages.INVALID_ROLE, line));
+        }
+        catch (NumberFormatException e) {
+            throw new ObjectParseException(String.format(Messages.INVALID_OBJECT_POSITION, line));
         }
 
     }
