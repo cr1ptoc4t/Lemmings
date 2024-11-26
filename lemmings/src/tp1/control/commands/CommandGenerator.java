@@ -24,11 +24,13 @@ public class CommandGenerator {
         try {
             for (Command c : availableCommands) {
                 if (c.matchCommandName(commandWords[0])) {
-                    return c.parse(commandWords);
+                    Command aux =c.parse(commandWords);
+                    if(aux != null)
+                        return aux;
                 }
             }
         } catch (CommandParseException e) {
-            throw new CommandParseException("Invalid command parameters", e);
+            throw new CommandParseException(e.getMessage());
         }
         throw new CommandParseException(String.format(Messages.UNKNOWN_COMMAND, commandWords[0]));
     }

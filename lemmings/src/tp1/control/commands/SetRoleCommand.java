@@ -56,7 +56,8 @@ public class SetRoleCommand extends Command {
             String x_str = commandWords[3];
             String y_str = commandWords[2];
             int x = Integer.parseInt(x_str) - 1;
-            int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
+            //int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
+            int y = Position.convert(y_str.charAt(0));
 
             return new SetRoleCommand(role, new Position(x, y));
         } catch (NumberFormatException e) {

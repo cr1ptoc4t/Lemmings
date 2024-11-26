@@ -46,17 +46,15 @@ TESTS                               - DONE
     - TEST5                         - DONE
 TESTS PR3
     - TEST0                         - DONE
-    - TEST1                         - TODO
+    - TEST1                         - DONE
     - TEST2                         - DONE
     - TEST3                         - DONE
     - TEST4                         - TODO
         - prob command parameters
-    - TEST5                         - TODO
-        - Problema direccion
+    - TEST5                         - DONE
     - TEST6                         - DONE
     - TEST7                         - DONE
-    - TEST8                         - TODO
-        - No tiene sentido el test
+    - TEST8                         - DONE
     - TEST9                         - DONE
 
 PREGUNTAS

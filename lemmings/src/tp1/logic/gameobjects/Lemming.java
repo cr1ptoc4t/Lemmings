@@ -90,7 +90,11 @@ public class Lemming extends GameObject {
             else {
                 _fall = 0;
                 _falling = false;
-                _dir = _anterior_dir;
+                if(_dir==Direction.DOWN) {
+                    _dir = _anterior_dir;
+                    _anterior_dir = _dir;
+                }
+                //_dir = _anterior_dir;
                 normal_step();
                 disableRole();
             }

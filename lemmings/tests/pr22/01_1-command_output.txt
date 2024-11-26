@@ -1,4 +1,4 @@
-Lemmings 3.0
+Lemmings 2.2
 
 Number of cycles: 0
 Lemmings in board: 4
@@ -23,30 +23,32 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: h
 
 Available commands:
-   [s]et[R]ole ROLE ROW COL: sets the lemming in position (ROW,COL) to role ROL
+   [s]et[R]ole ROLE ROW COL: sets the lemming in position (ROW,COL) to role ROLE
       [D]own [C]aver: Lemming caves downwards
       [P]arachuter: Lemming falls with a parachute
       [W]alker: Lemming that walks
    [n]one | "": user does not perform any action
-   [r]eset: start a new game
+   [r]eset: reset the game to initial configuration
+   [l]oad <fileName>: load the game configuration from text file <fileName>
    [h]elp: print this help message
    [e]xit: exits the game
 
 Command > [DEBUG] Executing: help
 
 Available commands:
-   [s]et[R]ole ROLE ROW COL: sets the lemming in position (ROW,COL) to role ROL
+   [s]et[R]ole ROLE ROW COL: sets the lemming in position (ROW,COL) to role ROLE
       [D]own [C]aver: Lemming caves downwards
       [P]arachuter: Lemming falls with a parachute
       [W]alker: Lemming that walks
    [n]one | "": user does not perform any action
-   [r]eset: start a new game
+   [r]eset: reset the game to initial configuration
+   [l]oad <fileName>: load the game configuration from text file <fileName>
    [h]elp: print this help message
    [e]xit: exits the game
 
 Command > [DEBUG] Executing: noExiste
 
-[ERROR] Error: null
+[ERROR] Error: Unknown command: noExiste
 
 Command > [DEBUG] Executing: none
 
@@ -138,7 +140,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: rEsEt 134
 
-[ERROR] Error: null
+[ERROR] Error: Incorrect parameter number
 
 Command > [DEBUG] Executing: none
 
@@ -164,7 +166,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: r 230
 
-[ERROR] Error: null
+[ERROR] Error: Incorrect parameter number
 
 Command > [DEBUG] Executing: 
 
@@ -191,12 +193,13 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: heLP
 
 Available commands:
-   [s]et[R]ole ROLE ROW COL: sets the lemming in position (ROW,COL) to role ROL
+   [s]et[R]ole ROLE ROW COL: sets the lemming in position (ROW,COL) to role ROLE
       [D]own [C]aver: Lemming caves downwards
       [P]arachuter: Lemming falls with a parachute
       [W]alker: Lemming that walks
    [n]one | "": user does not perform any action
-   [r]eset: start a new game
+   [r]eset: reset the game to initial configuration
+   [l]oad <fileName>: load the game configuration from text file <fileName>
    [h]elp: print this help message
    [e]xit: exits the game
 
