@@ -65,6 +65,8 @@ public class MyStringUtils {
 		else
 			return texto.substring(0, ancho);
 	}
+<<<<<<< HEAD
+=======
 	
 	/**
 	 * Justifica a la derecha un texto en un espacio de un determinado ancho 
@@ -138,4 +140,5 @@ public class MyStringUtils {
 	                )
 	            .toString();
 	}
+>>>>>>> v2.0
 }
