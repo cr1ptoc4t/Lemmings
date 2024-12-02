@@ -11,9 +11,9 @@ import java.io.FileNotFoundException;
 
 public class SaveCommand extends NoParamsCommand{
     private static String NAME = Messages.SAVE_COMMAND_NAME;
-    private static String SHORTCUT = Messages.SAVE_COMMAND_NAME;
-    private static String DETAILS = Messages.SAVE_COMMAND_NAME;
-    private static String HELP = Messages.SAVE_COMMAND_NAME;
+    private static String SHORTCUT = Messages.SAVE_COMMAND_SHORTCUT;
+    private static String DETAILS = Messages.SAVE_COMMAND_DETAILS;
+    private static String HELP = Messages.SAVE_COMMAND_HELP;
 
     private String _file;
 

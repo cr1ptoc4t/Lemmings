@@ -16,7 +16,7 @@ public class CommandGenerator {
             new UpdateCommand(),
             new ResetCommand(),
             new LoadCommand(),
-            new SaveCommand(),
+            //new SaveCommand(),
             new HelpCommand(),
             new ExitCommand()
     );
@@ -31,8 +31,8 @@ public class CommandGenerator {
                 }
             }
         } catch (CommandParseException e) {
-            throw new CommandParseException(e.getMessage());
-            //throw new CommandParseException("Invalid command parameters", e);
+            //throw new CommandParseException(e.getMessage());
+            throw new CommandParseException("Invalid command parameters", e);
         }
         throw new CommandParseException(String.format(Messages.UNKNOWN_COMMAND, commandWords[0]));
     }

@@ -140,6 +140,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: rEsEt 134
 
+[ERROR] Error: Invalid command parameters
 [ERROR] Error: Incorrect parameter number
 
 Command > [DEBUG] Executing: none

@@ -314,7 +314,12 @@ public class Game implements GameModel, GameStatus, GameWorld {
     }
 
     public void readFromFile(String filename) throws FileNotFoundException, GameLoadException {
-        Scanner s = new Scanner(new BufferedReader(new FileReader(filename)));
+        Scanner s;
+        try {
+            s = new Scanner(new BufferedReader(new FileReader(filename)));
+        } catch (FileNotFoundException e) {
+            throw new FileNotFoundException(String.format(Messages.FILE_NOT_FOUND, filename));
+        }
         String line = s.nextLine();
 
         //procesar cabecera

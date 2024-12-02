@@ -49,7 +49,7 @@ TESTS PR3
     - TEST1                         - DONE
     - TEST2                         - DONE
     - TEST3                         - DONE
-    - TEST4                         - TODO
+    - TEST4                         - DONE
         - prob command parameters
     - TEST5                         - DONE
     - TEST6                         - DONE
@@ -58,14 +58,14 @@ TESTS PR3
     - TEST9                         - DONE
 
 CAMBIOS RESPECTO PR2
-    -   Interaccion DCR, NO PARED   - TODO
-    -   No usar isMetal             - TODO
+    -   Interaccion DCR, NO PARED   - DONE
+    -   No usar isMetal             - DONE
         se usa para mirar si puede
         cavar, pero no para la
         interacción entre objetos.
     -   Eliminar getPos             - DONE
-    -   interaccion ED en Lemming   - TODO
-    -   update: inter -> update     - TODO
+    -   interaccion ED en Lemming   - DONE
+    -   update: inter -> x     - TODO
     -   Sería correcto hacer el     - TODO
         recieveInteractionFrom
         únicamente en el update
@@ -73,5 +73,5 @@ CAMBIOS RESPECTO PR2
         de objetos no interactuarán
         con ninguno. En particular,
         que no se mueven.
-    -   preguntar sobre el save que - TODO
+    -   preguntar sobre el save que - DONE
         lleva el view
