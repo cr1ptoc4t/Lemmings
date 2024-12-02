@@ -6,75 +6,76 @@ import java.util.Objects;
  * Immutable class to encapsulate and manipulate positions in the game board
  */
 public class Position {
-	private int col;
-	private int row;
+    private int col;
+    private int row;
 
-	public Position(int col, int row) {
-		this.col = col;
-		this.row = row;
-	}
+    public Position(int col, int row) {
+        this.col = col;
+        this.row = row;
+    }
 
-	//duplicador de posicion
-	public Position(Position pos) {
-		this.col = pos.get_col();
-		this.row = pos.get_row();
-	}
+    //duplicador de posicion
+    public Position(Position pos) {
+        this.col = pos.get_col();
+        this.row = pos.get_row();
+    }
 
-	public Position(String pos) {
-		String[] parts = pos.substring(1, pos.length() - 1).split(",\\s*");
-		this.row = Integer.parseInt(parts[0]);
-		this.col = Integer.parseInt(parts[1]);
-	}
-
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(col, row);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		boolean b;
-		if (this == obj)
-			b = true;
-		if (obj == null || getClass() != obj.getClass())
-			b = false;
-		else {
-			Position other = (Position) obj;         //conversion explicita
-			b = col == other.get_col() && row == other.get_row();
-		}
-		return b;
-	}
-
-	private int get_col() {
-		return this.col;
-	}
-
-	private int get_row() {
-		return this.row;
-	}
+    public Position(String pos) {
+        String[] parts = pos.substring(1, pos.length() - 1).split(",\\s*");
+        this.row = Integer.parseInt(parts[0]);
+        this.col = Integer.parseInt(parts[1]);
+    }
 
 
-	public void actualiza(Direction d) {
-		this.col += d.getX();
-		this.row += d.getY();
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(col, row);
+    }
 
-	public boolean valid_position() {
-		return col >= 0 && col < Game.DIM_X && row >= 0 && row < Game.DIM_Y;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        boolean b;
+        if (this == obj)
+            b = true;
+        if (obj == null || getClass() != obj.getClass())
+            b = false;
+        else {
+            Position other = (Position) obj;         //conversion explicita
+            b = col == other.get_col() && row == other.get_row();
+        }
+        return b;
+    }
 
-	public static Position debajo(Position p) {
-		return new Position(p.get_col(), p.get_row() + 1);
-	}
+    private int get_col() {
+        return this.col;
+    }
+
+    private int get_row() {
+        return this.row;
+    }
 
 
-	public static int convert(char letter) {
-		return letter - 'A';
-	}
-	@Override
-	public  String toString(){
-		return "("+get_row()+","+get_col()+")";
-	}
+    public void actualiza(Direction d) {
+        this.col += d.getX();
+        this.row += d.getY();
+    }
+
+    public boolean valid_position() {
+        return col >= 0 && col < Game.DIM_X && row >= 0 && row < Game.DIM_Y;
+    }
+
+    public static Position debajo(Position p) {
+        return new Position(p.get_col(), p.get_row() + 1);
+    }
+
+
+    public static int convert(char letter) {
+        return letter - 'A';
+    }
+
+    @Override
+    public String toString() {
+        return "(" + get_row() + "," + get_col() + ")";
+    }
 
 }

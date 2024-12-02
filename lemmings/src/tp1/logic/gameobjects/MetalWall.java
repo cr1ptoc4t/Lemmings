@@ -7,7 +7,7 @@ import tp1.logic.GameWorld;
 import tp1.logic.Position;
 import tp1.view.Messages;
 
-public class MetalWall extends GameObject{
+public class MetalWall extends GameObject {
     public MetalWall(GameWorld game, Position pos) {
         super(game, pos);
     }
@@ -47,11 +47,11 @@ public class MetalWall extends GameObject{
     }
 
     @Override
-    public boolean isSolid(){
+    public boolean isSolid() {
         return true;
     }
 
-    public boolean isMetal(){
+    public boolean isMetal() {
         return true;
     }
 
@@ -63,11 +63,11 @@ public class MetalWall extends GameObject{
 
         try {
             Position p = new Position(words[0]);
-            if(!p.valid_position())
+            if (!p.valid_position())
                 throw new OffBoardException(Messages.INVALID_POSITION);
 
             return new MetalWall(game, p);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ObjectParseException("Invalid MetalWall");
         }
 

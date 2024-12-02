@@ -4,12 +4,11 @@ import tp1.exceptions.*;
 import tp1.logic.gameobjects.*;
 import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.lemmingRoles.LemmingRoleFactory;
+import tp1.view.GameView;
 import tp1.view.Messages;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import javax.swing.text.View;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -220,7 +219,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
         Lemming parachuter = new Lemming(this, new Position(6, 0));
         try {
             parachuter.setRole(LemmingRoleFactory.parse(Messages.PARACHUTE_ROL_NAME));
-        } catch (Exception e) {
+        } catch (RoleParseException e) {
+
         }
         _game_object_container.add(parachuter);
 
@@ -302,7 +302,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
             throw new OffBoardException(String.format(Messages.EXC_OFF_BOARD, pos.toString()));
 
         return (_game_object_container.setRole(role, pos));
-        //return false;
     }
 
     public void load(String filename) throws GameLoadException {
@@ -316,32 +315,16 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
     public void readFromFile(String filename) throws FileNotFoundException, GameLoadException {
         Scanner s = new Scanner(new BufferedReader(new FileReader(filename)));
-
-        //procesar linea 1
         String line = s.nextLine();
-        String[] words = line.trim().split("\\s+");
 
-        if(words.length != 5)
-            throw new GameLoadException(String.format(Messages.INCORRECT_GAME_STATUS, line));
-
-        try {
-
-            cycle = Integer.parseInt(words[0]);
-            int nlemmings = Integer.parseInt(words[1]);
-            int nlemmingsdead = Integer.parseInt(words[2]);
-            int nlemmingsout = Integer.parseInt(words[3]);
-            _lemmings_min = Integer.parseInt(words[4]);
-            _game_object_container.setNewGame(nlemmings,nlemmingsdead, nlemmingsout);
-        } catch (NumberFormatException e) {
-            throw new GameLoadException(String.format(Messages.INCORRECT_GAME_STATUS, line), e);
-        }
+        //procesar cabecera
+        procesaCabecera(s, line);
 
         //procesar resto lineas
         try {
             while (s.hasNextLine()) {
-                 line = s.nextLine();
-                 GameObject g = GameObjectFactory.parse(line, this);
-                _game_object_container.add(g);
+                line = s.nextLine();
+                procesaLineaGenerica(s, line);
             }
         } catch (OffBoardException e) {
             throw new GameLoadException(String.format(Messages.OBJ_POS_OFF, line), e);
@@ -350,4 +333,37 @@ public class Game implements GameModel, GameStatus, GameWorld {
         }
         s.close();
     }
+
+    private void procesaLineaGenerica(Scanner s, String line) throws OffBoardException, ObjectParseException {
+        GameObject g = GameObjectFactory.parse(line, this);
+        _game_object_container.add(g);
+    }
+
+    private void procesaCabecera(Scanner s, String line) throws GameLoadException {
+        //line = s.nextLine();
+        String[] words = line.trim().split("\\s+");
+
+        if(words.length != 5)
+            throw new GameLoadException(String.format(Messages.INCORRECT_GAME_STATUS, line));
+
+        try {
+            cycle = Integer.parseInt(words[0]);
+            _lemmings_min = Integer.parseInt(words[4]);
+
+            _game_object_container.setNewGame(Integer.parseInt(words[1]),Integer.parseInt(words[2]), Integer.parseInt(words[3]));
+        } catch (NumberFormatException e) {
+            throw new GameLoadException(String.format(Messages.INCORRECT_GAME_STATUS, line), e);
+        }
+    }
+
+    public void save(String fileName, GameView view) throws GameModelException {
+        try{
+            PrintWriter writer = new PrintWriter(new File(fileName));
+            writer.println(view.toString());
+            writer.close();
+        }catch (FileNotFoundException e){
+            throw new GameModelException(e.getMessage());
+        }
+    }
+
 }

@@ -57,6 +57,21 @@ TESTS PR3
     - TEST8                         - DONE
     - TEST9                         - DONE
 
-PREGUNTAS
-    - saltos en errores
-    - primera linea esta mal test 2_1
+CAMBIOS RESPECTO PR2
+    -   Interaccion DCR, NO PARED   - TODO
+    -   No usar isMetal             - TODO
+        se usa para mirar si puede
+        cavar, pero no para la
+        interacción entre objetos.
+    -   Eliminar getPos             - DONE
+    -   interaccion ED en Lemming   - TODO
+    -   update: inter -> update     - TODO
+    -   Sería correcto hacer el     - TODO
+        recieveInteractionFrom
+        únicamente en el update
+        de Lemming, ya que el resto
+        de objetos no interactuarán
+        con ninguno. En particular,
+        que no se mueven.
+    -   preguntar sobre el save que - TODO
+        lleva el view

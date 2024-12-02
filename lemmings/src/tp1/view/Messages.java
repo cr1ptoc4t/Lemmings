@@ -117,6 +117,14 @@ public class Messages {
 	public static final String COMMAND_ROLE_DETAILS = "[s]et[R]ole ROLE ROW COL:";
 	public static final String COMMAND_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE\n";
 
+	// SAVE
+
+
+	public static final String SAVE_COMMAND_NAME = "Save";
+	public static final String SAVE_COMMAND_SHORTCUT = "S";
+	public static final String SAVE_COMMAND_DETAILS = "[s]ave <fileName>:";
+	public static final String SAVE_COMMAND_HELP = "save the actual configuration in text file <fileName>";
+
 	//Roles
 	public static final String WALKER_ROL_SHORTCUT = "W";
 	public static final String WALKER_ROL_NAME = "Walker";

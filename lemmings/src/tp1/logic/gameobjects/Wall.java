@@ -68,7 +68,7 @@ public class Wall extends GameObject{
 
             return new Wall(game, p);
         }catch (Exception e){
-            throw new ObjectParseException("Invalid Wall");
+            throw new ObjectParseException(String.format(Messages.INVALID_OBJECT_POSITION, line));
         }
 
     }

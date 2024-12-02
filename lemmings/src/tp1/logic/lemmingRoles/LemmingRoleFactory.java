@@ -17,7 +17,7 @@ public class LemmingRoleFactory {
     public static LemmingRole parse(String input) throws RoleParseException {
         for (LemmingRole role : availableRoles) {
             if (input.equalsIgnoreCase(role.getName()) ||
-                input.equalsIgnoreCase(role.getShortcut())) {
+                    input.equalsIgnoreCase(role.getShortcut())) {
                 return role.copia();
             }
         }

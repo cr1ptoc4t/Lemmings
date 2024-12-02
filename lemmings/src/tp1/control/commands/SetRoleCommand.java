@@ -41,7 +41,6 @@ public class SetRoleCommand extends Command {
             view.showGame();
         } catch (OffBoardException e) {
             throw new CommandExecuteException(Messages.COMMAND_EXECUTE_EXCEPTION, e);
-            //throw new CommandExecuteException(e.getMessage());
         }
     }
 
@@ -53,11 +52,8 @@ public class SetRoleCommand extends Command {
         try {
             LemmingRole role = LemmingRoleFactory.parse(commandWords[1]);
 
-            String x_str = commandWords[3];
-            String y_str = commandWords[2];
-            int x = Integer.parseInt(x_str) - 1;
-            //int y = Position.convert(Character.toUpperCase(y_str.charAt(0)));
-            int y = Position.convert(y_str.charAt(0));
+            int x = Integer.parseInt(commandWords[3]) - 1;
+            int y = Position.convert(commandWords[2].charAt(0));
 
             return new SetRoleCommand(role, new Position(x, y));
         } catch (NumberFormatException e) {

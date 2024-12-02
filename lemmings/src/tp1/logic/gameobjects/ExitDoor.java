@@ -31,8 +31,8 @@ public class ExitDoor extends GameObject {
 
     @Override
     public boolean receiveInteraction(GameItem other) {
-        if(other.interactWith(this)){
-            isAlive=false;
+        if (other.interactWith(this)) {
+            isAlive = false;
             return true;
         }
         return false;
@@ -67,12 +67,11 @@ public class ExitDoor extends GameObject {
 
         try {
             Position p = new Position(words[0]);
-            if(!p.valid_position())
+            if (!p.valid_position())
                 throw new OffBoardException(Messages.INVALID_POSITION);
-
             return new ExitDoor(game, p);
-        }catch (Exception e){
-            throw new ObjectParseException("Invalid ExitDoor");
+        } catch (NumberFormatException e) {
+            throw new ObjectParseException(String.format(Messages.INVALID_OBJECT_POSITION, line));
         }
 
     }
