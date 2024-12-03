@@ -35,7 +35,6 @@ public class SetRoleCommand extends Command {
 
         try {
             if (!game.setRole(_role, _pos)) {
-                //throw new CommandExecuteException(String.format(Messages.EXC_NO_LEMMING_IN_POS, _pos.toString(), _role.getName()), null);
                 view.showError(String.format(Messages.EXC_NO_LEMMING_IN_POS, _pos.toString(), _role.getName()+"\n"));
             }else {
                 game.update();
@@ -61,7 +60,6 @@ public class SetRoleCommand extends Command {
         } catch (NumberFormatException e) {
             throw new CommandParseException(String.format(Messages.INVALID_ROLE, commandWords), e);
         } catch (RoleParseException e) {
-            //throw new CommandParseException( "Invalid command parameters",e);
             throw new CommandParseException(e.getMessage());
         }
 

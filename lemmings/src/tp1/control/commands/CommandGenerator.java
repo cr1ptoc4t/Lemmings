@@ -31,8 +31,7 @@ public class CommandGenerator {
                 }
             }
         } catch (CommandParseException e) {
-            //throw new CommandParseException(e.getMessage());
-            throw new CommandParseException("Invalid command parameters", e);
+            throw new CommandParseException(Messages.EXC_INVALID_COMMAND_PARAM, e);
         }
         throw new CommandParseException(String.format(Messages.UNKNOWN_COMMAND, commandWords[0]));
     }
