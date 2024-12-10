@@ -70,8 +70,18 @@ public abstract class GameObject implements GameItem{
 
 	public GameObject parse(String line, GameWorld game)
 			throws ObjectParseException, OffBoardException {
-		throw new ObjectParseException(Messages.INVALID_OBJECT);
+		String[] words = line.trim().split("\\s+");
+
+		try {
+			Position p = new Position(words[0]);
+			if (!p.valid_position())
+				throw new OffBoardException(Messages.INVALID_POSITION);
+			return copy(game, p);
+		} catch (NumberFormatException e) {
+			throw new ObjectParseException(Messages.INVALID_OBJECT);
+		}
 	}
 
 	public abstract String getName();
-	}
+	public abstract GameObject copy(GameWorld game, Position p);
+}

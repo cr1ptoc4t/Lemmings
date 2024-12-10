@@ -55,26 +55,13 @@ public class Wall extends GameObject{
     }
 
 
-    public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException {
-        String[] words = line.trim().split("\\s+");
-
-        if (!words[1].equalsIgnoreCase(getName()))
-            return null;
-
-        try {
-            Position p = new Position(words[0]);
-            if(!p.valid_position())
-                throw new OffBoardException(Messages.INVALID_POSITION);
-
-            return new Wall(game, p);
-        }catch (Exception e){
-            throw new ObjectParseException(String.format(Messages.INVALID_OBJECT_POSITION, line));
-        }
-
-    }
-
     @Override
     public String getName() {
         return Messages.WALL_NAME;
+    }
+
+    @Override
+    public GameObject copy(GameWorld game, Position p) {
+        return new Wall(game, p);
     }
 }

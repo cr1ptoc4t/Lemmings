@@ -52,6 +52,11 @@ public class Lemming extends GameObject {
         return Messages.LEMMING_NAME;
     }
 
+    @Override
+    public GameObject copy(GameWorld game, Position p) {
+        return new Lemming();
+    }
+
     // caer
     public void fall() {
         _falling = true;
@@ -208,9 +213,6 @@ public class Lemming extends GameObject {
 
     public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException {
         String[] words = line.trim().split("\\s+");
-
-        if (!words[1].equalsIgnoreCase("Lemming"))
-            return null;
 
         try {
             Position p = new Position(words[0]);

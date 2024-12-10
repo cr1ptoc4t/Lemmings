@@ -55,26 +55,13 @@ public class MetalWall extends GameObject {
         return true;
     }
 
-    public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException {
-        String[] words = line.trim().split("\\s+");
-
-        if (!words[1].equalsIgnoreCase(getName()))
-            return null;
-
-        try {
-            Position p = new Position(words[0]);
-            if (!p.valid_position())
-                throw new OffBoardException(Messages.INVALID_POSITION);
-
-            return new MetalWall(game, p);
-        } catch (Exception e) {
-            throw new ObjectParseException("Invalid MetalWall");
-        }
-
-    }
-
     @Override
     public String getName() {
         return Messages.METALWALL_NAME;
+    }
+
+    @Override
+    public GameObject copy(GameWorld game, Position p) {
+        return new MetalWall(game, p);
     }
 }

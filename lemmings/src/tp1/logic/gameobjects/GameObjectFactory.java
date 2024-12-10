@@ -8,6 +8,7 @@ import tp1.logic.lemmingRoles.DownCaverRole;
 import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.lemmingRoles.ParachuterRole;
 import tp1.logic.lemmingRoles.WalkerRole;
+import tp1.util.MyStringUtils;
 import tp1.view.Messages;
 
 import java.util.Arrays;
@@ -29,7 +30,8 @@ public class GameObjectFactory {
 
         try {
             for (GameObject obj : availableObjects) {
-                if (obj.getName().equals(words[1])) {
+                if (obj.getName().equals(words[1]) ||
+                        MyStringUtils.onlyUpper(obj.getName()).equals(words[1])) {
                     return obj.parse(line, game);
                 }
             }

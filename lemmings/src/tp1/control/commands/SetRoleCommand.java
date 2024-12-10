@@ -58,7 +58,7 @@ public class SetRoleCommand extends Command {
 
             return new SetRoleCommand(role, new Position(x, y));
         } catch (NumberFormatException e) {
-            throw new CommandParseException(String.format(Messages.INVALID_ROLE, commandWords), e);
+            throw new CommandParseException(String.format(Messages.EXC_INVALID_COMMAND_PARAM, commandWords), e);
         } catch (RoleParseException e) {
             throw new CommandParseException(e.getMessage());
         }
