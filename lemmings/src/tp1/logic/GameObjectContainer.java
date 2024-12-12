@@ -145,4 +145,12 @@ public class GameObjectContainer {
         this._dead_lemmings = dead_lemmings;
         this._exit_lemmings = exit_lemmings;
     }
+
+    public void changeDirection(int x0, int x1, int y0, int y1) {
+        for (GameObject object : objects) {
+            if (object.isInSquare(x0, x1, y0, y1)) {
+                object.dirOpuesta();
+            }
+        }
+    }
 }

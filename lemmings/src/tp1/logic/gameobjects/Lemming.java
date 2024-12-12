@@ -21,6 +21,7 @@ public class Lemming extends GameObject {
     private boolean _changed_dir;
     private int _fall;
     private boolean _falling;
+    private boolean isSolid = false;
 
     public Lemming(GameWorld game, Position pos) {
         super(game, pos);
@@ -143,6 +144,7 @@ public class Lemming extends GameObject {
             return false;
 
         this.role = role;
+        role.start(this);
         return true;
     }
 
@@ -234,5 +236,37 @@ public class Lemming extends GameObject {
             throw new ObjectParseException(String.format(Messages.INVALID_OBJECT_POSITION, line));
         }
 
+    }
+
+    public void setSolid(boolean b) {
+        isSolid = b;
+    }
+
+    @Override
+    public boolean isSolid() {
+        return isSolid;
+    }
+
+    public boolean wallInFront() {
+        Position next_pos = new Position(pos);
+        //next_pos.actualiza(Direction.UP);
+        next_pos.actualiza(_dir);
+        return game.isWallInPos(next_pos);
+    }
+
+    public void jump() {
+        pos.actualiza(Direction.UP);
+        pos.actualiza(_dir);
+    }
+
+    public boolean canJump() {
+        Position next_pos = new Position(pos);
+        next_pos.actualiza(Direction.UP);
+        next_pos.actualiza(_dir);
+        return !game.isWallInPos(next_pos);
+    }
+
+    public void dirOpuesta() {
+        _dir = _dir.opposite();
     }
 }

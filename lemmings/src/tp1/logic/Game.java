@@ -371,4 +371,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
         }
     }
 
+    public void changeDirection(int x0, int x1, int y0, int y1) throws GameModelException{
+        _game_object_container.changeDirection(x0, x1, y0, y1);
+    }
 }

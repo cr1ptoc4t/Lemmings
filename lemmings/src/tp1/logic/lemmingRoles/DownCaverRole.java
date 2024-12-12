@@ -12,6 +12,7 @@ public class DownCaverRole extends AbstractRole {
     @Override
     public void start(Lemming lemming) {
         hasCaved = false;
+        lemming.setSolid(false);
     }
 
     @Override

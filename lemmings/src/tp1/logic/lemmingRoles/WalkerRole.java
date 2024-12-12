@@ -9,6 +9,7 @@ public class WalkerRole extends AbstractRole {
 
     @Override
     public void start(Lemming lemming) {
+        lemming.setSolid(false);
 
     }
 

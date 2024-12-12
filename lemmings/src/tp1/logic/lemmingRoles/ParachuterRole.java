@@ -10,6 +10,7 @@ public class ParachuterRole extends AbstractRole {
 
     @Override
     public void start(Lemming lemming) {
+        lemming.setSolid(false);
 
     }
 

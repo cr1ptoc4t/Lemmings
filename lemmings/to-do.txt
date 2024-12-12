@@ -1,77 +1,11 @@
-- Clase Command y derivados         - DONE
-- GAMEOBJECTS                       - DONE
-    - GameObject                    - DONE
-    - Lemming                       - DONE
-    - ExitDoor                      - DONE
-    - Wall                          - DONE
-    - interactuar                   - DONE
-- Interfaces                        - DONE
-    - LemmingRole                   - DONE
+        EXTENSIONES
+1. BLOCKERROLE                  - DONE
+2. HORIZONTALCAVER              - TODO
+3. CAVERROLE+DIR                - TODO
+4. DRONEROLE                    - TODO
+5. FASTWALKERROLE               - TODO
+6. FASTFORWARDCOMMAND           - TODO
 
-GAME                                - DONE
-   - reset                          - DONE
-   - exit                           - DONE
-
-ACCIONES                            - DONE
-    - MÉTODO IS IN AIR              - DONE
-    - UPDATE LEMMING                - DONE
-    - QUE AL METER "" HAGA UPDATE   - DONE
-    - PLAYER WINS                   - DONE
-    - PLAYER LOOSES                 - DONE
-    - ENTRAR EN PUERTA              - DONE
-        - Se queda en la puerta     - DONE
-    - UPDATE ROLES                  - DONE
-        - Walker                    - DONE
-        - Parachuter                - DONE
-        - DownCaver                 - DONE
-    - SHORTCUTS TODOS               - DONE
-    - HELP                          - DONE
-        - añadir sr en el help      - DONE
-    - En mapa 2 añadir lemm normal  - DONE
-    - Girar available commands      - DONE
-    - Errores correspondientes      - DONE
-    - elimina puerta downcaver      - DONE
-    - cambiar handle_no_damage      - DONE
-
-ERRORES
-    - setRole Walker I 2 33 = unknown command
-    - setRole Patata I 2 = unknown command
-
-TESTS                               - DONE
-    - TEST0                         - DONE
-    - TEST1                         - DONE
-    - TEST2                         - DONE
-    - TEST3                         - DONE
-    - TEST4                         - DONE
-    - TEST5                         - DONE
-TESTS PR3
-    - TEST0                         - DONE
-    - TEST1                         - DONE
-    - TEST2                         - DONE
-    - TEST3                         - DONE
-    - TEST4                         - DONE
-        - prob command parameters
-    - TEST5                         - DONE
-    - TEST6                         - DONE
-    - TEST7                         - DONE
-    - TEST8                         - DONE
-    - TEST9                         - DONE
-
-CAMBIOS RESPECTO PR2
-    -   Interaccion DCR, NO PARED   - DONE
-    -   No usar isMetal             - DONE
-        se usa para mirar si puede
-        cavar, pero no para la
-        interacción entre objetos.
-    -   Eliminar getPos             - DONE
-    -   interaccion ED en Lemming   - DONE
-    -   update: inter -> x     - TODO
-    -   Sería correcto hacer el     - TODO
-        recieveInteractionFrom
-        únicamente en el update
-        de Lemming, ya que el resto
-        de objetos no interactuarán
-        con ninguno. En particular,
-        que no se mueven.
-    -   preguntar sobre el save que - DONE
-        lleva el view
+        SIMULACION EXAMEN PRACTICO
+1. COMANDO                      - TODO
+2. CANGURO                      - TODO

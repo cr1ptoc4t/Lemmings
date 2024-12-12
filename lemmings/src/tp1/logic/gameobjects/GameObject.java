@@ -84,4 +84,11 @@ public abstract class GameObject implements GameItem{
 
 	public abstract String getName();
 	public abstract GameObject copy(GameWorld game, Position p);
+
+	public void dirOpuesta() {
+	}
+
+	public boolean isInSquare(int x0, int x1, int y0, int y1) {
+		return pos.isInSquare(x0, x1, y0, y1);
+	}
 }

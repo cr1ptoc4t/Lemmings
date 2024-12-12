@@ -78,4 +78,7 @@ public class Position {
         return "(" + get_row() + "," + get_col() + ")";
     }
 
+    public boolean isInSquare(int x0, int x1, int y0, int y1) {
+        return  col>= x0 && col <= x1 && row >= y0 && row <= y1;
+    }
 }
